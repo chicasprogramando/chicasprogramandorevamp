@@ -1,4 +1,4 @@
-# chicas-programando
+# chicas-programando (STABLE)
 
 > Portfolio website 
 
