@@ -1,6 +1,6 @@
 # Rebrand Chicas Programando Web (Stable)
 
-> This project was meant to be created by women who are on their early career as software developers with the goal of giving space to other women in technology who are looking for a chance to show their works.  
+> This project was meant to be created by women who are starting their careers as software developers with the goal of giving space to other women in technology who are looking for a chance to show their works.  
 
 ## Nuxt install 
 see Create Nuxt App [github](https://github.com/nuxt-community/create-nuxt-app)
