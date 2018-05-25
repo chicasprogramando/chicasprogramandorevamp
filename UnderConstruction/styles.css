@@ -1,0 +1,68 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.container {
+  min-height: 100vh;
+  color: #7D64AB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.title {
+  display: block;
+  font-weight: 300;
+  font-size: 50px;
+  letter-spacing: 1px;
+}
+.subtitle {
+  font-weight: 300;
+  font-size: 30px;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
+.lds-circle-slow {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      margin: 6px;
+      border-radius: 50%;
+      background-image: url('logo300.png');
+      background-size: 200px;
+      animation: lds-circle-slow 3s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle-slow {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(360deg);
+  }
+  75% {
+    transform: rotateY(540deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  75% {
+    transform: rotateY(720deg);
+  }
+}
