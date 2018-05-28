@@ -22,4 +22,6 @@ $ npm start
 $ npm run generate
 ```
 
+## Our App
+
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
