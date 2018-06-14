@@ -17,7 +17,9 @@
         </v-toolbar-items>
       </v-toolbar>
       <main>
-        <router-view></router-view>
+        <v-slide-x-transition mode="out-in">
+          <router-view></router-view>
+        </v-slide-x-transition>
       </main>
     </v-app>
   </div>
@@ -50,6 +52,16 @@ export default {
 }
 .main-link {
   color: #7e64ab;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: all 1s ease-out;
+}
+
+.page-enter, .page-leave-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transform-origin: 200% 50%;
 }
 
 </style>
