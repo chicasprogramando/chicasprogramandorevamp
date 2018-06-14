@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+// app.js
+//import './stylus/main.styl'
 
 Vue.use(Vuetify)
 
