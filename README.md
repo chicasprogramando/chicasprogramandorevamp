@@ -1,6 +1,6 @@
 # chicas-programando 
 
-> New website 
+> New website from chicas programando 
 
 ## Build Setup
 
