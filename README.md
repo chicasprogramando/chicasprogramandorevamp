@@ -1,6 +1,6 @@
-# chicas-programando
+# chicas-programando 
 
-> A Vue.js project
+> New website from chicas programando 
 
 ## Build Setup
 
