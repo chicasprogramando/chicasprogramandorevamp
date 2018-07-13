@@ -4,7 +4,7 @@
       <v-toolbar class="nav">
         <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
         <v-toolbar-title class="mt-3"><img class="logo" src="@/assets/logoOnly.png" alt="Logo"></v-toolbar-title>
-        <v-spacer></v-spacer>
+        <v-spacer></v-spacer> 
         <v-toolbar-items class="hidden-sm-and-down">
           <v-btn
             flat
@@ -18,7 +18,7 @@
       </v-toolbar>
       <main>
         <v-slide-x-transition mode="out-in">
-          <router-view></router-view>
+          <router-view> </router-view>
         </v-slide-x-transition>
       </main>
     </v-app>
