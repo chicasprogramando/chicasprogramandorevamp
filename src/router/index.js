@@ -6,6 +6,7 @@ import Proyectos from '@/components/Proyectos/Proyectos'
 import Comunidad from '@/components/Comunidad/Comunidad'
 import Eventos from '@/components/Eventos/Eventos'
 import Contacto from '@/components/Contacto/Contacto'
+import History from '@/components/Otros/History'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/contacto',
       name: 'Contacto',
       component: Contacto
+    },
+    {
+      path: '/history',
+      name: 'History',
+      component: History
     },
     {
       path: '/hello',

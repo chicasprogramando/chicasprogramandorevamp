@@ -11,7 +11,7 @@
             v-for="item in menuItems"
             :key="item.title"
             :to="item.link"
-            class="main-link">
+            class="deep-purple--text lighten-1">
             {{ item.title }}
           </v-btn>
         </v-toolbar-items>
@@ -42,7 +42,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+h2 {
+  font-size: 34px;
+  font-weight: 300;
+}
+
 .toolbar__title {
   margin-top: 10px;
 }
