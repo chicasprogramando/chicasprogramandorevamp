@@ -15,10 +15,9 @@
   </v-layout>
   <v-layout row wrap class="profiles-padding"> 
     <v-flex 
-      v-for="profile in listProfiles"
-      :key="profile.name"
-      xs12 sm3>
-      <profile-card :title="profile.title" :name="profile.name"> </profile-card> 
+      v-for= "item in profilesInfo"
+      :key="item.name">
+      <profile-card :name="item.name" :title="item.title" :image="item.image"> </profile-card> 
     </v-flex>
   </v-layout>
 </v-container>
@@ -33,11 +32,11 @@ export default {
   },
   data () {
     return {
-      listProfiles: [
-        {name:"Priscila Bey", title: "Front End Dev"},
-        {name:"Gia Castello", title: "Front End Dev"},
-        {name:"Mariana Calmon", title: "Front End Dev"},
-        {name:"Sofia Estevez", title: "Front End Dev"}
+      profilesInfo:[
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
+        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
+        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
+        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
       ]
     }
   }
