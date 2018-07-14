@@ -13,9 +13,11 @@
   	  </v-text-field>
     </v-flex>
   </v-layout>
-  <v-layout class="profiles-padding"> 
-    <v-flex>
-      <profile-card> </profile-card> 
+  <v-layout row wrap class="profiles-padding"> 
+    <v-flex 
+      v-for= "item in profilesInfo"
+      :key="item.name">
+      <profile-card :name="item.name" :title="item.title" :image="item.image"> </profile-card> 
     </v-flex>
   </v-layout>
 </v-container>
@@ -30,7 +32,12 @@ export default {
   },
   data () {
     return {
-      
+      profilesInfo:[
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
+        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
+        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
+        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
+      ]
     }
   }
 }
@@ -47,5 +54,7 @@ export default {
 .profiles-padding {
   padding: 16px;
 }
+
+
 
 </style>
