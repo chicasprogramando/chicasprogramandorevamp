@@ -7,15 +7,18 @@
         name="profile"
         label="Nombre de dev"
         id="profile"
-        class="title"
+        class="search-bar-input"
         dark
       >
   	  </v-text-field>
     </v-flex>
   </v-layout>
-  <v-layout class="profiles-padding"> 
-    <v-flex>
-      <profile-card> </profile-card> 
+  <v-layout row wrap class="profiles-padding"> 
+    <v-flex 
+      v-for="profile in listProfiles"
+      :key="profile.name"
+      xs12 sm3>
+      <profile-card :title="profile.title" :name="profile.name"> </profile-card> 
     </v-flex>
   </v-layout>
 </v-container>
@@ -30,7 +33,12 @@ export default {
   },
   data () {
     return {
-      
+      listProfiles: [
+        {name:"Priscila Bey", title: "Front End Dev"},
+        {name:"Gia Castello", title: "Front End Dev"},
+        {name:"Mariana Calmon", title: "Front End Dev"},
+        {name:"Sofia Estevez", title: "Front End Dev"}
+      ]
     }
   }
 }
@@ -46,6 +54,16 @@ export default {
 .search-bar-profiles, 
 .profiles-padding {
   padding: 16px;
+}
+
+.search-bar-input::-moz-placeholder {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.search-bar-input::placeholder {
+  font-size: 18px;
+  font-weight: 300;
 }
 
 </style>
