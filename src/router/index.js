@@ -6,7 +6,9 @@ import Proyectos from '@/components/Proyectos/Proyectos'
 import Comunidad from '@/components/Comunidad/Comunidad'
 import Eventos from '@/components/Eventos/Eventos'
 import Contacto from '@/components/Contacto/Contacto'
+import History from '@/components/Otros/History'
 import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
+
 
 Vue.use(Router)
 
@@ -25,6 +27,7 @@ export default new Router({
     {
       path: '/comunidad',
       name: 'Comunidad',
+      props: true,
       component: Comunidad
     },
     {
@@ -36,6 +39,11 @@ export default new Router({
       path: '/contacto',
       name: 'Contacto',
       component: Contacto
+    },
+    {
+      path: '/history',
+      name: 'History',
+      component: History
     },
     {
       path: '/hello',
