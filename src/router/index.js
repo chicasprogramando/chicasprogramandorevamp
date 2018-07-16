@@ -9,7 +9,6 @@ import Contacto from '@/components/Contacto/Contacto'
 import History from '@/components/Otros/History'
 import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
 
-
 Vue.use(Router)
 
 export default new Router({
