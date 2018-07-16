@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-toolbar class="nav">
+      <v-toolbar class="nav" flat>
         <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
         <v-toolbar-title class="mt-3"><img class="logo" src="@/assets/logoOnly.png" alt="Logo"></v-toolbar-title>
         <v-spacer></v-spacer>
