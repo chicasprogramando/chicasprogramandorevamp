@@ -7,6 +7,7 @@ import Comunidad from '@/components/Comunidad/Comunidad'
 import Eventos from '@/components/Eventos/Eventos'
 import Contacto from '@/components/Contacto/Contacto'
 import History from '@/components/Otros/History'
+import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/hello',
       name: 'HelloWorld',
       component: HelloWorld
-    }
+    },
+    {
+      path: '/loaderdisplay',
+      name: 'LoaderDisplay',
+      component: LoaderDisplay
+    },
   ]
 })
