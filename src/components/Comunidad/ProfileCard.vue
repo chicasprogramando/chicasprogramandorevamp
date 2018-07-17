@@ -23,7 +23,6 @@ export default {
 <style scoped>
 
 .profile-card-container {
-    width: 270px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 500px;
     display: flex;
@@ -41,7 +40,7 @@ export default {
   font-weight: 500;
 }
 .profile-card-info {
-    margin-left: 15px; 
+    margin-left: 15%; 
     text-align: left;
 }
 
