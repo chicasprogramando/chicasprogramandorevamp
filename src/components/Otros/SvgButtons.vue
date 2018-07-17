@@ -1,18 +1,15 @@
 <template>
   <div>
-    <icons> </icons>
-
+    <profile-card></profile-card>
   </div>
 </template>
 
 <script>
 import ProfileCard from '../Comunidad/ProfileCard.vue';
-import Icons from './Icons';
 export default {
   name: 'History',
   components: {
-    ProfileCard,
-    Icons
+    ProfileCard
   },
   data () {
     return {
