@@ -17,18 +17,23 @@
     <v-flex 
       v-for= "item in profilesInfo"
       :key="item.name">
-      <profile-card :name="item.name" :title="item.title" :image="item.image"> </profile-card> 
+      <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
     </v-flex>
+  </v-layout>
+  <v-layout row>
+    <profile-detail :data="singleProfile"></profile-detail>
   </v-layout>
 </v-container>
 </template>
 
 <script>
 import ProfileCard from './ProfileCard'
+import ProfileDetail from './ProfileDetail'
 export default {
   name: 'Comunidad',
   components: {
-    ProfileCard
+    ProfileCard,
+    ProfileDetail
   },
   data () {
     return {
@@ -37,7 +42,14 @@ export default {
         {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
         {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
         {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
-      ]
+      ],
+      singleProfile: null
+    }
+  },
+  methods: {
+    openProfileCard(item) {
+      console.log(item)
+      this.singleProfile = item
     }
   }
 }
@@ -49,6 +61,7 @@ export default {
 .comunidad-container {
   background-color: #DCD3EB;
   padding: 0;
+  height: 100%;
 }
 .search-bar-profiles, 
 .profiles-padding {
