@@ -28,8 +28,9 @@ export default {
 <style scoped>
 
 .profile-card-detail-container {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
@@ -43,7 +44,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8)
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .profile-card-name{

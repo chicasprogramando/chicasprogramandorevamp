@@ -13,15 +13,22 @@
   	  </v-text-field>
     </v-flex>
   </v-layout>
-  <v-layout row wrap class="profiles-padding"> 
+  <v-layout row wrap class="profiles-padding profiles-container-wrapper"> 
     <v-flex 
       v-for= "item in profilesInfo"
       :key="item.name">
       <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
     </v-flex>
-  </v-layout>
-  <v-layout row>
-    <profile-detail :data="singleProfile"></profile-detail>
+    <v-slide-x-transition mode="out-in">
+      <v-flex class="profile-detail-modal-container" v-if="singleProfile">
+        <div class="profile-detail-modal">
+          <button class="profile-detail-close-btn" @click="closeProfileCard()">
+            X
+          </button>
+          <profile-detail :data="singleProfile"></profile-detail>
+        </div>
+      </v-flex>
+    </v-slide-x-transition>
   </v-layout>
 </v-container>
 </template>
@@ -50,6 +57,9 @@ export default {
     openProfileCard(item) {
       console.log(item)
       this.singleProfile = item
+    },
+    closeProfileCard() {
+      this.singleProfile = null
     }
   }
 }
@@ -67,6 +77,7 @@ export default {
 .profiles-padding {
   padding: 16px;
 }
+.search-bar-profiles {}
 
 .search-bar-input::-moz-placeholder {
   font-size: 18px;
@@ -76,6 +87,49 @@ export default {
 .search-bar-input::placeholder {
   font-size: 18px;
   font-weight: 300;
+}
+
+.profiles-container-wrapper {
+  position: relative;
+  height: 82%;
+}
+
+.profile-detail-modal-container {
+  background-color: #ffffff;
+  position: absolute;
+  width: 50%;
+  box-sizing: border-box;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  right: 0;
+}
+
+.profile-detail-modal {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.profile-detail-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #7E57C2;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 20px;
+}
+.profile-detail-close-btn:hover {
+  background-color: rgb(89, 47, 161);
+}
+
+.profile-detail-close-btn:focus {
+  outline: none;
 }
 
 </style>
