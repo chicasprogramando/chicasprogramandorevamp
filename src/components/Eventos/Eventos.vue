@@ -37,7 +37,7 @@
                       </div>
                     </v-flex>
                     <v-flex xs2>
-                      <v-btn  fab dark right small color="purple">
+                      <v-btn fab dark right small color="purple">
                         <v-icon>arrow_right</v-icon>
                       </v-btn>
                     </v-flex>
