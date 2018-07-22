@@ -13,13 +13,15 @@
   	  </v-text-field>
     </v-flex>
   </v-layout>
-  <v-layout row wrap class="profiles-padding profiles-container-wrapper"> 
-    <v-flex 
-      v-for= "item in profilesInfo"
-      :key="item.name">
-      <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
-    </v-flex>
-    <v-slide-x-transition mode="out-in">
+  <div class="container-comunidad">
+    <v-layout row wrap class="profiles-padding profiles-container-wrapper"> 
+      <v-flex 
+        v-for= "item in profilesInfo"
+        :key="item.name">
+        <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
+      </v-flex>
+    </v-layout>
+    <v-layout class="derecha">
       <v-flex class="profile-detail-modal-container" v-if="singleProfile">
         <div class="profile-detail-modal">
           <button class="profile-detail-close-btn" @click="closeProfileCard()">
@@ -28,8 +30,8 @@
           <profile-detail :data="singleProfile"></profile-detail>
         </div>
       </v-flex>
-    </v-slide-x-transition>
-  </v-layout>
+    </v-layout>
+  </div>
 </v-container>
 </template>
 
@@ -90,19 +92,18 @@ export default {
 }
 
 .profiles-container-wrapper {
-  position: relative;
-  height: 82%;
+  display: inline-block;
+}
+
+.derecha {
+  display: inline-block;
+  width: 50%;
 }
 
 .profile-detail-modal-container {
   background-color: #ffffff;
-  position: absolute;
-  width: 50%;
   box-sizing: border-box;
   height: 100%;
-  z-index: 10;
-  top: 0;
-  right: 0;
 }
 
 .profile-detail-modal {

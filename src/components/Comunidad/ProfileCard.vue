@@ -32,7 +32,6 @@ export default {
 <style scoped>
 
 .profile-card-container {
-    width: 270px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 500px;
     display: flex;
