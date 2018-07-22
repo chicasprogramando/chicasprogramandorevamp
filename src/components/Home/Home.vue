@@ -91,8 +91,8 @@ export default {
   }
 }
 
-import JQuery from 'jquery'
-let $ = JQuery
+import JQuery from 'jquery';
+let $ = JQuery;
 
 $(document).ready(function() {
 
