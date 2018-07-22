@@ -88,14 +88,8 @@ export default {
     return {
 
     }
-  }
-}
-
-import JQuery from 'jquery';
-let $ = JQuery;
-
-$(document).ready(function() {
-
+  },
+  mounted(){
   var curPage = 1;
   var numOfPages = $(".skw-page").length;
   var animTime = 1000;
@@ -142,9 +136,13 @@ $(document).ready(function() {
     } else if (e.which === 40) {
       navigateDown();
     }
-  });
+  });    
+  }
+}
 
-});
+//$(document).ready(function() {
+
+  
 
 
 
