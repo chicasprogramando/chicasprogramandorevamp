@@ -9,8 +9,9 @@
                   <div class="skw-page__half skw-page__half--right">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Skewed One Page Scroll</h2>
-                        <p class="skw-page__description">Just scroll down</p>
+                        <h2 class="skw-page__heading">CHICAS PROGRAMANDO</h2>
+                        <p class="skw-page__description">Una ventana al mundo para los proyectos de mujeres en tecnología.</p>
+                        <v-btn><v-icon>add</v-icon></v-btn>
                       </div>
                     </div>
                   </div>
@@ -19,8 +20,11 @@
                   <div class="skw-page__half skw-page__half--left">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Page 2</h2>
-                        <p class="skw-page__description">Nothing to do here, continue scrolling.</p>
+                        <h2 class="skw-page__heading">Proyectos</h2>
+                        <p class="skw-page__description"> Mirá las ideas increíbles que están desarrollando mujeres.</p>
+                        <v-btn to="/proyectos" >
+                          Conocelas
+                        </v-btn>
                       </div>
                     </div>
                   </div>
@@ -39,8 +43,8 @@
                   <div class="skw-page__half skw-page__half--right">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Page 3</h2>
-                        <p class="skw-page__description">The end is near, I promise!</p>
+                        <h2 class="skw-page__heading">Comunidad</h2>
+                        <p class="skw-page__description">Queremos visibilizar equipos y emprendimientos que tengan al menos a una mujer o a une programadorx no binarie.Conocelas.</p>
                       </div>
                     </div>
                   </div>
@@ -49,7 +53,7 @@
                   <div class="skw-page__half skw-page__half--left">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Page 4</h2>
+                        <h2 class="skw-page__heading">Eventos</h2>
                         <p class="skw-page__description">Ok, ok, just one more scroll!</p>
                       </div>
                     </div>
@@ -69,7 +73,7 @@
                   <div class="skw-page__half skw-page__half--right">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Epic finale</h2>
+                        <h2 class="skw-page__heading">Contacto</h2>
                         <p class="skw-page__description">
                           Feel free to check 
                           <a class="skw-page__link" href="https://codepen.io/suez/pens/public/" target="_blank">my other pens</a> and follow me on 
@@ -140,11 +144,7 @@ export default {
   }
 }
 
-//$(document).ready(function() {
-
-  
-
-
+//$(document).ready(function() { fue borrado, no usar en vue.
 
 </script>
 
@@ -266,10 +266,10 @@ body {
   background-image: url("../../assets/blur-close-up-depth-of-field-911685.jpg");
 }
 .skw-page-1 .skw-page__half--right .skw-page__content {
-  background: #1bb33c;
+  background:  #7e64ab;
 }
 .skw-page-2 .skw-page__half--left .skw-page__content {
-  background: #c71e1e;
+  background:  #7e64ab;
 }
 .skw-page-2 .skw-page__half--right .skw-page__content {
   background-image: url("../../assets/astronomy-atmosphere-aviation-586056.jpg");
@@ -278,10 +278,10 @@ body {
   background-image: url("../../assets/discovery-earth-nasa-23789.jpg");
 }
 .skw-page-3 .skw-page__half--right .skw-page__content {
-  background: #39409e;
+  background: #7e64ab;
 }
 .skw-page-4 .skw-page__half--left .skw-page__content {
-  background: #9c952c;
+  background:  #7e64ab;
 }
 .skw-page-4 .skw-page__half--right .skw-page__content {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg");
@@ -290,6 +290,6 @@ body {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/img-test.jpg");
 }
 .skw-page-5 .skw-page__half--right .skw-page__content {
-  background: #af5c17;
+  background:  #7e64ab;
 } 
 </style>

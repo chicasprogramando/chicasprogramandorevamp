@@ -43,6 +43,11 @@ export default {
 </script>
 
 <style scoped>
+
+html, body{
+  height: 100%;
+}
+
 .toolbar__title {
   margin-top: 10px;
 }
