@@ -31,6 +31,8 @@ export default {
     border-radius: 500px;
     display: flex;
     align-items: center;
+    width:80%;
+    height:80%;
     padding: 8px;
     margin: 15px;
     border: 3px solid transparent; /* avoid movement when hover */
@@ -42,15 +44,19 @@ export default {
 
 .profile-card-name{
   font-weight: 500;
+  text-align:center;
 }
+
 .profile-card-info {
     margin-left: 15px; 
     text-align: left;
 }
 
 .profile-card-img {
-  width: 100px;
-  height: 100px;
+  width: 45%;
+  height: auto;
+  padding-bottom: 45%;
+  margin: 20px;
   /* background-image: url(https://thumbs.dreamstime.com/z/gatito-divertido-del-gato-del-beb%C3%A9-36333148.jpg);*/
   background-size: cover;
   background-position: center;
