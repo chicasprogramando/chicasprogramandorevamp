@@ -1,9 +1,9 @@
 <template>
   <v-container fluid class="main">
-      <v-layout align-space-between justify-space-between fill-height row/>
+      <v-layout align-space-between justify-space-between fill-height row>
         
-        <v-layout row>
-          <v-flex xs6 order-lg2 class="left">
+       
+          <v-flex md6 class="left" height="100%">
             <h1>Eventos y capacitaciones</h1>
             <p class="subtitle">Buscamos hacer crecer a nuestras coders y a todos aquellos que deseen sumarse a nuestras capacitaciones y meetups.</p>
         
@@ -103,7 +103,8 @@
             </v-card>
           </v-flex>
 
-          <v-flex xs6 class="right" color="purple">
+          <v-flex class="right" height="100%">
+
               <h2>Otras capacitaciones</h2>
 
               <v-card flat class="twits">
@@ -129,6 +130,7 @@
               <v-card flat class="twits">
                 <v-card-text class="text-xs-center">Twit</v-card-text>
               </v-card>
+   
           </v-flex>
       
       </v-layout>
@@ -160,7 +162,7 @@ export default {
   opacity:0.8;
   background-image: url(../../assets/bgimageSixx.png);
   background-size:100%;
-  margin-left:1em;
+  /*margin-left:1em;*/
   padding: 1.5em 1.5em;
 }
 h1{
