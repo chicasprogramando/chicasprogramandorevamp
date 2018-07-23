@@ -1,5 +1,5 @@
 <template>
-<v-container class="comunidad-container" fluid>
+<v-container class="comunidad-container profiles-container-wrapper" fluid>
   <v-layout class="deep-purple lighten-1 search-bar-profiles" row>
     <v-flex xs12 sm6>
       <h2 class="white--text">Las Coders de Nuestra Comunidad</h2>
@@ -13,25 +13,21 @@
   	  </v-text-field>
     </v-flex>
   </v-layout>
-  <div class="container-comunidad">
-    <v-layout row wrap class="profiles-padding profiles-container-wrapper"> 
-      <v-flex 
-        v-for= "item in profilesInfo"
-        :key="item.name">
-        <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
-      </v-flex>
-    </v-layout>
-    <v-layout class="derecha">
-      <v-flex class="profile-detail-modal-container" v-if="singleProfile">
-        <div class="profile-detail-modal">
-          <button class="profile-detail-close-btn" @click="closeProfileCard()">
-            X
-          </button>
-          <profile-detail :data="singleProfile"></profile-detail>
-        </div>
-      </v-flex>
-    </v-layout>
-  </div>
+  <v-layout row wrap class="profiles-padding"> 
+    <v-flex
+      v-for= "item in profilesInfo"
+      :key="item.name">
+      <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
+    </v-flex>
+    <v-flex class="profile-detail-modal-container" v-if="singleProfile">
+      <div class="profile-detail-modal">
+        <button class="profile-detail-close-btn" @click="closeProfileCard()">
+          X
+        </button>
+        <profile-detail :data="singleProfile"></profile-detail>
+      </div>
+    </v-flex>
+  </v-layout>
 </v-container>
 </template>
 
@@ -47,6 +43,14 @@ export default {
   data () {
     return {
       profilesInfo:[
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
+        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
+        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
+        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
+        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
+        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
+        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
         {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
         {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
         {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
@@ -92,17 +96,18 @@ export default {
 }
 
 .profiles-container-wrapper {
-  display: inline-block;
-}
-
-.derecha {
-  display: inline-block;
-  width: 50%;
+  position: relative;
 }
 
 .profile-detail-modal-container {
-  background-color: #ffffff;
+  background-color: rgba(0,0,0,0.75);
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
 }
 
