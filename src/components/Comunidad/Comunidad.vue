@@ -19,14 +19,16 @@
       :key="item.name">
       <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
     </v-flex>
+    <v-slide-x-transition mode="out-in">
     <v-flex class="profile-detail-modal-container" v-if="singleProfile">
       <div class="profile-detail-modal">
         <button class="profile-detail-close-btn" @click="closeProfileCard()">
           X
         </button>
-        <profile-detail :data="singleProfile"></profile-detail>
+        <profile-detail :profileInfo="singleProfile"></profile-detail>
       </div>
     </v-flex>
+    </v-slide-x-transition>
   </v-layout>
 </v-container>
 </template>
@@ -43,18 +45,10 @@ export default {
   data () {
     return {
       profilesInfo:[
-        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
-        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
-        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
-        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
-        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
-        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
-        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
-        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
-        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4'},
-        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4'},
-        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4'},
-        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4'},
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
+        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
+        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
+        {name:'Sofi Estevez', title:'BackEnd Dev', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'}
       ],
       singleProfile: null
     }
