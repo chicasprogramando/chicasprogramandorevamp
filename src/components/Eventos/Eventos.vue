@@ -2,7 +2,12 @@
   <v-container fluid class="main">
     <v-layout align-space-between justify-space-between row fill-height height="100%">
       <v-flex md6 class="left" height="100%" fill-height>
-        <h1>Eventos y capacitaciones</h1>
+        <div class="headerDiv">
+          <h2>Buscador de Proyectos</h2>
+          <figure>
+            <img src="../../assets/modal-btn2.png" alt="">
+          </figure>
+        </div>
         <p class="subtitle">Buscamos hacer crecer a nuestras coders y a todos aquellos que deseen sumarse a nuestras capacitaciones y meetups.</p>
         <v-card class="cards">
           <v-container fluid grid-list-md>
@@ -98,47 +103,64 @@
             </v-layout>
           </v-container>
         </v-card>
-
+      
       </v-flex>
 
-      <v-card sm6 class="right" fill-height>
-          <h2>Otras capacitaciones</h2>
+      
+      <v-flex md6 class="rightForm" flat fill-height align-center>
+        <div class="form-width">
+          <h2>Crear nuevo evento</h2>
+          <v-form ref="form" v-model="valid">
+            <v-text-field color="purple"
+              v-model="eventName"
+              :rules="campoRequeridoRules"
+              label="Nombre del evento"
+              required
+            ></v-text-field>
+            <v-text-field color="purple"
+              v-model="date"
+              :rules="campoRequeridoRules"
+              label="Fecha"
+              required
+            ></v-text-field>
+            <v-text-field color="purple" 
+              v-model="place"
+              :rules="campoRequeridoRules"
+              label="Lugar"
+              required
+            ></v-text-field>
+            <v-text-field color="purple"
+                v-model="fileLink"
+                :rules="campoRequeridoRules"
+                label="Link del proyecto"
+                required
+              ></v-text-field>
+            
+            <v-flex class="formBtns">
+                <v-btn class='btns' color='purple'>Crear</v-btn>
+                <v-btn color='purple' class='btns'>Limpiar</v-btn>
+                <v-btn color='purple' class='btns'>Cancelar</v-btn>
+            </v-flex>
+            </v-form>
+          </div>
+        </v-flex>  
 
-          <v-card flat class="twits">
-            <v-card-text  class="text-xs-center">Twit</v-card-text>
-          </v-card>
-
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-        
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-    
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-        
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-        </v-card>
       </v-layout>
   </v-container>
 </template>
 
 <script>
+import { campoRequeridoRules } from '../../validaciones'
 export default {
   name: 'Eventos',
   data () {
     return {
-      
+      valid: false,
+      campoRequeridoRules:campoRequeridoRules,
     }
+  },
+  methods: {
+      
   }
 }
 </script>
@@ -148,28 +170,33 @@ export default {
 .main{
   margin:0;
   padding: 0;
+  background-color: #ffffff;
+
 }
 .left{
   padding: 1.5em;
 }
-.right{
-  background-color:#7e64ab;
+.rightForm{
   opacity:0.8;
-  background-image: url(../../assets/bgimageSixx.png);
   width:50%;
-  /*margin-left:1em;*/
-  padding: 1.5em 1.5em;
+  padding: 10em 13% 1.5em 13%;
 }
-h1{
+.headerDiv{
+  display: flex;
+  justify-content: space-between;
+}
+.headerDiv figure {
+  width: 48px;
+  height:48px;
+}
+.headerDiv figure img{
+  width: 100%;
+  height: auto;
+}
+h1,h2{
   color:#7e64ab;
   font-weight:300;
   font-size:2em;
-}
-h2{
-  color:#ffffff;
-  font-weight:300;
-  margin-bottom: 1em;
-  font-size: 2em;
 }
 .subtitle{
   color:#7e64ab;
@@ -196,11 +223,6 @@ h2{
   justify-content: space-between;
   align-content:center;
 }
-.twits{
-  margin:0.7em 0;
-  padding: 0.5em;
-  opacity:0.9;
-}
 .event{
   padding:1em 0 0 0;
 }
@@ -212,5 +234,22 @@ h2{
 .arrow-div{
   margin-top: 0.5em;
   cursor:pointer;
+}
+.formBtns{
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+.text-field  input, .text-field label{
+    color: #7E57C2 !important;
+}
+.btn{
+  padding: 0 2px 0 2px;
+  margin:0;
+  background: #7e64ab;
+  color: #ffffff;
+  border-radius: 18px;
+  font-size: 12px;
 }
 </style>
