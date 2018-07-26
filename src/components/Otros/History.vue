@@ -1,7 +1,9 @@
 <template>
   <div>
-    <icons> </icons>
-
+    <icons name="twitter" bgColor="#cccccc" color="#000000"></icons>
+    <icons name="instagram" bgColor="#cccccc" color="#000000"></icons>
+    <icons name="linkedin" bgColor="#cccccc" color="#000000"></icons>
+    <icons name="github" bgColor="#cccccc" color="#000000"></icons>
   </div>
 </template>
 
@@ -32,5 +34,8 @@ h1 {
   height: 100px;
   background-color: #7e64ab;
   border-radius: 50%;
+}
+.svg-button:hover{
+  box-shadow: 0 0 0 10 rgba(0,0,0,1);
 }
 </style>
