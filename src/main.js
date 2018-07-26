@@ -9,6 +9,8 @@ import Jquery from 'jquery'
 global.Jquery = Jquery 
 global.$ = Jquery
 //tmb podria ser let $ = jQuery
+import { store } from './store'
+
 // app.js
 //import './stylus/main.styl'
 //import VAnimateCss from 'v-animate-css'
@@ -24,6 +26,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
