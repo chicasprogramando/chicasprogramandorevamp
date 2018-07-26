@@ -10,8 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
     "jquery": "^3.3.1",
+    "v-animate-css": "0.0.2",
     "vue": "^2.5.2",
+    "vue-animate-css": "^1.0.0",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.0"
   },

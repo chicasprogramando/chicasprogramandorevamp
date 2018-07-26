@@ -11,6 +11,9 @@ global.$ = Jquery
 //tmb podria ser let $ = jQuery
 // app.js
 //import './stylus/main.styl'
+//import VAnimateCss from 'v-animate-css'
+
+//Vue.use(VAnimateCss)
 
 Vue.use(Vuetify)
 
