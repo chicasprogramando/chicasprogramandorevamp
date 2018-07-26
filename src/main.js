@@ -15,6 +15,7 @@ global.$ = Jquery
 
 //Vue.use(VAnimateCss)
 
+
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false

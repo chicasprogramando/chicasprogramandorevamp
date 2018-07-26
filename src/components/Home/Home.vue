@@ -4,10 +4,21 @@
                   <div class="skw-page__half skw-page__half--left">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
+                        <transition appear name="animar2">
                         <h2 class="skw-page__heading">CHICAS PROGRAMANDO</h2>
+                        </transition>
+
+                        <transition appear>
                         <p class="skw-page__description mb-5">Una ventana al mundo para los proyectos de mujeres en tecnología.</p>
-                        <p class="skw-page__description mt-5">scroll</p>
-                        <v-icon large color="white">keyboard_arrow_down</v-icon>
+                        </transition>
+
+                        <transition class="skw-page__description mt-5" appear name="animar">
+                          <p class="scroll">scroll</p>
+                         </transition>
+
+                         <transition appear name="animar">
+                          <v-icon color="white" class="arrow">keyboard_arrow_down</v-icon>
+                         </transition>  
                       </div>
                     </div>
                   </div>
@@ -28,7 +39,7 @@
                   <div class="skw-page__half skw-page__half--right">
                     <div class="skw-page__skewed">
                       <div class="skw-page__content">
-                        <h2 class="skw-page__heading" v-animation-animate="bounce" align-right>Proyectos</h2>
+                        <h2 class="skw-page__heading">Proyectos</h2>
                         <p class="skw-page__description mb-4">Queremos visibilizar emprendimientos que tengan al menos a una mujer o programadorx no binarie. Podés buscar por nombre del proyecto, por lenguaje o por programadorx.</p>
                         <v-btn round class="botones" to="/proyectos" flat>
                          Ir a Proyectos 
@@ -185,7 +196,7 @@ body {
 .skw-pages {
   overflow: hidden;
   position: relative;
-  height: 91.5vh;
+  height: 91.2vh;
   display: flex;
   align-items: flex-end;
 }
@@ -340,10 +351,38 @@ background-image: url("../../assets/blur-close-up-depth-of-field-911685.jpg");
   color: #7e64ab; 
 }
 
+.animar-enter-active {
+  transition: all 2s ease;
+}
+.animar-leave-active {
+  transition: all .4s /*cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
+}
+.animar-enter, .animar-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+.animar2-enter-active {
+  transition: all 2s ease;
+}
+.animar2-leave-active {
+  transition: all .8s /*cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
+}
+.animar2-enter, .animar2-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(40px);
+  opacity: 0;
+}
+
 .scroll{
-  font-size: 1.5rem;
+  margin-top: 4rem;
+  font-size: 1.8rem;
   text-transform: none;
-  border: solid white;
   color: white;
+}
+
+.arrow{
+  font-size: 40px;
 }
 </style>
