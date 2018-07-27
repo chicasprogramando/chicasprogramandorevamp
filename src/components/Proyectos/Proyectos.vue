@@ -1,7 +1,21 @@
 <template>
-  <v-container fluid>
-      <v-layout column align-center>
-        <h1>Proyectos</h1>
+  <v-container fluid grid-list-md class="container">
+      <v-layout>
+        <v-flex d-flex xs12 sm12 md2 class="form-container">
+          <CardForm></CardForm>
+        </v-flex>
+        <v-flex>
+          <v-layout wrap>
+            <v-flex v-for="n in 6" :key="n" xs12 sm6 md4>
+              <CardExterna></CardExterna>
+            </v-flex>
+          </v-layout>
+          <v-layout>
+            <v-flex>
+              <Pagination></Pagination>
+            </v-flex>
+          </v-layout>
+        </v-flex>
       </v-layout>
       <v-layout column-align-center>
         <v-flex xs12 sm4 offset-sm4>
@@ -56,11 +70,28 @@
   </v-container>
 </template>
 
+<style scoped>
+  .container {
+    padding: 0;
+  }
+  .form-container {
+    max-width: none;
+  }
+</style>
+
 <script>
 //import axios from 'axios' //poner axios e importarlo
+import CardForm from '@/components/Proyectos/CardForm'
+import CardExterna from '@/components/Proyectos/CardExterna'
+import Pagination from '@/components/Proyectos/Pagination'
 
 export default {
   name: 'Proyectos',
+  components: {
+    CardForm,
+    CardExterna,
+    Pagination
+  },
   data () {
     return {
       valid: false,
@@ -117,3 +148,4 @@ h1, #enviar {
   color: #7e64ab;
 }
 </style>
+

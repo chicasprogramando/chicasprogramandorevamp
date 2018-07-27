@@ -5,8 +5,18 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import Jquery from 'jquery'
+global.Jquery = Jquery 
+global.$ = Jquery
+//tmb podria ser let $ = jQuery
+import { store } from './store'
+
 // app.js
 //import './stylus/main.styl'
+//import VAnimateCss from 'v-animate-css'
+
+//Vue.use(VAnimateCss)
+
 
 Vue.use(Vuetify)
 
@@ -16,6 +26,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
