@@ -32,6 +32,7 @@ import instagram from "../../assets/instagram.png"
 import twitter from "../../assets/twitter.png"
 import linkedin from "../../assets/linkedin.png"
 import github from "../../assets/github.png"
+
 export default {
   name: 'Contacto',
   data () {
@@ -94,10 +95,5 @@ h1 {
   width: 30px;
   margin: 10px
 }
-
-
-
-
-
 
 </style>
