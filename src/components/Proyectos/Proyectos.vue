@@ -1,51 +1,24 @@
 <template>
-<v-container class='container'>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3 class="sideform">
-      <v-card class="cardform" height="100%">
-        <div class="sideform-padding">
-          <div>
-            <div class="cardHeader">
-              <h2>Buscador de Proyectos</h2>
-              <figure>
-                <img src="../../assets/ModalButton.png" alt="">
-              </figure>
-            </div>
-            <p>Invitamos a la gente a buscar aquellos proyectos que los inspiren a formar parte, aprender o investigar.</p>
-          </div>
-          <div>
-            <h3>Filtros</h3>
-            <p>Buscar por tecnología, estado del proyecto, creador/es, fecha.</p>
-          </div>
-          <v-form>
-            <v-text-field
-              color='white'
-              v-model="filterEstado"
-              label="Estado del proyecto"
-            ></v-text-field>
-            <v-select 
-              color='white'
-              v-model="filterSelect"
-              :items="tecnos"
-              label="Tecnologías"
-            ></v-select>
-            <v-flex class="sideFormBtns">
-                <v-btn color='white' id="filtrar-btn" class='btns' @click="submit">Filtrar</v-btn>
-                <v-btn color='purple' id="borrar-btn" class='btns' @click="clear">Borrar</v-btn>
+  <v-container fluid grid-list-md class="container">
+      <v-layout>
+        <v-flex d-flex xs12 sm12 md2 class="form-container">
+          <CardForm></CardForm>
+        </v-flex>
+        <v-flex>
+          <v-layout wrap>
+            <v-flex v-for="n in 6" :key="n" xs12 sm6 md4>
+              <CardExterna></CardExterna>
             </v-flex>
-          </v-form>
-        </div>
-        <div class="filtersDiv">
-            <div class="subFilter">
-              <p>Vue.js</p>
-              <figure>
-                <img class="remove" src="../../assets/remove.png" alt="">
-              </figure>
-            </div>
-        </div>
-      </v-card>     
-    </v-flex>
-
+          </v-layout>
+          <v-layout>
+            <v-flex>
+              <Pagination></Pagination>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+      
+     <v-layout>
       <v-flex sm4 class="mainForm">
         <h1>Crear un nuevo proyecto</h1>  
         <v-form class='form' ref="form" v-model="valid">
@@ -122,11 +95,29 @@
   </v-container>
 </template>
 
+<style scoped>
+  .container {
+    padding: 0;
+  }
+  .form-container {
+    max-width: none;
+  }
+</style>
+
 <script>
 //import axios from 'axios' //poner axios e importarlo
 import { nombreRules, emailRules, campoRequeridoRules, descripcionRules } from '../../validaciones'
+import CardForm from '@/components/Proyectos/CardForm'
+import CardExterna from '@/components/Proyectos/CardExterna'
+import Pagination from '@/components/Proyectos/Pagination'
+
 export default {
   name: 'Proyectos',
+  components: {
+    CardForm,
+    CardExterna,
+    Pagination
+  },
   data () {
     return {
       valid: false,

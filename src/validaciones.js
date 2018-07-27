@@ -14,3 +14,4 @@ export const descripcionRules = [
   v => v.length <= 500 || 'El texto puede tener hasta 500 caracteres',
   v => !!v || 'Campo requerido'
 ]
+
