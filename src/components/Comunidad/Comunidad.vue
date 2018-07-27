@@ -20,15 +20,18 @@
       <profile-card :name="item.name" :title="item.title" :image="item.image"> </profile-card> 
     </v-flex>
   </v-layout>
+  <form-comunidad></form-comunidad>
 </v-container>
 </template>
 
 <script>
 import ProfileCard from './ProfileCard'
+import FormComunidad from '@/components/Otros/FormComunidad'
 export default {
   name: 'Comunidad',
   components: {
-    ProfileCard
+    ProfileCard,
+    FormComunidad
   },
   data () {
     return {
