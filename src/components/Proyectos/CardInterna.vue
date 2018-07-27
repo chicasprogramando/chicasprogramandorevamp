@@ -1,34 +1,63 @@
 <template>
-  <v-layout>
+  <v-layout class="internal-card-projects">
     <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-card-media
-          src="/doc-images/cards/desert.jpg"
-          height="200px"
-        ></v-card-media>
+      <div class="card">
+        <v-btn class="close" @click="$emit('close')" fab small right>
+          <v-icon>X</v-icon>
+        </v-btn>
+        <img :src="cardInfo.image" />
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-            <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+            <h3>{{ cardInfo.projectName }} </h3>
+            <h4>Creadores: {{ cardInfo.name }}</h4>
+            <h4>Tecnologias: {{ cardInfo.technologies }}</h4>
+            <div>
+              <p>Descripcion:{{ cardInfo.description }}</p>
+            </div>
           </div>
         </v-card-title>
 
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
-      </v-card>
+      </div>
     </v-flex>
   </v-layout>
 </template>
-content_copy
+
 <script>
   export default {
+    name: 'CardInterna',
+    props: {
+      cardInfo: {
+        type: Object
+      }
+    },
+
     data () {
       return {
-        card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
+       
+      }
+    },
+    methods: {
+      close() {
+        
       }
     }
   }
 </script>
+
+<style scoped>
+.card {
+  width:100%;
+  min-height: 500px;
+  background-color: #F4F2F2;
+}
+
+h3{
+  font-weight: 500;
+  color: #7E57C2;
+}
+.close {
+  position: absolute;
+  z-index: 1;
+}
+</style>

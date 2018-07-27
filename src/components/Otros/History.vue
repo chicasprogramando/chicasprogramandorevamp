@@ -1,15 +1,18 @@
 <template>
   <div>
     <profile-card></profile-card>
+    <CardInterna></CardInterna>
   </div>
 </template>
 
 <script>
 import ProfileCard from '../Comunidad/ProfileCard.vue';
+import CardInterna from '../Proyectos/CardInterna';
 export default {
   name: 'History',
   components: {
-    ProfileCard
+    ProfileCard,
+    CardInterna
   },
   data () {
     return {
