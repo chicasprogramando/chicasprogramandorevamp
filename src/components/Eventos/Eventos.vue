@@ -22,7 +22,7 @@
             </v-layout>
           </v-container>
         </v-card>
-
+        
         <v-card class="cards">
           <v-container fluid grid-list-md>
             <v-layout row align-content-space-between>
@@ -98,7 +98,7 @@
             </v-layout>
           </v-container>
         </v-card>
-
+        
       </v-flex>
 
       <v-card sm6 class="right" fill-height>
@@ -123,6 +123,7 @@
           <v-card flat class="twits">
             <v-card-text class="text-xs-center">Twit</v-card-text>
           </v-card>
+
 
           <v-card flat class="twits">
             <v-card-text class="text-xs-center">Twit</v-card-text>
