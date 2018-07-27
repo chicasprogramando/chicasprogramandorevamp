@@ -4,7 +4,7 @@
       <v-flex md6 class="left" height="100%" fill-height>
         <h1>Eventos y capacitaciones</h1>
         <p class="subtitle">Buscamos hacer crecer a nuestras coders y a todos aquellos que deseen sumarse a nuestras capacitaciones y meetups.</p>
-        <v-card class="cards">
+        <v-card class="cards" v-for="n in 8" :key="n">
           <v-container fluid grid-list-md>
             <v-layout row align-content-space-between>
               <v-flex sm11>
@@ -22,83 +22,6 @@
             </v-layout>
           </v-container>
         </v-card>
-        
-        <v-card class="cards">
-          <v-container fluid grid-list-md>
-            <v-layout row align-content-space-between>
-              <v-flex sm11>
-                <div>
-                  <span class="date">12/07/2018</span>
-                  <span class="place">Centro Cultural Recoleta</span>              
-                  <v-card-text class="event">Vue.js Meetup</v-card-text>
-                </div>
-              </v-flex>
-              <v-flex sm1 class="arrow-div">
-                <figure>  
-                  <img src="../../assets/arrow-btn.png">  
-                </figure>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-
-        <v-card class="cards">
-          <v-container fluid grid-list-md>
-            <v-layout row align-space-around>
-              <v-flex sm11>
-                <div>
-                  <span class="date">12/07/2018</span>
-                  <span class="place">Centro Cultural Recoleta</span>              
-                  <v-card-text class="event">Vue.js Meetup</v-card-text>
-                </div>
-              </v-flex>
-              <v-flex sm1 class="arrow-div">
-                <figure>  
-                  <img src="../../assets/arrow-btn.png">  
-                </figure>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-
-        <v-card class="cards">
-          <v-container fluid grid-list-md>
-            <v-layout row align-space-around>
-              <v-flex sm11>
-                <div>
-                  <span class="date">12/07/2018</span>
-                  <span class="place">Centro Cultural Recoleta</span>              
-                  <v-card-text class="event">Vue.js Meetup</v-card-text>
-                </div>
-              </v-flex>
-              <v-flex sm1 class="arrow-div">
-                <figure>  
-                  <img src="../../assets/arrow-btn.png">  
-                </figure>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-
-        <v-card class="cards">
-          <v-container fluid grid-list-md>
-            <v-layout row align-space-around>
-              <v-flex sm11>
-                <div>
-                  <span class="date">12/07/2018</span>
-                  <span class="place">Centro Cultural Recoleta</span>              
-                  <v-card-text class="event">Vue.js Meetup</v-card-text>
-                </div>
-              </v-flex>
-              <v-flex sm1 class="arrow-div">
-                <figure>  
-                  <img src="../../assets/arrow-btn.png">  
-                </figure>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-        
       </v-flex>
 
       <v-card sm6 class="right" fill-height>
@@ -130,12 +53,17 @@
           </v-card>
         </v-card>
       </v-layout>
+      <form-eventos></form-eventos>
   </v-container>
 </template>
 
 <script>
+import FormEventos from '@/components/Otros/FormEventos'
 export default {
   name: 'Eventos',
+  components: {
+    FormEventos
+  },
   data () {
     return {
       
