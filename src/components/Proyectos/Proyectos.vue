@@ -14,7 +14,7 @@
             </v-flex>
             <v-layout v-if="cardInfo">
               <v-flex>
-                <CardInterna :cardInfo="cardInfo"></CardInterna>
+                <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
               </v-flex>
             </v-layout>
           </v-layout>
@@ -70,6 +70,10 @@ export default {
     openProject(card) {
       this.cardInfo = card
       console.log(card)
+    },
+
+    closeProject() {
+      this.cardInfo = null
     }
   }
 }
