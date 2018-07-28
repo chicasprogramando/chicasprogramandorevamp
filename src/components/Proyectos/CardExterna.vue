@@ -1,11 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <v-layout>
-    <v-flex class="media-card">
-=======
   <v-layout @click="handleClick(cardInfo)">
     <v-flex xs12 sm6 offset-sm3 class="media-card">
->>>>>>> master
       <v-card>
         <v-card-media src="https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640" height="160px"></v-card-media>
           <v-card-title primary-title class="card">
