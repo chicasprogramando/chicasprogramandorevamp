@@ -1,9 +1,9 @@
 <template>
-  <div class="profile-card-container">
-    <div class="profile-card-img" :style="{ 'background-image' : 'url(' + image + ')' }"> </div>
+  <div class="profile-card-container" @click="handleClick(data)">
+    <div class="profile-card-img" :style="{ 'background-image' : 'url(' + data.image + ')' }"> </div>
     <div class="profile-card-info deep-purple--text lighten-1"> 
-      <h3 class="profile-card-name">  {{ name }} </h3>
-      <h4 class="profile-card-title"> {{ title }} </h4>
+      <h3 class="profile-card-name">  {{ data.name }} </h3>
+      <h4 class="profile-card-title"> {{ data.title }} </h4>
     </div>
   </div>
 </template>
@@ -11,9 +11,18 @@
 <script>
 export default {
   name: 'ProfileCard',
-  props:['name','title','image'], 
+  props: {
+    data: {
+      type: Object
+    }
+  }, 
   data () {
     return {
+    }
+  },
+  methods: {
+    handleClick(data) {
+      this.$emit("profileCardClick", data);
     }
   }
 }
@@ -23,7 +32,6 @@ export default {
 <style scoped>
 
 .profile-card-container {
-    width: 270px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 500px;
     display: flex;

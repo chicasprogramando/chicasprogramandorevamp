@@ -25,26 +25,26 @@
           </v-layout>
         </v-flex>
       </v-layout>
+      <form-proyecto></form-proyecto>
   </v-container>
 </template>
-
-<style scoped>
-  .container {
-    padding: 0;
-  }
-  .form-container {
-    max-width: none;
-  }
-</style>
 
 <script>
 import CardForm from '@/components/Proyectos/CardForm'
 import CardExterna from '@/components/Proyectos/CardExterna'
 import Pagination from '@/components/Proyectos/Pagination'
 import CardInterna from '@/components/Proyectos/CardInterna'
+import FormProyecto from '@/components/Otros/FormProyecto'
 
 export default {
   name: 'Proyectos',
+  components: {
+    CardForm,
+    CardExterna,
+    Pagination,
+    CardInterna,
+    FormProyecto
+  },
   data () {
     return {
       cardInfo: null,
@@ -58,23 +58,24 @@ export default {
       ]
     }
   },
-
-  components: {
-    CardForm,
-    CardExterna,
-    Pagination,
-    CardInterna
-  },
-
   methods: {
     openProject(card) {
       this.cardInfo = card
       console.log(card)
     },
-
     closeProject() {
       this.cardInfo = null
     }
   }
 }
 </script>
+
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.container {
+  margin:0;
+  padding: 0;
+}
+</style>
+
