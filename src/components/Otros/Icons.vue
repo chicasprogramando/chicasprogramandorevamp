@@ -54,8 +54,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .svg-circle {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-color: #7e64ab;
     display: flex;
@@ -70,11 +70,11 @@ export default {
     width: 60%;
 }
 .instagram-icon{
-    margin-top: -7px;
+    margin-top: -4px;
 }
 
 .linkedin-icon{
-    margin-top: -12px;
+    margin-top: -6px;
 }
 
 .svg-inline--fa{

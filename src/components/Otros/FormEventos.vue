@@ -31,9 +31,9 @@
               ></v-text-field>
             
             <v-flex class="formBtns">
-                <v-btn class='btns' color='purple'>Crear</v-btn>
-                <v-btn color='purple' class='btns'>Limpiar</v-btn>
-                <v-btn color='purple' class='btns'>Cancelar</v-btn>
+                <v-btn class='btns' color='deep-purple lighten-1'>Crear</v-btn>
+                <v-btn color='deep-purple lighten-1' class='btns'>Limpiar</v-btn>
+                <v-btn color='deep-purple lighten-1' class='btns'>Cancelar</v-btn>
             </v-flex>
             </v-form>
           </div>

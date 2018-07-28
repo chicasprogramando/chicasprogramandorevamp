@@ -2,10 +2,9 @@
   <div id="app">
     <v-app id="inspire">
       <v-toolbar class="nav" flat>
-        <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
-        <v-toolbar-title class="mt-3"><img class="logo" src="@/assets/logoOnly.png" alt="Logo"></v-toolbar-title>
+        <v-toolbar-title class="mt-2"><img class="logo" src="@/assets/logoOnly.png" alt="Logo"></v-toolbar-title>
         <v-spacer></v-spacer> 
-        <v-toolbar-items class="hidden-sm-and-down">
+        <v-toolbar-items>
           <v-btn
             flat
             v-for="item in menuItems"

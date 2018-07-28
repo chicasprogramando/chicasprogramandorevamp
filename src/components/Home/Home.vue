@@ -1,108 +1,108 @@
 <template>
 <v-container class="skw-pages" fluid pa-0>
     <v-layout class="skw-page skw-page-1 active">
-                  <div class="skw-page__half skw-page__half--left">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        <transition appear name="animar2">
-                        <h2 class="skw-page__heading">CHICAS PROGRAMANDO</h2>
-                        </transition>
+      <div class="skw-page__half skw-page__half--left">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            <transition appear name="animar2">
+            <h2 class="skw-page__heading main__header">CHICAS PROGRAMANDO</h2>
+            </transition>
 
-                        <transition appear>
-                        <p class="skw-page__description mb-5">Una ventana al mundo para los proyectos de mujeres en tecnología.</p>
-                        </transition>
+            <transition appear>
+            <p class="skw-page__description mb-5">Una ventana al mundo para los proyectos de mujeres en tecnología.</p>
+            </transition>
 
-                        <transition class="skw-page__description mt-5" appear name="animar">
-                          <p class="scroll">scroll</p>
-                         </transition>
+            <transition class="skw-page__description mt-5" appear name="animar">
+              <p class="scroll">scroll</p>
+              </transition>
 
-                         <transition appear name="animar">
-                          <v-icon color="white" class="arrow">keyboard_arrow_down</v-icon>
-                         </transition>  
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skw-page__half skw-page__half--right">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        
-                      </div>
-                    </div>
-                  </div>
+              <transition appear name="animar">
+              <v-icon color="white" class="arrow">keyboard_arrow_down</v-icon>
+              </transition>  
+          </div>
+        </div>
+      </div>
+      <div class="skw-page__half skw-page__half--right">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            
+          </div>
+        </div>
+      </div>
     </v-layout>
     <v-layout class="skw-page skw-page-2">
-                  <div class="skw-page__half skw-page__half--left">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content"></div>
-                    </div>
-                  </div>
-                  <div class="skw-page__half skw-page__half--right">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Proyectos</h2>
-                        <p class="skw-page__description mb-4">Queremos visibilizar emprendimientos que tengan al menos a una mujer o programadorx no binarie. Podés buscar por nombre del proyecto, por lenguaje o por programadorx.</p>
-                        <v-btn round class="botones" to="/proyectos" flat>
-                         Ir a Proyectos 
-                        </v-btn>
-                      </div>
-                    </div>
-                  </div>
-                </v-layout>
-                <v-layout class="skw-page skw-page-3">
-                  <div class="skw-page__half skw-page__half--left">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Comunidad</h2>
-                        <p class="skw-page__description mb-4">Mirá quienes están detrás de los proyectos, en qué lenguajes programan, qué están haciendo y cómo contactarlxs.</p>
-                        <v-btn flat round class="botones" to="/comunidad">Conocelxs</v-btn>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skw-page__half skw-page__half--right">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        
-                      </div>
-                    </div>
-                  </div>
+      <div class="skw-page__half skw-page__half--left">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content"></div>
+        </div>
+      </div>
+      <div class="skw-page__half skw-page__half--right">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            <h2 class="skw-page__heading">Proyectos</h2>
+            <p class="skw-page__description mb-4">Queremos visibilizar emprendimientos que tengan al menos a una mujer o programadorx no binarie. Podés buscar por nombre del proyecto, por lenguaje o por programadorx.</p>
+            <v-btn round class="botones" to="/proyectos" flat>
+              Ir a Proyectos 
+            </v-btn>
+          </div>
+        </div>
+      </div>
+    </v-layout>
+    <v-layout class="skw-page skw-page-3">
+      <div class="skw-page__half skw-page__half--left">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            <h2 class="skw-page__heading">Comunidad</h2>
+            <p class="skw-page__description mb-4">Mirá quienes están detrás de los proyectos, en qué lenguajes programan, qué están haciendo y cómo contactarlxs.</p>
+            <v-btn flat round class="botones" to="/comunidad">Conocelxs</v-btn>
+          </div>
+        </div>
+      </div>
+      <div class="skw-page__half skw-page__half--right">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            
+          </div>
+        </div>
+      </div>
     </v-layout>
     <v-layout class="skw-page skw-page-4">
-                  <div class="skw-page__half skw-page__half--left">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content"></div>
-                    </div>
-                  </div>
-                  <div class="skw-page__half skw-page__half--right">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Eventos</h2>
-                        <p class="skw-page__description mb-4">Aquí vas a enterarte de qué se está haciendo, en dónde, cuándo y cómo sumarte.</p>
-                        <v-btn round flat class="botones" to="/eventos">Próximas fechas</v-btn>
-                      </div>
-                    </div>
-                  </div>
-                </v-layout>
-                <div class="skw-page skw-page-5">
-                  <div class="skw-page__half skw-page__half--left">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content">
-                        <h2 class="skw-page__heading">Contacto</h2>
-                        <p class="skw-page__description mb-4">
-                          ¿Tenés una consulta para quienes hacemos Chicas Programando, querés contactarnos o sumarte a la página?</p>
-                          <v-btn round flat class="botones" to="/contacto">Hablemos</v-btn>
-                          <!--<a class="skw-page__link" href="https://codepen.io/suez/pens/public/" target="_blank">my other pens</a> and follow me on 
-                          <a class="skw-page__link" href="https://twitter.com/NikolayTalanov" target="_blank">Twitter</a>-->
-                       
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skw-page__half skw-page__half--right">
-                    <div class="skw-page__skewed">
-                      <div class="skw-page__content"></div>
-                    </div>
-                  </div>
-                </div>
-        </v-container>
+      <div class="skw-page__half skw-page__half--left">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content"></div>
+        </div>
+      </div>
+      <div class="skw-page__half skw-page__half--right">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            <h2 class="skw-page__heading">Eventos</h2>
+            <p class="skw-page__description mb-4">Aquí vas a enterarte de qué se está haciendo, en dónde, cuándo y cómo sumarte.</p>
+            <v-btn round flat class="botones" to="/eventos">Próximas fechas</v-btn>
+          </div>
+        </div>
+      </div>
+    </v-layout>
+    <div class="skw-page skw-page-5">
+      <div class="skw-page__half skw-page__half--left">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content">
+            <h2 class="skw-page__heading">Contacto</h2>
+            <p class="skw-page__description mb-4">
+              ¿Tenés una consulta para quienes hacemos Chicas Programando, querés contactarnos o sumarte a la página?</p>
+              <v-btn round flat class="botones" to="/contacto">Hablemos</v-btn>
+              <!--<a class="skw-page__link" href="https://codepen.io/suez/pens/public/" target="_blank">my other pens</a> and follow me on 
+              <a class="skw-page__link" href="https://twitter.com/NikolayTalanov" target="_blank">Twitter</a>-->
+            
+          </div>
+        </div>
+      </div>
+      <div class="skw-page__half skw-page__half--right">
+        <div class="skw-page__skewed">
+          <div class="skw-page__content"></div>
+        </div>
+      </div>
+    </div>
+  </v-container>
 </template> 
 <script>
 export default {
@@ -196,7 +196,7 @@ body {
 .skw-pages {
   overflow: hidden;
   position: relative;
-  height: 91.2vh;
+  height: 100%;
   display: flex;
   align-items: flex-end;
 }
@@ -285,18 +285,20 @@ body {
 .skw-page__heading {
   margin-bottom: 15px;
   text-transform: uppercase;
-  font-size: 5vh;
+  font-size: 40px;
+  font-weight: 600;
   text-align: left;
 }
 .skw-page__description {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 300;
   text-align: left;
 }
 .skw-page__link {
   color: #FFA0A0;
 }
 .skw-page-1 .skw-page__half--right .skw-page__content {
-background-image: url("../../assets/blur-close-up-depth-of-field-911685.jpg");
+background-image: url("../../assets/chicas.jpg");
 }
 .skw-page-1 .skw-page__half--left .skw-page__content {
   background:  #7e64ab;
@@ -305,7 +307,7 @@ background-image: url("../../assets/blur-close-up-depth-of-field-911685.jpg");
   background:  #7e64ab;
 }
 .skw-page-2 .skw-page__half--left .skw-page__content {
-  background-image: url("../../assets/astronomy-atmosphere-aviation-586056.jpg");
+  background-image: url("../../assets/compu.jpeg");
 }
 .skw-page-3 .skw-page__half--right .skw-page__content {
   background-image: url("../../assets/comunidad.jpg");
@@ -320,20 +322,26 @@ background-image: url("../../assets/blur-close-up-depth-of-field-911685.jpg");
   background-image: url("../../assets/calendar.jpg");
 }
 .skw-page-5 .skw-page__half--right .skw-page__content {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/img-test.jpg");
+  background-image: url("../../assets/puente.jpg");
 }
 .skw-page-5 .skw-page__half--left .skw-page__content {
   background:  #7e64ab;
 } 
 
+.main__header {
+  font-size: 60px;
+  line-height: 1;
+}
+
 .botones{
-  width: 25vh;
-  height: 8vh;
+  width: 24vh;
+  height: 6vh;
   font-size: 1.5rem;
   text-transform: none;
   border: solid 2px white;
   background-color: transparent;
   color: white;
+  border-radius: 500px;
 }
 
 /*

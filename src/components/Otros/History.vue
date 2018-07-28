@@ -2,6 +2,7 @@
   <div>
     <profile-card></profile-card>
     <CardInterna></CardInterna>
+    
     <icons propName="twitter" bgColor="pink" color="#000000"></icons>
     <icons propName="instagram" bgColor="#cccccc" color="#000000"></icons>
     <icons propName="linkedin" bgColor="#cccccc" color="#000000"></icons>
