@@ -24,7 +24,7 @@
 export default {
   name: 'Icons',
   props: {
-    name: {
+    propName: {
       type: String
     },
     color: {
@@ -43,9 +43,9 @@ export default {
     }
   },
   methods: {
-    socialName(name) {
-        console.log(name)
-        return this.name === name
+    socialName(parametro) {
+        console.log(parametro)
+        return this.propName === parametro
     }
   }
 }
