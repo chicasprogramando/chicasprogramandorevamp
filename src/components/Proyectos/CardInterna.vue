@@ -1,34 +1,91 @@
 <template>
-  <v-layout>
+  <v-layout class="internal-card-projects">
     <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-card-media
-          src="/doc-images/cards/desert.jpg"
-          height="200px"
-        ></v-card-media>
+      <v-card class="card" width="80em">
+        <v-btn class="close" @click="handleClickClose()" fab small direction="rigth">
+          <v-icon class="icon">X</v-icon>
+        </v-btn>
+        <img :src="require('@/assets/compu.jpeg')" />
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-            <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+            <h3>{{ cardInfo.projectName }} </h3>
+            <h4>Creadores: {{ cardInfo.name }}</h4>
+            <h4>Tecnologias: {{ cardInfo.technologies }}</h4>
+            <div>
+              <p>Descripcion: {{ cardInfo.description }}</p>
+            </div>
           </div>
         </v-card-title>
-
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
       </v-card>
+      <div>
+        <v-btn round class="button" color="deep-purple lighten-1">Ver Proyecto</v-btn>
+      </div>
     </v-flex>
   </v-layout>
 </template>
-content_copy
+
 <script>
   export default {
+    name: 'CardInterna',
+    props: {
+      cardInfo: {
+        type: Object
+      }
+    },
+
     data () {
       return {
-        card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
+       
+      }
+    },
+    methods: {
+      handleClickClose() {
+        this.$emit("closeModal")
       }
     }
   }
 </script>
+
+<style scoped>
+.card {
+  min-height: 40em;
+  background-color: #F4F2F2;
+  position: absolute;
+  left: 310px;
+  top: 64px;
+}
+
+img {
+  width: 100%;
+  height: 22em;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h3{
+  font-weight: 500;
+  color: #7E57C2;
+}
+
+h4 {
+  color: #333333;
+  font-weight: 500;
+}
+.close {
+  position: absolute;
+  z-index: 1;
+  right: 90px;
+  top: 10px;
+  font-weight: 600;
+}
+
+.button {
+  position: absolute;
+  z-index: 1;
+  background: #7E57C2;
+  color: #F4F2F2;
+  top: 550px;
+  right: 100px;
+}
+</style>

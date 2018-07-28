@@ -1,5 +1,7 @@
 <template>
   <div>
+    <profile-card></profile-card>
+    <CardInterna></CardInterna>
     <icons propName="twitter" bgColor="pink" color="#000000"></icons>
     <icons propName="instagram" bgColor="#cccccc" color="#000000"></icons>
     <icons propName="linkedin" bgColor="#cccccc" color="#000000"></icons>
@@ -9,11 +11,14 @@
 
 <script>
 import ProfileCard from '../Comunidad/ProfileCard.vue';
+import CardInterna from '../Proyectos/CardInterna';
 import Icons from './Icons';
+
 export default {
   name: 'History',
   components: {
     ProfileCard,
+    CardInterna,
     Icons
   },
   data () {
