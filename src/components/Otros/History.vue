@@ -2,7 +2,11 @@
   <div>
     <profile-card></profile-card>
     <CardInterna></CardInterna>
-    
+    <!-- 
+    Attributes to call buttons as components
+    mixins
+    component para barra, y segun el link, asignar el ícono 
+    -->
     <icons propName="twitter" bgColor="pink" color="#000000"></icons>
     <icons propName="instagram" bgColor="#cccccc" color="#000000"></icons>
     <icons propName="linkedin" bgColor="#cccccc" color="#000000"></icons>
