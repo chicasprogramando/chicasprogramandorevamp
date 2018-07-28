@@ -1,15 +1,20 @@
 <template>
   <div>
-    <profile-card></profile-card>
+    <icons propName="twitter" bgColor="pink" color="#000000"></icons>
+    <icons propName="instagram" bgColor="#cccccc" color="#000000"></icons>
+    <icons propName="linkedin" bgColor="#cccccc" color="#000000"></icons>
+    <icons propName="github" bgColor="#cccccc" color="#000000"></icons>
   </div>
 </template>
 
 <script>
 import ProfileCard from '../Comunidad/ProfileCard.vue';
+import Icons from './Icons';
 export default {
   name: 'History',
   components: {
-    ProfileCard
+    ProfileCard,
+    Icons
   },
   data () {
     return {
@@ -30,4 +35,9 @@ h1 {
   background-color: #7e64ab;
   border-radius: 50%;
 }
+.svg-button:hover{
+  box-shadow: 0 0 0 10 rgba(0,0,0,1);
+}
+
 </style>
+
