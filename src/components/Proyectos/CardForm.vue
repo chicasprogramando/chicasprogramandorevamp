@@ -16,7 +16,6 @@
   </v-layout>
 </template>
 
-<script>
 // import SearchForm from '@/components/Proyectos/SearchForm'
 
 export default {
@@ -38,7 +37,7 @@ export default {
   }
   .cardform {
     background-color: #7E57C2;
-    color: #fff;
+    color: #F2F2F4;
     padding: 2em;
     width: 22em;
   }
