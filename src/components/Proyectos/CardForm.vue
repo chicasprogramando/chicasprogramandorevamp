@@ -10,26 +10,13 @@
           <h3>Filtros</h3>
           <p>Buscar por tecnología, estado del proyecto, creador/es, fecha.</p>
         </div>
-        <SearchForm></SearchForm>
+        <!--<SearchForm></SearchForm>-->
       </V-card>
     </v-flex>
   </v-layout>
 </template>
 
-<style scoped>
-  .sideform {
-    margin-left: 0%;
-  }
-  .cardform {
-    background-color: #7E57C2;
-    color: #F2F2F4;
-    padding: 2em;
-    width: 22em;
-  }
-</style>
-
-<script>
-import SearchForm from '@/components/Proyectos/SearchForm'
+// import SearchForm from '@/components/Proyectos/SearchForm'
 
 export default {
   name: 'CardForm',
@@ -43,3 +30,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .sideform {
+    margin-left: 0%;
+  }
+  .cardform {
+    background-color: #7E57C2;
+    color: #F2F2F4;
+    padding: 2em;
+    width: 22em;
+  }
+</style>

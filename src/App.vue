@@ -4,21 +4,21 @@
       <v-toolbar class="nav" flat>
         <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
         <v-toolbar-title class="mt-3"><img class="logo" src="@/assets/logoOnly.png" alt="Logo"></v-toolbar-title>
-        <v-spacer></v-spacer>
+        <v-spacer></v-spacer> 
         <v-toolbar-items class="hidden-sm-and-down">
           <v-btn
             flat
             v-for="item in menuItems"
             :key="item.title"
             :to="item.link"
-            class="main-link">
+            class="deep-purple--text lighten-1">
             {{ item.title }}
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <main>
         <v-slide-x-transition mode="out-in">
-          <router-view></router-view>
+          <router-view> </router-view>
         </v-slide-x-transition>
       </main>
     </v-app>
@@ -42,7 +42,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+html,
+body,
+main {
+  height: 100%;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 300;
+}
+
 .toolbar__title {
   margin-top: 10px;
 }
