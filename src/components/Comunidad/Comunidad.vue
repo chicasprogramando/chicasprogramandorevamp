@@ -49,6 +49,7 @@ export default {
 .comunidad-container {
   background-color: #DCD3EB;
   padding: 0;
+  height: 100%;
 }
 .search-bar-profiles, 
 .profiles-padding {

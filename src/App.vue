@@ -43,6 +43,12 @@ export default {
 </script>
 
 <style>
+html,
+body,
+main {
+  height: 100%;
+}
+
 h2 {
   font-size: 34px;
 }
