@@ -10,13 +10,14 @@
           <h3>Filtros</h3>
           <p>Buscar por tecnología, estado del proyecto, creador/es, fecha.</p>
         </div>
-        <!--<SearchForm></SearchForm>-->
+        <SearchForm></SearchForm>
       </V-card>
     </v-flex>
   </v-layout>
 </template>
 
-// import SearchForm from '@/components/Proyectos/SearchForm'
+<script>
+import SearchForm from '@/components/Proyectos/SearchForm'
 
 export default {
   name: 'CardForm',
