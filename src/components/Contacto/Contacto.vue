@@ -3,22 +3,24 @@
     <v-flex xs12 sm5 offset-sm1 class="circulo">
       <div class="circulo-texto">
         <v-card-title primary-title>
-          <h1>Contactanos</h1>
+          <h2>Contactanos</h2>
         </v-card-title>
         <v-card-text class="texto">Si te interesa saber más acerca de nuestros proyectos y actividades no dudes en
           dejarnos tu mail para mandarte toda la información y de seguirnos en nuestras redes sociales
         </v-card-text>
-        <v-text-field class="texto" color="white"
+        <v-text-field class="texto white--text"
           v-model="email"
           :rules="emailRules"
-          label="Déjanos tu mail"
+          placeholder="Déjanos tu mail"
           required
+          color="white"
+          dark
         ></v-text-field>
         <div class="redes-sociales">
-          <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><img :src="instagram" ></a>
-          <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><img :src="twitter" ></a>
-          <a href="https://www.linkedin.com/" target="_blank"><img :src="linkedin" ></a>
-          <a href="https://github.com/chicasprogramando" target="_blank"><img :src="github" ></a>  
+          <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><icons propName="instagram" bgColor="#ffffff" color="#7e64ab"></icons></a>
+          <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><icons propName="twitter" bgColor="#ffffff" color="#7e64ab"></icons></a>
+          <a href="https://www.linkedin.com/" target="_blank"><icons propName="linkedin" bgColor="#ffffff" color="#7e64ab"></icons></a>
+          <a href="https://github.com/chicasprogramando" target="_blank"><icons propName="github" bgColor="#ffffff" color="#7e64ab"></icons></a>  
         </div>
       </div>
     </v-flex>
@@ -28,13 +30,13 @@
 <script>
 import {emailRules} from "../../validaciones"
 import image from "../../assets/bgimageFour.jpg"
-import instagram from "../../assets/instagram.png"
-import twitter from "../../assets/twitter.png"
-import linkedin from "../../assets/linkedin.png"
-import github from "../../assets/github.png"
+import Icons from "@/components/Otros/Icons"
 
 export default {
   name: 'Contacto',
+  components: {
+    Icons
+  },
   data () {
     return {
       image:image,
@@ -61,8 +63,8 @@ export default {
 }
 
 .circulo{
-  width: 500px;
-  height: 500px;
+  width: 50%;
+  height: 87%;
   border-radius: 50%;
   background-color: #7e64ab;
   opacity: 0.8;
@@ -80,20 +82,27 @@ export default {
   flex-direction: column
 }
 
-h1 {
+h2 {
   color: #ffffff;
+  font-size: 40px;
 }
 
 .texto{
   padding: 30px;
   color: #ffffff;  
-  text-align: center
+  text-align: center;
+  font-size: 18px;
 }
 
 .redes-sociales img{
   height: 30px;
   width: 30px;
   margin: 10px
+}
+
+.redes-sociales a{
+  display: inline-block;
+  margin: 0 5px;
 }
 
 </style>

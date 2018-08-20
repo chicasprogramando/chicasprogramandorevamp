@@ -1,9 +1,9 @@
 <template>
   <v-layout class="internal-card-projects">
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card class="card" width="80em">
+    <v-flex xs12 md9>
+      <v-card>
         <v-btn class="close" @click="handleClickClose()" fab small direction="rigth">
-          <v-icon class="icon">X</v-icon>
+          X
         </v-btn>
         <img :src="require('@/assets/compu.jpeg')" />
 
@@ -17,10 +17,10 @@
             </div>
           </div>
         </v-card-title>
+        <div>
+          <v-btn round color="deep-purple lighten-1" dark>Ver Proyecto</v-btn>
+        </div>
       </v-card>
-      <div>
-        <v-btn round class="button" color="deep-purple lighten-1">Ver Proyecto</v-btn>
-      </div>
     </v-flex>
   </v-layout>
 </template>
@@ -48,12 +48,15 @@
 </script>
 
 <style scoped>
+.internal-card-projects {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .card {
   min-height: 40em;
   background-color: #F4F2F2;
-  position: absolute;
-  left: 310px;
-  top: 64px;
 }
 
 img {
@@ -75,17 +78,9 @@ h4 {
 .close {
   position: absolute;
   z-index: 1;
-  right: 90px;
   top: 10px;
-  font-weight: 600;
-}
-
-.button {
-  position: absolute;
-  z-index: 1;
-  background: #7E57C2;
-  color: #F4F2F2;
-  top: 550px;
-  right: 100px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: 300;
 }
 </style>

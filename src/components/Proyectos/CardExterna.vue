@@ -17,19 +17,17 @@
 
 <style scoped>
   .media-card {
-    margin-left: 3em;
+    height: 100%;
   }
   .card {
     background-color: #F4F2F2;
     box-shadow: none;
-    width: 18em;
   }
   .card__title {
     padding: 10px;
   }
   .headline {
     color: #5E35B1;
-    font-weight: bold;
   }
   span {
     color: #333333;

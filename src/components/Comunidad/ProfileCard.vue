@@ -47,15 +47,19 @@ export default {
 
 .profile-card-name{
   font-weight: 500;
+  font-size: 20px;
+}
+.profile-card-title {
+  font-size: 18px;
 }
 .profile-card-info {
-    margin-left: 15px; 
+    margin-left: 15%; 
     text-align: left;
 }
 
 .profile-card-img {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
   /* background-image: url(https://thumbs.dreamstime.com/z/gatito-divertido-del-gato-del-beb%C3%A9-36333148.jpg);*/
   background-size: cover;
   background-position: center;
