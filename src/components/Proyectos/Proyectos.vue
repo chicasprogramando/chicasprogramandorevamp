@@ -1,7 +1,6 @@
 <template>
   <v-container fluid grid-list-md class="container__proyectos">
       <v-layout class="container__proyectos--wrapper">
-        <!-- Le di un md 4 al buscador para que ocupe un tercio de la pantalla -->
         <v-flex xs12 md3 class="form-container">
           <CardForm></CardForm>
         </v-flex>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home/Home'
 import Proyectos from '@/components/Proyectos/Proyectos'
 import Comunidad from '@/components/Comunidad/Comunidad'
@@ -43,11 +42,6 @@ export default new Router({
       path: '/history',
       name: 'History',
       component: History
-    },
-    {
-      path: '/hello',
-      name: 'HelloWorld',
-      component: HelloWorld
     },
     {
       path: '/loaderdisplay',

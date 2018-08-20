@@ -1,6 +1,6 @@
 <template>
   <v-layout @click="handleClick(cardInfo)">
-    <v-flex xs12 sm6 offset-sm3 class="media-card">
+    <v-flex class="media-card">
       <v-card>
         <v-card-media :src="require('@/assets/compu.jpeg')" height="180px"></v-card-media>
           <v-card-title primary-title class="card">
