@@ -1,8 +1,8 @@
 <template>
-  <v-layout class="media-card" @click="handleClick(cardInfo)">
-    <v-flex>
-      <v-card >
-        <v-card-media src="https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640" height="250px"></v-card-media>
+  <v-layout @click="handleClick(cardInfo)">
+    <v-flex xs12 sm6 offset-sm3 class="media-card">
+      <v-card>
+        <v-card-media :src="require('@/assets/compu.jpeg')" height="180px"></v-card-media>
           <v-card-title primary-title class="card">
             <div>
               <h3 class="headline">{{ cardInfo.projectName }}</h3>
@@ -22,6 +22,9 @@
   .card {
     background-color: #F4F2F2;
     box-shadow: none;
+  }
+  .card__title {
+    padding: 10px;
   }
   .headline {
     color: #5E35B1;
