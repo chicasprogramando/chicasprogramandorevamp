@@ -19,7 +19,7 @@
   </v-form>
 </template>
 
-<style>
+<style scoped>
   label {
     color: #F2F2F4 !important;
   }

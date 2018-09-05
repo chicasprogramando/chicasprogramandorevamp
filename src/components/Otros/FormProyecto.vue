@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex sm4 class="mainForm">
-        <h1>Crear un nuevo proyecto</h1>  
-        <v-form class='form' ref="form" v-model="valid">
+      <v-flex sm4 class="main">
+        <h1 class="main__h1">Crear un nuevo proyecto</h1>  
+        <v-form class='main__form' ref="form" v-model="valid">
             <v-text-field 
-              class="text-field"
+              class="form__text-field"
               color='deep-purple lighten-1'
               v-model="proyectoNombre"
               :rules="campoRequeridoRules"
@@ -13,7 +13,7 @@
               required
             ></v-text-field>
             <v-text-field 
-              class="text-field"
+              class="form__text-field"
               color='deep-purple lighten-1'
               v-model="creadores"
               :rules="campoRequeridoRules"
@@ -21,7 +21,7 @@
               required
             ></v-text-field>
             <v-text-field 
-              class="text-field"
+              class="form__text-field"
               color='deep-purple lighten-1'
               v-model="tecnologias"
               :rules="campoRequeridoRules"
@@ -29,14 +29,14 @@
               required
             ></v-text-field>
             <v-text-field 
-              class="text-field"
+              class="form__text-field"
               outline
               v-model='imagen'
               label="Imagen"
               color='deep-purple lighten-1'
             ></v-text-field>
             <v-text-field 
-              class="text-field"
+              class="form__text-field"
               default
               color='deep-purple lighten-1'
               v-model="descripcion"
@@ -48,7 +48,7 @@
               required
             ></v-text-field>
             <v-text-field 
-              class="text-field"
+              class="form__text-field"
               color='deep-purple lighten-1'
               v-model="fileLink"
               :rules="fileLinkRules"
@@ -57,7 +57,7 @@
             ></v-text-field>
             <v-flex>
             <v-select 
-              class="text-field"
+              class="form__text-field"
               color="deep-purple lighten-1"
               label="Abierto a colaboración?"
               :items="colaboracion"
@@ -65,10 +65,10 @@
             ></v-select>
             </v-flex>
           
-            <v-flex class="formBtns">
-              <v-btn class='btns' color='deep-purple lighten-1' @click="submit" :disabled="!valid">Crear</v-btn>
-              <v-btn color='deep-purple lighten-1' class='btns' @click="clear">Limpiar</v-btn>
-              <v-btn color='deep-purple lighten-1' class='btns'>Cancelar</v-btn>
+            <v-flex class="form__buttons-container">
+              <v-btn round class='buttons-container__buttons buttons-container__buttons--white' color='deep-purple lighten-1' @click="submit" :disabled="!valid">Crear</v-btn>
+              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__buttons' @click="clear">Limpiar</v-btn>
+              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__buttons'>Cancelar</v-btn>
             </v-flex>
           </v-form>
         </v-flex>
@@ -95,7 +95,8 @@ export default {
       descripcion: '', 
       descripcionRules: descripcionRules,
       colaboracion: ['Sí', 'No'],
-      tecnos:['JavaScript','Vue.js','CSS','HTML']
+      tecnos:['JavaScript','Vue.js','CSS','HTML'],
+      imagen: null
     }
   },
   methods: {
@@ -120,123 +121,36 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, #enviar {
+h1 {
   color: #7e64ab;
   font-weight:300;
   font-size:32px;
 }
-h2{
-  font-weight:300;
-  font-size:32px;
-  line-height: 34px;
-  margin-bottom: 0.5em;
-}
-h3{
-  font-weight:300;
-  font-size:20px;
-}
-
-.containerCard{
-  width: 22em;
-}
-.sideform {
-  margin-left: 0%;
-}
-.sideform-padding{
-  padding: 2em;
-}
-.cardform {
-  background-color: #7E57C2;
-  color: #ffffff;
-  width: 22em;
-  display:flex;
-  flex-direction:column;
-  align-items:space-between;
-  justify-content: space-between;
-}
-.mainForm{
+.main{
   margin: 4em;
   font-size: 10px;
   padding: 2em; 
 }
-.textField input{
-  color:#7E57C2;
-  margin: 0.3em;
-}
-#filtrar-btn{
-  color:#7E57C2;
-  margin-right:5px;
-}
-#borrar-btn{
-  border:  #ffffff;
-}
-.cardHeader{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.cardHeader figure{
-  height: 100px;
-  width: 100px;
-}
-.cardHeader figure img{
-  width: 100%;
-  height: auto;
-}
-.formBtns{
+.form__buttons-container{
   display: flex;
   justify-content: space-between;
   padding: 0;
   margin: 0;
 }
-.sideFormBtns{
-  display: flex;
-  justify-content: flex-end;
-  padding: 0;
-  margin: 0;
-}
-.filtersDiv{
-  background-color: #5e35b1;
-  width: 22em;
-  padding:1em 2em 2em 2em;
-}
-.subFilter{
-  width: 60px;
-  display: flex;
-  justify-content:space-around;
-  align-content: center;
-  background-color: #f4f2f2;
-  padding:0.2em 0.4em;
-  border-radius:20px;;
-}
-.subFilter p{
+.buttons-container__buttons{
+  padding: 0 2px 0 2px;
   margin:0;
-  color: #979797;
-  font-size:12px;
+  font-size: 12px;
 }
-.subFilter figure{
-  width: 13px;
-  height:13px;
+.buttons-container__buttons--white {
+  color: #ffffff;
 }
-.subFilter figure img{
-  width: 100%;
-  height: auto;
+.application--light .input-group .input-group__details:application--light{
+ color: #7E57C2;
 }
 .text-field  input, .text-field label{
     color: #7E57C2 !important;
 }
-.btn{
-  padding: 0 2px 0 2px;
-  margin:0;
-  background: #7e64ab;
-  color: #ffffff;
-  border-radius: 18px;
-  font-size: 12px;
-}
-/*NOT WORKING
-.application--light .input-group .input-group__details:application--light{
- color: #7E57C2;
-}*/
+
 </style>

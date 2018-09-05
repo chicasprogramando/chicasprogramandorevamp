@@ -6,7 +6,7 @@
         </v-flex>
         <v-flex xs12 md9 class="relative__container">
           <v-layout row wrap class="card__container">
-            <v-flex
+            <v-flex 
               v-if="!cardInfo"
               v-for= "card in projectsInfo" 
               :key="card.name" xs12 sm6 md4>
@@ -25,7 +25,7 @@
           </v-layout>
         </v-flex>
       </v-layout>
-      <!--<form-proyecto></form-proyecto>-->
+        <form-proyecto></form-proyecto>
   </v-container>
 </template>
 
@@ -72,7 +72,7 @@ export default {
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .container__proyectos {
   margin:0;
   padding: 0;
@@ -85,7 +85,6 @@ export default {
   position: relative;
   height: 100%;
 }
-
 .proyecto-modal__container {
   position: absolute;
   right: 0;
