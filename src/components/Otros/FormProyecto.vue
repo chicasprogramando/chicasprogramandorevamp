@@ -96,7 +96,8 @@ export default {
       descripcionRules: descripcionRules,
       colaboracion: ['Sí', 'No'],
       tecnos:['JavaScript','Vue.js','CSS','HTML'],
-      imagen: null
+      imagen: null,
+      tecnologias: ''
     }
   },
   methods: {
@@ -151,6 +152,19 @@ h1 {
 }
 .text-field  input, .text-field label{
     color: #7E57C2 !important;
+}
+
+label {
+  color: #7E57C2 !important;
+}
+label:after {
+  display: none;
+}
+.input-group {
+  color: #7E57C2 !important;
+}
+.input-group__details::before {
+  background-color: #7E57C2 !important;
 }
 
 </style>

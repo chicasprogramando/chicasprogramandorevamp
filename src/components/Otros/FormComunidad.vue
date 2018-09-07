@@ -121,7 +121,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 h3 {
   color: #7e64ab;
   text-align: center;
@@ -151,4 +151,10 @@ h3 {
   border-radius: 18px;
   font-size: 12px;
 }
+  .input-group {
+    color: #7e64ab !important;
+  }
+  .input-group__details::before {
+    background-color: #7e64ab !important;
+  }
 </style>

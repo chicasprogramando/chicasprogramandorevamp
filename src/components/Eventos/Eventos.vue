@@ -1,20 +1,20 @@
 <template>
   <v-container fluid class="main">
     <v-layout align-space-between justify-space-between row fill-height height="100%">
-      <v-flex md6 class="left" height="100%" fill-height>
-        <h1>Eventos y capacitaciones</h1>
-        <p class="subtitle">Buscamos hacer crecer a nuestras coders y a todos aquellos que deseen sumarse a nuestras capacitaciones y meetups.</p>
-        <v-card class="cards" v-for="n in 8" :key="n">
+      <v-flex md6 class="main__v-flex--left" height="100%" fill-height>
+        <h1 class="v-flex__h1">Eventos y capacitaciones</h1>
+        <p class="v-flex__subtitle">Buscamos hacer crecer a nuestras coders y a todos aquellos que deseen sumarse a nuestras capacitaciones y meetups.</p>
+        <v-card class="cards" v-for="(event,index) in events" :key="index">
           <v-container fluid grid-list-md>
             <v-layout row align-content-space-between>
               <v-flex sm11>
                 <div>
-                  <span class="date">12/07/2018</span>
-                  <span class="place">Centro Cultural Recoleta</span>              
-                  <v-card-text class="event">Vue.js Meetup</v-card-text>
+                  <span class="cards__span--colorSize">{{ event.date }}</span>
+                  <span class="cards__span--background">{{ event.place }}</span>              
+                  <v-card-text class="cards__v-card-text--padding">{{ event.name }}</v-card-text>
                 </div>
               </v-flex>
-              <v-flex sm1 class="arrow-div">
+              <v-flex sm1 class="button v-flex--margin">
                 <figure>  
                   <img src="../../assets/arrow-btn.png">  
                 </figure>
@@ -24,33 +24,13 @@
         </v-card>
       </v-flex>
 
-      <v-card sm6 class="right" fill-height>
-          <h2>Otras capacitaciones</h2>
-
-          <v-card flat class="twits">
-            <v-card-text  class="text-xs-center">Twit</v-card-text>
-          </v-card>
-
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-        
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-    
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-        
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
-
-
-          <v-card flat class="twits">
-            <v-card-text class="text-xs-center">Twit</v-card-text>
-          </v-card>
+      <v-card sm6 class="main__v-card--right" fill-height>
+          <h2 class="v-flex__h2">Otras capacitaciones</h2>
+          <v-flex v-for="(twit,index) in 10" :key="index"> 
+            <v-card flat class="v-flex__twits">
+              <v-card-text  class="text-xs-center">Twit</v-card-text>
+            </v-card>
+          </v-flex>
         </v-card>
       </v-layout>
       <form-eventos></form-eventos>
@@ -66,52 +46,59 @@ export default {
   },
   data () {
     return {
-      
+      events: [
+        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'},
+        {name: 'Nerdearla' , date:'29/08/2018 y 30/08/2018', place: 'Centro Cultural San Martin'},
+        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
+        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'},
+        {name: 'Nerdearla' , date:'29/08/2018 y 30/08/2018', place: 'Centro Cultural San Martin'},
+        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
+        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
+        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'}
+      ]
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main{
   margin:0;
   padding: 0;
 }
-.left{
+.main__v-flex--left{
   padding: 1.5em;
 }
-.right{
+.main__v-card--right{
   background-color:#7e64ab;
   opacity:0.8;
   background-image: url(../../assets/bgimageSixx.png);
   width:50%;
-  /*margin-left:1em;*/
   padding: 1.5em 1.5em;
 }
-h1{
+.v-flex__h1{
   color:#7e64ab;
   font-weight:300;
   font-size:2em;
 }
-h2{
+.v-flex__h2{
   color:#ffffff;
   font-weight:300;
   margin-bottom: 1em;
   font-size: 2em;
 }
-.subtitle{
+.v-flex__subtitle{
   color:#7e64ab;
   font-weight:300;
   font-size:15px;
   line-height:18px;
   margin:0.8em 0 1.5em 0;
 }
-.place {
+.cards__span--colorSize {
   color: #7e64ab;
   font-size:13px;
 }
-.date{
+.cards__span--background{
   font-size:12px;
   background-color:#7e64ab;
   padding:0.5em 1em;
@@ -125,20 +112,15 @@ h2{
   justify-content: space-between;
   align-content:center;
 }
-.twits{
+.v-flex__twits{
   margin:0.7em 0;
   padding: 0.5em;
   opacity:0.9;
 }
-.event{
+.cards__v-card-text--padding{
   padding:1em 0 0 0;
 }
-.next-btn{
-  text-align: right;
-  display: flex;
-  justify-content: flex-end;
-}
-.arrow-div{
+.v-flex--margin{
   margin-top: 0.5em;
   cursor:pointer;
 }

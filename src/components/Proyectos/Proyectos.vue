@@ -25,7 +25,9 @@
           </v-layout>
         </v-flex>
       </v-layout>
+      <v-layout>
         <form-proyecto></form-proyecto>
+      </v-layout>
   </v-container>
 </template>
 
@@ -43,13 +45,14 @@ export default {
     CardExterna,
     Pagination,
     CardInterna,
-    FormProyecto
+    FormProyecto,
+    
   },
   data () {
     return {
       cardInfo: null,
       projectsInfo: [
-        { projectName: 'Web Chicas Programando', name: 'Chicas Programando', technologies: 'Vue.js, Vuetify, Firebase', image: 'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
+        {projectName: 'Web Chicas Programando', name: 'Chicas Programando', technologies: 'Vue.js, Vuetify, Firebase', image: 'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
         {projectName: 'Web Chicas Programando', name: 'Mar Calmon', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
         {projectName: 'Web Chicas Programando', name: 'Priscila Bey', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
         {projectName: 'Web Chicas Programando', name: 'Gia Castello', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
@@ -76,7 +79,6 @@ export default {
 .container__proyectos {
   margin:0;
   padding: 0;
-  height: 100%;
 }
 .container__proyectos--wrapper {
   height: 100%;
