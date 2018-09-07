@@ -79,6 +79,7 @@ export default {
 .container__proyectos {
   margin:0;
   padding: 0;
+  height:50%;
 }
 .container__proyectos--wrapper {
   height: 100%;

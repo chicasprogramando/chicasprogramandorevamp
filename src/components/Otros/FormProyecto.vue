@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-layout>
+  <v-container class="container--background">
+    <v-layout align-start justify-center>
       <v-flex sm4 class="main">
         <h1 class="main__h1">Crear un nuevo proyecto</h1>  
         <v-form class='main__form' ref="form" v-model="valid">
@@ -152,19 +152,6 @@ h1 {
 }
 .text-field  input, .text-field label{
     color: #7E57C2 !important;
-}
-
-label {
-  color: #7E57C2 !important;
-}
-label:after {
-  display: none;
-}
-.input-group {
-  color: #7E57C2 !important;
-}
-.input-group__details::before {
-  background-color: #7E57C2 !important;
 }
 
 </style>
