@@ -31,6 +31,7 @@
       </div>
     </v-flex>
     </v-slide-x-transition>
+    <form-comunidad></form-comunidad>
   </v-layout>
 </v-container>
 </template>
@@ -38,11 +39,13 @@
 <script>
 import ProfileCard from './ProfileCard'
 import ProfileDetail from './ProfileDetail'
+import FormComunidad from '@/components/Otros/FormComunidad'
 export default {
   name: 'Comunidad',
   components: {
     ProfileCard,
-    ProfileDetail
+    ProfileDetail,
+    FormComunidad
   },
   data () {
     return {

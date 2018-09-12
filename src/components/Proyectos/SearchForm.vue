@@ -19,7 +19,8 @@
   </v-form>
 </template>
 
-<style>
+<style scoped>
+  /*hay que ponerle scoped para que no ponga todo blanco*/
   label {
     color: #F2F2F4 !important;
   }
