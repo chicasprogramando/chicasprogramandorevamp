@@ -81,7 +81,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+
+<style scoped>
+
 .v-flex--right{
   opacity:0.8;
   width:50%;
@@ -106,20 +108,5 @@ h2{
   margin:0;
   font-size: 12px;
 }
-label {
-  color: #7E57C2 !important;
-}
-label:after {
-  display: none;
-}
-.input-group {
-  color: #7E57C2 !important;
-}
-.input-group__details::before {
-  background-color: #7E57C2 !important;
-}
-.btn:focus {
-  background-color: #7E57C2 !important;
-  color: #7E57C2 !important;
-}
+
 </style>
