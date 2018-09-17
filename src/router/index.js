@@ -8,6 +8,7 @@ import Contacto from '@/components/Contacto/Contacto'
 import History from '@/components/Otros/History'
 import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,7 +21,7 @@ export default new Router({
     {
       path: '/proyectos',
       name: 'Proyectos',
-      component: Proyectos
+      component: Proyectos,
     },
     {
       path: '/comunidad',
