@@ -40,6 +40,7 @@ export default {
         instagram:false,
         linkedin:true,
         github:true,
+        facebook: false 
     }
   },
   methods: {
