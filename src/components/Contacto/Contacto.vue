@@ -1,27 +1,53 @@
 <template>   
   <v-layout align-center justify-start class="main">
-    <v-flex xs12 sm5 offset-sm1 class="circulo">
+    <v-flex class="colorBack">
+      <div xs12 sm5 offset-sm1 class="circulo">
       <div class="circulo-texto">
+
         <v-card-title primary-title>
-          <h2>Contactanos</h2>
+          <h2>Hablemos</h2>
         </v-card-title>
+      <v-form v-model="valid">
         <v-card-text class="texto">Si te interesa saber más acerca de nuestros proyectos y actividades no dudes en
           dejarnos tu mail para mandarte toda la información y de seguirnos en nuestras redes sociales
         </v-card-text>
-        <v-text-field class="texto white--text"
+
+        <v-text-field class="texto"
           v-model="email"
           :rules="emailRules"
           placeholder="Déjanos tu mail"
           required
-          color="white"
+          color="deep-purple lighten-1"
           dark
         ></v-text-field>
+
+        <v-text-field class="texto"
+          v-model="email"
+          :rules="emailRules"
+          placeholder="Déjanos tu mail"
+          required
+          color="deep-purple lighten-1"
+          dark
+        ></v-text-field>
+      
+       <v-card-actions>
+              <v-btn primary large block>Enviar</v-btn>
+              <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles">Cancelar</v-btn>
+                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles" @click="clear">Limpiar</v-btn>
+                <v-btn round dark class="form__buttons--styles" color="deep-purple lighten-1" @click="submit">Crear</v-btn>
+        </v-card-actions>
+
+        </v-form>
+
+
         <div class="redes-sociales">
           <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><icons propName="instagram" bgColor="#ffffff" color="#7e64ab"></icons></a>
           <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><icons propName="twitter" bgColor="#ffffff" color="#7e64ab"></icons></a>
           <a href="https://www.linkedin.com/" target="_blank"><icons propName="linkedin" bgColor="#ffffff" color="#7e64ab"></icons></a>
           <a href="https://github.com/chicasprogramando" target="_blank"><icons propName="github" bgColor="#ffffff" color="#7e64ab"></icons></a>  
         </div>
+
+      </div>
       </div>
     </v-flex>
   </v-layout> 
@@ -55,24 +81,38 @@ export default {
 
 .main{
   width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 2em;
+  height: 93vh;
   background-image: url('../../assets/bgimageFour.jpg');
-  background-size: 100%
+  background-repeat: no-repeat;
+  background-size: cover;
+  
 }
 
-.circulo{
-  width: 50%;
-  height: 87%;
-  border-radius: 50%;
-  background-color: #7e64ab;
-  opacity: 0.8;
+.colorBack{
+  width: 100%;  
+  height: 36%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 30px 100px;
+  background: rgba(219,21,99,0.8);
+  background: -webkit-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: -o-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: -moz-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+}
+
+
+.circulo{
+  width: 790px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  
 }
 
 .circulo-texto{
@@ -83,13 +123,13 @@ export default {
 }
 
 h2 {
-  color: #ffffff;
+  color: violet;
   font-size: 40px;
 }
 
 .texto{
   padding: 30px;
-  color: #ffffff;  
+  color: violet;  
   text-align: center;
   font-size: 18px;
 }
