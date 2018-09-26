@@ -1,20 +1,20 @@
 <template>
-<v-container class="comunidad-container profiles-container-wrapper" fluid>
-  <v-layout class="deep-purple lighten-1 search-bar-profiles" row>
+<v-container class="comunidad-container" fluid>
+  <v-layout class="deep-purple lighten-1 comunidad__searchbar" row>
     <v-flex xs12 sm6>
       <h2 class="white--text">Las Coders de Nuestra Comunidad</h2>
       <v-text-field
         name="profile"
         label="Nombre de dev"
         id="profile"
-        class="search-bar-input"
+        class="searchbar__input"
         dark
         color="white"
       >
   	  </v-text-field>
     </v-flex>
   </v-layout>
-  <v-layout row wrap class="profiles-padding"> 
+  <v-layout row wrap class="comunidad__profiles--padding"> 
     <v-flex
       v-for= "item in profilesInfo"
       :key="item.name"
@@ -22,9 +22,9 @@
       <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
     </v-flex>
     <v-slide-x-transition mode="out-in">
-    <v-flex class="profile-detail-modal-container" v-if="singleProfile">
-      <div class="profile-detail-modal">
-        <button class="profile-detail-close-btn" @click="closeProfileCard()">
+    <v-flex class="profile-container" v-if="singleProfile">
+      <div class="profile_modal">
+        <button class="profile-modal__btn" @click="closeProfileCard()">
           X
         </button>
         <profile-detail :profileInfo="singleProfile"></profile-detail>
@@ -82,28 +82,24 @@ export default {
   background-color: #DCD3EB;
   padding: 0;
   height: 100%;
-}
-.search-bar-profiles, 
-.profiles-padding {
-  padding: 16px;
-}
-.search-bar-profiles {}
-
-.search-bar-input::-moz-placeholder {
-  font-size: 18px;
-  font-weight: 300;
-}
-
-.search-bar-input::placeholder {
-  font-size: 18px;
-  font-weight: 300;
-}
-
-.profiles-container-wrapper {
   position: relative;
 }
+.comunidad__searchbar, 
+.comunidad__profiles--padding {
+  padding: 16px;
+}
+.searchbar__input::-moz-placeholder {
+  font-size: 18px;
+  font-weight: 300;
+}
 
-.profile-detail-modal-container {
+.searchbar__input::placeholder {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+
+.profile-container {
   background-color: rgba(0,0,0,0.75);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -115,7 +111,7 @@ export default {
   height: 100%;
 }
 
-.profile-detail-modal {
+.profile_modal {
   padding: 20px;
   height: 100%;
   display: flex;
@@ -123,7 +119,7 @@ export default {
   align-items: center;
   position: relative;
 }
-.profile-detail-close-btn {
+.profile-modal__btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -134,11 +130,11 @@ export default {
   right: 30px;
   font-size: 20px;
 }
-.profile-detail-close-btn:hover {
+.profile-modal__btn:hover {
   background-color: rgb(89, 47, 161);
 }
 
-.profile-detail-close-btn:focus {
+.profile-modal__btn:focus {
   outline: none;
 }
 
