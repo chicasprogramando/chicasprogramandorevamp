@@ -26,7 +26,7 @@
 
       <v-card sm6 class="main__v-card--right" fill-height>
           <h2 class="v-flex__h2">Otras capacitaciones</h2>
-          <v-flex v-for="(twit,index) in 10" :key="index"> 
+          <v-flex v-for="(twit,index) in 8" :key="index"> 
             <v-card flat class="v-flex__twits">
               <v-card-text  class="text-xs-center">Twit</v-card-text>
             </v-card>
@@ -45,17 +45,11 @@ export default {
     FormEventos
   },
   data () {
-    return {
-      events: [
-        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'},
-        {name: 'Nerdearla' , date:'29/08/2018 y 30/08/2018', place: 'Centro Cultural San Martin'},
-        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
-        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'},
-        {name: 'Nerdearla' , date:'29/08/2018 y 30/08/2018', place: 'Centro Cultural San Martin'},
-        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
-        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
-        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'}
-      ]
+    return { }
+  },
+  computed: {
+    events() {
+      return this.$store.getters.getEvents;
     }
   }
 }
