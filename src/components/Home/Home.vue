@@ -349,7 +349,7 @@ background-image: url("../../assets/chicas.jpg");
   border: none;
   color: #7e64ab;
   background-color: white;
-} */
+} 
 
 .botones1{
   width: 25vh;
@@ -357,7 +357,7 @@ background-image: url("../../assets/chicas.jpg");
   font-size: 1.5rem;
   text-transform: none;
   color: #7e64ab; 
-}
+} */
 
 .animar-enter-active {
   transition: all 2s ease;
