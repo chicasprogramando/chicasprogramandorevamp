@@ -9,15 +9,9 @@
             <v-layout row align-content-space-between>
               <v-flex sm11>
                 <div>
-<<<<<<< HEAD
-                  <span class="cards__span--colorSize">{{ formatDate(event.date) }}</span>
-                  <span class="cards__span--background">{{ event.place }}</span>              
-                  <v-card-text class="cards__v-card-text--padding">{{ event.name }}</v-card-text>
-=======
-                  <span class="cards__date">{{ event.date }}</span>
+                  <span class="cards__date">{{ formatDate(event.date) }}</span>
                   <span class="cards__place">{{ event.place }}</span>              
                   <v-card-text class="cards__eventName">{{ event.name }}</v-card-text>
->>>>>>> master
                 </div>
               </v-flex>
               <v-flex sm1 class="cards__button">
