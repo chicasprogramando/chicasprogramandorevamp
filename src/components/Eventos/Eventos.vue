@@ -9,7 +9,7 @@
             <v-layout row align-content-space-between>
               <v-flex sm11>
                 <div>
-                  <span class="cards__span--colorSize">{{ formatedEvents(event.date) }}</span>
+                  <span class="cards__span--colorSize">{{ formatDate(event.date) }}</span>
                   <span class="cards__span--background">{{ event.place }}</span>              
                   <v-card-text class="cards__v-card-text--padding">{{ event.name }}</v-card-text>
                 </div>
@@ -53,8 +53,8 @@ export default {
     }
   },
   methods: {
-    formatedEvents(event) {
-      return event.split('-').reverse().join('/');
+    formatDate(date) {
+      return date.split('-').reverse().join('/');
     }
   },
 }
