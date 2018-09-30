@@ -12,10 +12,10 @@
         <p class="profile-card-text"><span>About: </span> {{ profileInfo.aboutMe }} </p>
       </div>
       <div class="redes-sociales">
-        <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><icons propName="instagram" bgColor="#7e64ab" color="#ffffff"></icons></a>
-        <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><icons propName="twitter" bgColor="#7e64ab" color="#ffffff"></icons></a>
-        <a href="https://www.linkedin.com/" target="_blank"><icons propName="linkedin" bgColor="#7e64ab" color="#ffffff"></icons></a>
-        <a href="https://github.com/chicasprogramando" target="_blank"><icons propName="github" bgColor="#7e64ab" color="#ffffff"></icons></a>  
+        <icons propName="instagram" class="svg-button" bgColor="#7e64ab" color="#ffffff" socialLink="https://www.instagram.com/chicasprogramando/?hl=es-la"></icons>
+        <icons propName="twitter" bgColor="#7e64ab" color="#ffffff" socialLink="https://twitter.com/ArProgramando?lang=es"></icons>
+        <icons propName="linkedin" bgColor="#7e64ab" color="#ffffff" socialLink="https://www.linkedin.com/"></icons>
+        <icons propName="github" bgColor="#7e64ab" color="#ffffff" socialLink="https://github.com/chicasprogramando"></icons>  
       </div>
     </div>
   </div>
@@ -110,5 +110,6 @@ export default {
   display: inline-block;
   margin: 0 5px;
 }
+
 
 </style>
