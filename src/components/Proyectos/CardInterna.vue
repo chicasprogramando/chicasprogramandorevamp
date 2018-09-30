@@ -1,17 +1,17 @@
 <template>
-  <v-layout class="internal-card-projects-container">
+  <v-layout class="modal-proyecto">
     <v-flex xs12 md9>
-      <v-card class="card">
-        <v-btn class="card-btn__close" @click="OnClickClose()" fab small direction="rigth">
+      <v-card class="modal-proyecto__card">
+        <v-btn class="card__btn-close" @click="OnClickClose()" fab small direction="rigth">
           X
         </v-btn>
         <img class="card__img" :src="require('@/assets/compu.jpeg')" />
 
         <v-card-title primary-title>
           <div>
-            <h3 class="card--project_name">{{ cardInfo.projectName }} </h3>
-            <h4 class="card--text">Creadores: {{ cardInfo.name }}</h4>
-            <h4 class="card--text">Tecnologias: {{ cardInfo.technologies }}</h4>
+            <h3 class="card__project-name">{{ cardInfo.projectName }} </h3>
+            <h4 class="card__text">Creadores: {{ cardInfo.name }}</h4>
+            <h4 class="card__text">Tecnologias: {{ cardInfo.technologies }}</h4>
             <div>
               <p>Descripcion: {{ cardInfo.description }}</p>
             </div>
@@ -48,18 +48,18 @@
 </script>
 
 <style scoped>
-.internal-card-projects-container {
+.modal-proyecto {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card {
+.modal-proyecto__card {
   min-height: 40em;
   background-color: #F4F2F2;
 }
 
-.card-btn__close {
+.card__btn-close {
   position: absolute;
   z-index: 1;
   top: 10px;
@@ -75,12 +75,12 @@
   background-size: cover;
 }
 
-.card--project_name{
+.card__project-name{
   font-weight: 500;
   color: #7E57C2;
 }
 
-.card--text {
+.card__text {
   color: #333333;
   font-weight: 500;
 }

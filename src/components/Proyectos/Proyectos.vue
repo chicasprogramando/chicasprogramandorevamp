@@ -1,11 +1,11 @@
 <template>
-  <v-container fluid grid-list-md class="container__proyectos">
-      <v-layout class="container__proyectos--wrapper">
-        <v-flex xs12 md3 class="form-container">
+  <v-container fluid grid-list-md class="container-proyectos">
+      <v-layout class="container-proyectos--wrapper">
+        <v-flex xs12 md3>
           <CardForm></CardForm>
         </v-flex>
-        <v-flex xs12 md9 class="relative__container">
-          <v-layout row wrap class="card__container">
+        <v-flex xs12 md9 class="proyectos-right">
+          <v-layout row wrap class="proyectos-right__cards">
             <v-flex 
               v-if="!cardInfo"
               v-for= "card in projectsInfo" 
@@ -13,7 +13,7 @@
               <CardExterna :cardInfo="card" @cardClick="openProject(card)"></CardExterna>
             </v-flex>
             <v-slide-x-transition mode="out-in">
-            <div v-if="cardInfo" class="proyecto-modal__container">
+            <div v-if="cardInfo" class="proyectos-right__cards__modal">
                 <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
             </div>
             </v-slide-x-transition>
@@ -76,19 +76,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.container__proyectos {
+.container-proyectos {
   margin:0;
   padding: 0;
   height:50%;
 }
-.container__proyectos--wrapper {
+.container-proyectos--wrapper {
   height: 100%;
 }
-.relative__container {
+.proyectos-right {
   position: relative;
   height: 100%;
 }
-.proyecto-modal__container {
+.proyectos-right__cards__modal {
   position: absolute;
   right: 0;
   top: 0;

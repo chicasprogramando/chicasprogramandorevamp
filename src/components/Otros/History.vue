@@ -1,7 +1,5 @@
 <template>
   <div>
-    <profile-card></profile-card>
-    <CardInterna></CardInterna>
     <!-- 
     Attributes to call buttons as components
     mixins
@@ -11,19 +9,16 @@
     <icons propName="instagram" bgColor="#cccccc" color="#000000"></icons>
     <icons propName="linkedin" bgColor="#cccccc" color="#000000"></icons>
     <icons propName="github" bgColor="#cccccc" color="#000000"></icons>
+
   </div>
 </template>
 
 <script>
-import ProfileCard from '../Comunidad/ProfileCard.vue';
-import CardInterna from '../Proyectos/CardInterna';
 import Icons from './Icons';
 
 export default {
   name: 'History',
   components: {
-    ProfileCard,
-    CardInterna,
     Icons
   },
   data () {

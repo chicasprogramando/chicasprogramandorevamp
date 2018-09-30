@@ -66,9 +66,9 @@
             </v-flex>
           
             <v-flex class="form__buttons-container">
-              <v-btn round class='buttons-container__buttons buttons-container__buttons--white' color='deep-purple lighten-1' @click="submit" :disabled="!valid">Crear</v-btn>
-              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__buttons' @click="clear">Limpiar</v-btn>
-              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__buttons'>Cancelar</v-btn>
+              <v-btn round class='buttons-container__singlebtn buttons-container__singlebtn--white' color='deep-purple lighten-1' @click="submit" :disabled="!valid">Crear</v-btn>
+              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__singlebtn' @click="clear">Limpiar</v-btn>
+              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__singlebtn'>Cancelar</v-btn>
             </v-flex>
           </v-form>
         </v-flex>
@@ -139,12 +139,12 @@ h1 {
   padding: 0;
   margin: 0;
 }
-.buttons-container__buttons{
+.buttons-container__singlebtn{
   padding: 0 2px 0 2px;
   margin:0;
   font-size: 12px;
 }
-.buttons-container__buttons--white {
+.buttons-container__singlebtn--white {
   color: #ffffff;
 }
 .application--light .input-group .input-group__details:application--light{
