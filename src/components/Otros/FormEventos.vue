@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex md6 class="v-flex--right" flat fill-height align-center>
-        <div class="div--formWidth">
+      <v-flex md6 class="formEventos" flat fill-height align-center>
+        <div>
           <h2>Crear nuevo evento</h2>
           <v-form ref="form" v-model="valid">
             <v-text-field color="deep-purple lighten-1"
@@ -11,7 +11,7 @@
               label="Nombre del evento"
               required
             ></v-text-field>
-            <v-text-field class="texto purple--text" color="deep-purple lighten-1"
+            <v-text-field color="deep-purple lighten-1"
               v-model="date"
               :rules="campoRequeridoRules"
               label="Fecha"
@@ -30,10 +30,10 @@
                 required
               ></v-text-field>
             
-            <v-flex class="v-form__flexButtons">
-                <v-btn round dark color="deep-purple lighten-1" class="flexButtons__button">Cancelar</v-btn>
-                <v-btn round dark color="deep-purple lighten-1" class="flexButtons__button" @click="clear">Limpiar</v-btn>
-                <v-btn round dark class="flexButtons__button" color="deep-purple lighten-1" @click="submit">Crear</v-btn>
+            <v-flex class="form__buttons">
+                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles">Cancelar</v-btn>
+                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles" @click="clear">Limpiar</v-btn>
+                <v-btn round dark class="form__buttons--styles" color="deep-purple lighten-1" @click="submit">Crear</v-btn>
             </v-flex>
             </v-form>
           </div>
@@ -84,7 +84,7 @@ export default {
 
 <style scoped>
 
-.v-flex--right{
+.formEventos{
   opacity:0.8;
   width:50%;
   padding: 10em 13% 1.5em 13%;
@@ -94,7 +94,7 @@ h2{
   font-weight:300;
   font-size:2em;
 }
-.v-form__flexButtons{
+.form__buttons{
   display: flex;
   justify-content: space-between;
   padding: 0;
@@ -103,7 +103,7 @@ h2{
 .text-field  input, .text-field label{
     color: #7E57C2 !important;
 }
-.flexButtons__button{
+.form__buttons--styles{
   padding: 0 2px 0 2px;
   margin:0;
   font-size: 12px;
