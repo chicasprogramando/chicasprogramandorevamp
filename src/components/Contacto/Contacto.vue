@@ -9,7 +9,7 @@
             <v-text-field
                 v-model="name"
                 color='deep-purple'
-                :rules="nameRules"
+                :rules="nombreRules"
                 :counter="10"
                 label="Me llamo"
                 required
@@ -38,12 +38,11 @@
             </v-flex>
           </v-form>
           <div class="tarjeta__redes">
-            <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><icons propName="instagram" bgColor="#7e64ab" color="#ffffff"></icons></a>
-            <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><icons propName="twitter" bgColor="#7e64ab" color="#ffffff"></icons></a>
-            <a href="https://www.linkedin.com/" target="_blank"><icons propName="linkedin" bgColor="#7e64ab" color="#ffffff"></icons></a>
-            <a href="https://github.com/chicasprogramando" target="_blank"><icons propName="github" bgColor="#7e64ab" color="#ffffff"></icons></a>  
+            <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><Icons propName="instagram" bgColor="#7e64ab" color="#ffffff"></Icons></a>
+            <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><Icons propName="twitter" bgColor="#7e64ab" color="#ffffff"></Icons></a>
+            <a href="https://www.linkedin.com/" target="_blank"><Icons propName="linkedin" bgColor="#7e64ab" color="#ffffff"></Icons></a>
+            <a href="https://github.com/chicasprogramando" target="_blank"><Icons propName="github" bgColor="#7e64ab" color="#ffffff"></Icons></a>  
           </div>
-
         </div>
       </div>
     </v-flex>
@@ -57,6 +56,7 @@ import Icons from "@/components/Otros/Icons"
 export default {
   name: 'Contacto',
   components: {
+    Icons
   },
   data () {
     return {
@@ -65,6 +65,9 @@ export default {
     descripcion: '', 
     descripcionRules: descripcionRules,
     emailRules:emailRules,
+    nombreRules: nombreRules,
+    email: '',
+    name: ''
     }
   },
   methods: {
@@ -114,12 +117,13 @@ export default {
 }
 
 .tarjeta{
-  width: 50%;
+  width: 100%;
+  max-width: 750px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  padding-bottom: 1rem;
-  
+  padding-bottom: 2rem;
+  margin: 0 1.5rem;
 }
 
 .tarjeta__flex{
