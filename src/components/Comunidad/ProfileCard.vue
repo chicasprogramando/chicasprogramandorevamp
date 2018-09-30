@@ -9,12 +9,11 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types'
 export default {
   name: 'ProfileCard',
   props: {
-    data: {
-      type: Object
-    }
+    data: VueTypes.object
   }, 
   data () {
     return {

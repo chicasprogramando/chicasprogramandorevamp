@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types'
 import Icons from "@/components/Otros/Icons"
 
 export default {
@@ -30,9 +31,7 @@ export default {
     Icons
   },
   props: {
-    profileInfo: {
-      type: Object
-    }
+    profileInfo: VueTypes.object
   }, 
   data () {
     return {
