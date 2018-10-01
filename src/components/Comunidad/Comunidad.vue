@@ -10,13 +10,14 @@
         class="searchbar__input"
         dark
         color="white"
+        v-model="search"
       >
   	  </v-text-field>
     </v-flex>
   </v-layout>
   <v-layout row wrap class="comunidad__profiles--padding"> 
     <v-flex
-      v-for= "item in profilesInfo"
+      v-for= "item in filteredProfiles"
       :key="item.name"
       xs12 md3>
       <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
@@ -50,9 +51,12 @@ export default {
   data () {
     return {
       profilesInfo:[
-        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:true, senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS','ReactJS','Twig','PHP'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', redes: {linkedin:'https://www.linkedin.com/', github:'https://github.com/', twitter: 'www.twitter.com'}}
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:true, senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS','ReactJS','Twig','PHP'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', redes: {linkedin:'https://www.linkedin.com/', github:'https://github.com/', twitter: 'www.twitter.com'}},
+        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', redes: {linkedin:'https://www.linkedin.com/', github:'https://github.com/', twitter: 'www.twitter.com'}},
+        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', redes: {linkedin:'https://www.linkedin.com/', github:'https://github.com/', twitter: 'www.twitter.com'}}
       ],
-      singleProfile: null
+      singleProfile: null,
+      search: ''
     }
   },
   methods: {
@@ -62,6 +66,14 @@ export default {
     },
     closeProfileCard() {
       this.singleProfile = null
+    }
+  },
+  computed: {
+    filteredProfiles(){
+      const search = this.search.toUpperCase()
+      return this.profilesInfo.filter( profile => {
+        return profile.name.toUpperCase().includes(search)
+      })
     }
   }
 }

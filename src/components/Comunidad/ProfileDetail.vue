@@ -11,7 +11,7 @@
         <p class="about__text"><span>Tecnologías: </span><i v-for="lang in profileInfo.lenguajes" :key="lang">{{ lang }}, </i>.</p>
         <p class="about__text"><span>About: </span> {{ profileInfo.aboutMe }} </p>
       </div>
-      <div class="redes-sociales">
+      <div class="info__redes">
         <icons 
           v-for="(link, index) in profileInfo.redes"
           :key="index"
