@@ -12,10 +12,14 @@
         <p class="profile-card-text"><span>About: </span> {{ profileInfo.aboutMe }} </p>
       </div>
       <div class="redes-sociales">
-        <icons propName="instagram" class="svg-button" bgColor="#7e64ab" color="#ffffff" socialLink="https://www.instagram.com/chicasprogramando/?hl=es-la"></icons>
-        <icons propName="twitter" bgColor="#7e64ab" color="#ffffff" socialLink="https://twitter.com/ArProgramando?lang=es"></icons>
-        <icons propName="linkedin" bgColor="#7e64ab" color="#ffffff" socialLink="https://www.linkedin.com/"></icons>
-        <icons propName="github" bgColor="#7e64ab" color="#ffffff" socialLink="https://github.com/chicasprogramando"></icons>  
+        <icons 
+          v-for="(link, index) in profileInfo.redes"
+          :key="index"
+          :propName="index"
+          bgColor="#7e64ab"
+          color="#ffffff"
+          :socialLink="link"
+        ></icons>
       </div>
     </div>
   </div>
@@ -36,6 +40,10 @@ export default {
   data () {
     return {
     }
+  },
+  mounted() {
+    console.log(Object.keys(this.profileInfo.redes)[0])
+    console.log(this.profileInfo.redes.linkedin)
   }
 }
 </script>

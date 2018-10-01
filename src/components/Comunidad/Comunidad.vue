@@ -31,7 +31,7 @@
       </div>
     </v-flex>
     </v-slide-x-transition>
-    <form-comunidad></form-comunidad>
+    <!--<form-comunidad></form-comunidad>-->
   </v-layout>
 </v-container>
 </template>
@@ -50,15 +50,7 @@ export default {
   data () {
     return {
       profilesInfo:[
-        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS','ReactJS','Twig','PHP'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Pao Gutierrez', title:'FrontEnd Dev', image:'https://avatars0.githubusercontent.com/u/36400469?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Sofi Estevez', title:'Front End', image:'https://avatars1.githubusercontent.com/u/30813859?s=460&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Mar Calmon', title:'Back End', image:'https://scontent.faep4-1.fna.fbcdn.net/v/t1.0-1/p320x320/27857984_1820396551318183_8807487495427656876_n.jpg?_nc_cat=0&oh=3559f56daddc84167feefe60723a524a&oe=5BD7371E',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS','Ruby','Angular2'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Dada', title:'Front End Jr', image:'https://pbs.twimg.com/profile_images/961969936838152193/av3_fAJI_400x400.jpg',roleName:'Member Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Gise Perez', title:'Front End Jr', image:'https://avatars0.githubusercontent.com/u/37008992?s=460&v=4',roleName:'Member Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Cindy Potes', title:'Front End Jr', image:'https://avatars2.githubusercontent.com/u/36973945?s=400&v=4',roleName:'Member Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'},
-        {name:'Agus Gottert', title:'FrontEnd Dev', image:'https://avatars1.githubusercontent.com/u/30804702?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', LinkedIn:'https://www.linkedin.com/', GitHub:'https://github.com/'}
+        {name:'Puri Bey', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/30815608?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:true, senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS','ReactJS','Twig','PHP'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', redes: {linkedin:'https://www.linkedin.com/', github:'https://github.com/', twitter: 'www.twitter.com'}}
       ],
       singleProfile: null
     }
