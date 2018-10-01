@@ -32,7 +32,20 @@
       </div>
     </v-flex>
     </v-slide-x-transition>
-    <!--<form-comunidad></form-comunidad>-->
+    <v-dialog v-model="dialog" persistent max-width="500px">
+      <v-btn
+        color="deep-purple lighten-2"
+        dark
+        fab
+        fixed
+        bottom
+        right
+        slot="activator"
+      >
+      <v-icon>add</v-icon>
+      </v-btn>
+      <FormComunidad @onCloseModal="onCloseModal()"/>
+    </v-dialog>
   </v-layout>
 </v-container>
 </template>
@@ -56,7 +69,8 @@ export default {
         {name:'Gia Castello', title:'FrontEnd Dev', image:'https://avatars2.githubusercontent.com/u/17608191?s=400&v=4',roleName:'Core Team Chicas Programando', busquedaProyecto:'Si', senority:'Junior', lenguajes:['Html', 'CSS', 'JavaScript','VueJS'], aboutMe:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', redes: {linkedin:'https://www.linkedin.com/', github:'https://github.com/', twitter: 'www.twitter.com'}}
       ],
       singleProfile: null,
-      search: ''
+      search: '',
+      dialog: false
     }
   },
   methods: {
@@ -66,6 +80,9 @@ export default {
     },
     closeProfileCard() {
       this.singleProfile = null
+    },
+    onCloseModal(){
+      this.dialog = false
     }
   },
   computed: {
