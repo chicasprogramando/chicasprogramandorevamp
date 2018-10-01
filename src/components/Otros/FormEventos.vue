@@ -1,45 +1,54 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex md6 class="formEventos" flat fill-height align-center>
-        <div>
-          <h2>Crear nuevo evento</h2>
-          <v-form ref="form" v-model="valid">
+  <v-card>
+    <v-form ref="form" v-model="valid">
+      <v-card-title>
+        <h3>Crear nuevo evento</h3>
+      </v-card-title>
+      <v-card-text>
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex xs12>
             <v-text-field color="deep-purple lighten-1"
               v-model="eventName"
               :rules="campoRequeridoRules"
               label="Nombre del evento"
               required
             ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
             <v-text-field color="deep-purple lighten-1"
               v-model="date"
               :rules="campoRequeridoRules"
               label="Fecha"
               required
             ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
             <v-text-field color="deep-purple lighten-1" 
               v-model="place"
               :rules="campoRequeridoRules"
               label="Lugar"
               required
             ></v-text-field>
+            </v-flex>
+            <v-flex xs12>
             <v-text-field color="deep-purple lighten-1"
                 v-model="fileLink"
                 :rules="campoRequeridoRules"
                 label="Link del proyecto"
                 required
               ></v-text-field>
-            
-            <v-flex class="form__buttons">
-                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles">Cancelar</v-btn>
-                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles" @click="clear">Limpiar</v-btn>
-                <v-btn round dark class="form__buttons--styles" color="deep-purple lighten-1" @click="submit">Crear</v-btn>
             </v-flex>
-            </v-form>
-          </div>
-        </v-flex>  
-    </v-layout>
-  </v-container>
+            </v-layout>
+            </v-container>
+        </v-card-text>
+            <v-flex class="form__buttons pb-4">
+                <v-btn round dark class="form__buttons--styles" color="deep-purple lighten-1" @click="submit">Crear</v-btn>
+                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles" @click="clear">Limpiar</v-btn>
+                <v-btn round dark color="deep-purple lighten-1" class="form__buttons--styles" @click="handleClickModal()">Cancelar</v-btn>
+            </v-flex>
+    </v-form>
+  </v-card>
 </template>
 
 <script>
@@ -75,6 +84,9 @@ export default {
     },
     clear () {
     this.$refs.form.reset()
+    },
+    handleClickModal() {
+      this.$emit("onCloseModal");
     }
   }
 }
@@ -96,7 +108,7 @@ h2{
 }
 .form__buttons{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0;
   margin: 0;
 }
@@ -105,7 +117,7 @@ h2{
 }
 .form__buttons--styles{
   padding: 0 2px 0 2px;
-  margin:0;
+  margin: 0em 1em 0 1em;
   font-size: 12px;
 }
 

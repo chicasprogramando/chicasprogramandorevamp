@@ -25,9 +25,20 @@
           </v-layout>
         </v-flex>
       </v-layout>
-      <v-layout>
-        <form-proyecto></form-proyecto>
-      </v-layout>
+      <v-dialog v-model="dialog" persistent max-width="500px">
+        <v-btn
+          color="deep-purple lighten-2"
+          dark
+          fab
+          fixed
+          bottom
+          right
+          slot="activator"
+        >
+        <v-icon>add</v-icon>
+        </v-btn>
+        <FormProyecto @onCloseModal="onCloseModal()"/>
+      </v-dialog>
   </v-container>
 </template>
 
@@ -45,8 +56,7 @@ export default {
     CardExterna,
     Pagination,
     CardInterna,
-    FormProyecto,
-    
+    FormProyecto
   },
   data () {
     return {
@@ -58,7 +68,8 @@ export default {
         {projectName: 'Web Chicas Programando', name: 'Gia Castello', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
         {projectName: 'Web Chicas Programando', name: 'Paola Gutierrez', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
         {projectName: 'Web Chicas Programando', name: 'Sofia', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'}
-      ]
+      ],
+      dialog: false
     }
   },
   methods: {
@@ -68,6 +79,9 @@ export default {
     },
     closeProject() {
       this.cardInfo = null
+    },
+    onCloseModal(){
+      this.dialog = false
     }
   }
 }

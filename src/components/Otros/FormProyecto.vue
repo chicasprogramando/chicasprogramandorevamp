@@ -1,9 +1,13 @@
 <template>
-  <v-container class="container--background">
-    <v-layout align-start justify-center>
-      <v-flex sm4 class="main">
+  <v-card>
+    <v-form class='main__form' ref="form" v-model="valid">
+      <v-card-title>
         <h1 class="main__h1">Crear un nuevo proyecto</h1>  
-        <v-form class='main__form' ref="form" v-model="valid">
+      </v-card-title>
+      <v-card-text>
+        <v-container grid-list-md>
+              <v-layout wrap>
+                  <v-flex xs12>
             <v-text-field 
               class="form__text-field"
               color='deep-purple lighten-1'
@@ -12,6 +16,8 @@
               label="Nombre del proyecto"
               required
             ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12>
             <v-text-field 
               class="form__text-field"
               color='deep-purple lighten-1'
@@ -20,6 +26,8 @@
               label="Nombre del creador o grupo"
               required
             ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12>
             <v-text-field 
               class="form__text-field"
               color='deep-purple lighten-1'
@@ -28,6 +36,8 @@
               label="Tecnologías"
               required
             ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12>
             <v-text-field 
               class="form__text-field"
               outline
@@ -35,6 +45,8 @@
               label="Imagen"
               color='deep-purple lighten-1'
             ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12>
             <v-text-field 
               class="form__text-field"
               default
@@ -47,6 +59,8 @@
               rows="2"
               required
             ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12>
             <v-text-field 
               class="form__text-field"
               color='deep-purple lighten-1'
@@ -55,7 +69,8 @@
               label="Link del proyecto"
               required
             ></v-text-field>
-            <v-flex>
+                  </v-flex>
+                  <v-flex xs12>
             <v-select 
               class="form__text-field"
               color="deep-purple lighten-1"
@@ -64,16 +79,16 @@
               required
             ></v-select>
             </v-flex>
-          
-            <v-flex class="form__buttons-container">
+              </v-layout>
+        </v-container>
+      </v-card-text>
+            <v-flex class="form__buttons-container pb-4">
               <v-btn round class='buttons-container__singlebtn buttons-container__singlebtn--white' color='deep-purple lighten-1' @click="submit" :disabled="!valid">Crear</v-btn>
               <v-btn dark round color='deep-purple lighten-1' class='buttons-container__singlebtn' @click="clear">Limpiar</v-btn>
-              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__singlebtn'>Cancelar</v-btn>
+              <v-btn dark round color='deep-purple lighten-1' class='buttons-container__singlebtn' @click="handleClickModal()">Cancelar</v-btn>
             </v-flex>
           </v-form>
-        </v-flex>
-    </v-layout>
-  </v-container>
+  </v-card>
 </template>
 
 <script>
@@ -117,6 +132,9 @@ export default {
     },
     clear () {
     this.$refs.form.reset()
+    },
+    handleClickModal() {
+      this.$emit("onCloseModal");
     }
   }
 }
@@ -135,13 +153,13 @@ h1 {
 }
 .form__buttons-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0;
   margin: 0;
 }
 .buttons-container__singlebtn{
   padding: 0 2px 0 2px;
-  margin:0;
+  margin: 0em 1em 0 1em;
   font-size: 12px;
 }
 .buttons-container__singlebtn--white {
