@@ -11,17 +11,22 @@
         <p class="about__text"><span>Tecnologías: </span><i v-for="lang in profileInfo.lenguajes" :key="lang">{{ lang }}, </i>.</p>
         <p class="about__text"><span>About: </span> {{ profileInfo.aboutMe }} </p>
       </div>
-      <div class="info__redes">
-        <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><icons propName="instagram" bgColor="#7e64ab" color="#ffffff"></icons></a>
-        <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><icons propName="twitter" bgColor="#7e64ab" color="#ffffff"></icons></a>
-        <a href="https://www.linkedin.com/" target="_blank"><icons propName="linkedin" bgColor="#7e64ab" color="#ffffff"></icons></a>
-        <a href="https://github.com/chicasprogramando" target="_blank"><icons propName="github" bgColor="#7e64ab" color="#ffffff"></icons></a>  
-      </div>
+      <div class="redes-sociales">
+        <icons 
+          v-for="(link, index) in profileInfo.redes"
+          :key="index"
+          :propName="index"
+          bgColor="#7e64ab"
+          color="#ffffff"
+          :socialLink="link"
+        ></icons>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
+import VueTypes from 'vue-types'
 import Icons from "@/components/Otros/Icons"
 
 export default {
@@ -30,9 +35,7 @@ export default {
     Icons
   },
   props: {
-    profileInfo: {
-      type: Object
-    }
+    profileInfo: VueTypes.object
   }, 
   data () {
     return {
@@ -109,5 +112,6 @@ export default {
   display: inline-block;
   margin: 0 5px;
 }
+
 
 </style>
