@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="main">
+  <v-container fluid>
   <v-layout align-start justify-center row fill-height>
     <v-flex xs12 sm6>
       <h3>Crear nuevo perfil</h3>
@@ -77,10 +77,10 @@
           ></v-text-field>
         </div>
       </v-form>
-      <v-flex class="form__buttons-container">
-        <v-btn round color='deep-purple lighten-1' class='buttons-container__buttons buttons-container__buttons--white'  @click="submit" :disabled="!valid">Crear</v-btn>
-        <v-btn dark round color='deep-purple lighten-1' class='buttons-container__buttons' @click="clear">Limpiar</v-btn>
-        <v-btn dark round color='deep-purple lighten-1' class='buttons-container__buttons'>Cancelar</v-btn>
+      <v-flex class="buttons">
+        <v-btn round color='deep-purple lighten-1' class='buttons__single-btn buttons__single-btn--white'  @click="submit" :disabled="!valid">Crear</v-btn>
+        <v-btn dark round color='deep-purple lighten-1' class='buttons__single-btn' @click="clear">Limpiar</v-btn>
+        <v-btn dark round color='deep-purple lighten-1' class='buttons__single-btn'>Cancelar</v-btn>
       </v-flex>
     </v-flex>    
   </v-layout>
@@ -137,13 +137,13 @@ h3 {
 .form div{
   width: 300px;
 }
-.form__buttons-container{
+.buttons{
   display: flex;
   justify-content: center;
   padding: 0;
   margin: 0;
 }
-.buttons-container__buttons{
+.buttons__single-btn{
   padding: 0 2px 0 2px;
   margin:1em 1em 0 1em;
   background: #7e64ab;

@@ -1,11 +1,11 @@
 <template>
   <v-layout @click="handleClick(cardInfo)">
-    <v-flex class="media-card">
+    <v-flex class="cardProyectos">
       <v-card>
         <v-card-media :src="require('@/assets/compu.jpeg')" height="180px"></v-card-media>
-          <v-card-title primary-title class="card">
+          <v-card-title primary-title class="cardProyectos__title">
             <div>
-              <h3 class="headline">{{ cardInfo.projectName }}</h3>
+              <h3 class="cardProyectos__title__h3">{{ cardInfo.projectName }}</h3>
               <span>{{ cardInfo.name }}</span><br>
               <span>{{ cardInfo.technologies }}</span>
             </div>
@@ -16,17 +16,14 @@
 </template>
 
 <style scoped>
-  .media-card {
+  .cardProyectos {
     height: 100%;
   }
-  .card {
+  .cardProyectos__title {
     background-color: #F4F2F2;
     box-shadow: none;
   }
-  .card__title {
-    padding: 10px;
-  }
-  .headline {
+  .cardProyectos__title__h3 {
     color: #5E35B1;
   }
   span {

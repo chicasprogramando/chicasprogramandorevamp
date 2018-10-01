@@ -30,9 +30,7 @@ export default {
 </script>
 
 <style scoped>
-  .sideform {
-    margin-left: 0%;
-  }
+ 
   .cardform {
     background-color: #7E57C2;
     color: #F2F2F4;
