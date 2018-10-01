@@ -9,7 +9,7 @@
             <v-layout row align-content-space-between>
               <v-flex sm11>
                 <div>
-                  <span class="cards__date">{{ event.date }}</span>
+                  <span class="cards__date">{{ formatDate(event.date) }}</span>
                   <span class="cards__place">{{ event.place }}</span>              
                   <v-card-text class="cards__eventName">{{ event.name }}</v-card-text>
                 </div>
@@ -38,26 +38,25 @@
 </template>
 
 <script>
-import FormEventos from '@/components/Otros/FormEventos'
+import FormEventos from '@/components/Otros/FormEventos';
 export default {
   name: 'Eventos',
   components: {
     FormEventos
   },
   data () {
-    return {
-      events: [
-        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'},
-        {name: 'Nerdearla' , date:'29/08/2018 y 30/08/2018', place: 'Centro Cultural San Martin'},
-        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
-        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'},
-        {name: 'Nerdearla' , date:'29/08/2018 y 30/08/2018', place: 'Centro Cultural San Martin'},
-        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
-        {name: 'Vuenos Aires' , date:'06/09/2018', place: 'stensul'},
-        {name: 'Vue.js meet up', date: '12/05/2018', place: 'Centro Cultural Recoleta'}
-      ]
+    return { }
+  },
+  computed: {
+    events() {
+      return this.$store.getters.getEvents;
     }
-  }
+  },
+  methods: {
+    formatDate(date) {
+      return date.split('-').reverse().join('/');
+    }
+  },
 }
 </script>
 
