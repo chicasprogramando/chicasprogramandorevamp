@@ -4,26 +4,23 @@
       <div xs12 sm5 offset-sm1 class="tarjeta">
         <div class="tarjeta__flex">
           <img class="login--logo" src="@/assets/logo200.png" alt="">
-          <v-form v-model="valid" ref="form">  
+          <v-form @submit.prevent="login" ref="form">  
             <v-text-field
             v-model="email"
-            :rules="emailRules"
             label="E-mail"
-            required
+            type="email" 
+            id="inputEmail"
+            required autofocus
           ></v-text-field>
               <v-text-field
               v-model="password"
-              :append-icon="show1 ? 'visibility_off' : 'visibility'"
-              :rules="[rules.required, rules.min]"
-              :type="show1 ? 'text' : 'password'"
-              name="input-10-1"
-              label="Normal with hint text"
               hint="At least 8 characters"
+              type="password" id="inputPassword"
               counter
               @click:append="show1 = !show1"
           ></v-text-field>
              <v-flex class="form__btns">
-              <v-btn round class='form_btns--white' color='deep-purple lighten-1' dark @click="submit" >Log in</v-btn>
+              <v-btn round class='form_btns--white' color='deep-purple lighten-1' dark @click="login" type="submit">Log in</v-btn>
             </v-flex>
           </v-form>
         </div>
@@ -130,15 +127,8 @@ export default {
 
 .login--logo {
   width: 100px;
-  padding: 1em;
-}
-
-h2 {
-  color: #7e64ab;
-  font-size: 3.5rem;
-  padding-top: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  height: 100px; 
+  margin: 1em;
 }
 
 form{
