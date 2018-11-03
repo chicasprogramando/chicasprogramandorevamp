@@ -38,7 +38,6 @@
             </v-flex>
           </v-form>
           <div class="tarjeta__redes">
-            <a href="https://www.instagram.com/chicasprogramandoarg/?hl=es-la" target="_blank"><Icons propName="instagram" bgColor="#7e64ab" color="#ffffff"></Icons></a>
             <a href="https://twitter.com/ArProgramando?lang=es" target="_blank"><Icons propName="twitter" bgColor="#7e64ab" color="#ffffff"></Icons></a>
             <a href="https://www.linkedin.com/" target="_blank"><Icons propName="linkedin" bgColor="#7e64ab" color="#ffffff"></Icons></a>
             <a href="https://github.com/chicasprogramando" target="_blank"><Icons propName="github" bgColor="#7e64ab" color="#ffffff"></Icons></a>  
