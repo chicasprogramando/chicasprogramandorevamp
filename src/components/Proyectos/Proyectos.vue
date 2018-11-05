@@ -72,6 +72,7 @@ export default {
       dialog: false
     }
   },
+  
   methods: {
     openProject(card) {
       this.cardInfo = card
@@ -84,6 +85,8 @@ export default {
       this.dialog = false
     }
   }
+
+
 }
 </script>
 
