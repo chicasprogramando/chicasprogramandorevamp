@@ -112,22 +112,22 @@
 </template>
 
 <script>
-import { emailRules, campoRequeridoRules } from "../../validaciones";
+import { emailRules, campoRequeridoRules } from '../../validaciones'
 export default {
-  name: "FormComunidad",
+  name: 'FormComunidad',
   data() {
     return {
       valid: false,
-      buscandoProyectos: ["Sí", "No"],
+      buscandoProyectos: ['Sí', 'No'],
       emailRules: emailRules,
       campoRequeridoRules: campoRequeridoRules
-    };
+    }
   },
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
-        axios.post("/api/submit", {
+        axios.post('/api/submit', {
           proyectoNombre: this.proyectoNombre,
           creadores: this.creadores,
           tecnologias: this.tecnologias,
@@ -135,20 +135,20 @@ export default {
           descripcion: this.descripcion,
           fileLink: this.fileLink,
           colaboracion: this.colaboracion
-        });
+        })
       }
     },
     clear() {
-      this.$refs.form.reset();
+      this.$refs.form.reset()
     },
     handleClickModal() {
-      this.$emit("onCloseModal");
+      this.$emit('onCloseModal')
     }
   }
-};
+}
 </script>
 
-<style>
+<style scoped>
 h3 {
   color: #7e64ab;
   text-align: center;

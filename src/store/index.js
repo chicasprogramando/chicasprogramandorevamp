@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
-Vue.use(Vuex)
+Vue.use(Vuex, axios)
 
 export const store = new Vuex.Store({
   state: {
@@ -19,13 +20,35 @@ export const store = new Vuex.Store({
     ],
     loadingApp: false
   },
-  mutations: {},
-  actions: {},
   getters: {
     getEvents(state) {
       return state.loadedEvents.sort( (a,b) => {
         return new Date(b.date) - new Date(a.date);
       }).slice(0,6);
     },
+    getProfiles(state) {
+      console.log('getProfiles', state)
+      return state.loadedProfiles 
+    }
+  },
+  mutations: {
+    SET_PROFILES(state, payload) {
+      state.loadedProfiles = payload;
+      console.log('SET_PROFILES', payload)
+    }
+  },
+  actions: {
+    fetchProfiles({commit}) {
+      axios
+        .get('../../static/data/profiles.json')
+        .then( data => {
+          console.log('fetchProfiles', data.data)
+          let profiles = data.data
+          commit('SET_PROFILES', profiles)
+        })
+        .catch( error => {
+          console.log(error)
+        })
+    }
   }
 })

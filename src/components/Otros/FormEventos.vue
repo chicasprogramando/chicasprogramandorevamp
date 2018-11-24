@@ -95,7 +95,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
-
+h3 {
+  color: #7e64ab;
+  text-align: center;
+  font-size: 30px;
+}
 .formEventos{
   opacity:0.8;
   width:50%;
