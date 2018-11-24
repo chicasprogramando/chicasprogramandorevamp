@@ -4,12 +4,12 @@
     <div class="profileCard__info deep-purple--text lighten-1"> 
       <h3 class="info__name">  {{ profileInfo.name }} </h3>
       <h4 class="info__title"> {{ profileInfo.title }} </h4>
-      <div class="info__rolename"> {{ profileInfo.roleName }} </div>
+      <div class="info__rolename"> {{ profileInfo.role_name }} </div>
       <div class="info__about"> 
-        <p class="about__text"><span>Busco Proyecto: </span> {{ profileInfo.busquedaProyecto }} </p>
+        <p class="about__text"><span>Busco Proyecto: </span> {{ profileInfo.search_project }} </p>
         <p class="about__text"><span>Experiencia: </span> {{ profileInfo.senority }} </p>
-        <p class="about__text"><span>Tecnologías: </span><i v-for="lang in profileInfo.lenguajes" :key="lang">{{ lang }}, </i>.</p>
-        <p class="about__text"><span>About: </span> {{ profileInfo.aboutMe }} </p>
+        <p class="about__text"><span>Tecnologías: </span> {{ profileInfo.skills }} </p>
+        <p class="about__text"><span>About: </span> {{ profileInfo.about_me }} </p>
       </div>
       <div class="info__redes">
         <icons 
@@ -20,7 +20,7 @@
           color="#ffffff"
           :socialLink="link"
         ></icons>
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 60%;
+    max-width: 900px;
     padding: 18px;
     margin: 15px;
 }
