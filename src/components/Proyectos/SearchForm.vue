@@ -4,11 +4,13 @@
       v-model="Tecnologia"
       :rules="TecnologiaRules"
       label="Tecnología"
+      color="white"
       required>
     </v-text-field>
     <v-text-field
       v-model="Estado"
       :rules="EstadoRules"
+      color="white"
       label="Estado del proyecto"
       required>
     </v-text-field>

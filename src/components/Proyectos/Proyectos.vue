@@ -93,7 +93,7 @@ export default {
 .container-proyectos {
   margin:0;
   padding: 0;
-  height:50%;
+  height:100%;
 }
 .container-proyectos--wrapper {
   height: 100%;
