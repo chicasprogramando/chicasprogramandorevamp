@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  name: 'App',
   data () {
     return {
       menuItems: [
@@ -37,7 +38,9 @@ export default {
       ]
     }
   },
-  name: 'App'
+  created() {
+    this.$store.dispatch("fetchProfiles")
+  },
 }
 </script>
 
