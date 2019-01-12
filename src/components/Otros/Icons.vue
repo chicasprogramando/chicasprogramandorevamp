@@ -12,6 +12,13 @@
             <div v-if="socialName('linkedin')" class="svg-icon linkedin-icon">
                 <svg aria-hidden="true" data-prefix="fab" data-icon="linkedin-in" class="svg-inline--fa fa-linkedin-in fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path :fill="color" d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z"></path></svg>
             </div>
+
+            <div v-if="tipoProyecto('abierto')" class="svg-icon abierto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path :fill="color" d="M12 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6-5h-1V6c0-2.76-2.24-5-5-5-2.28 0-4.27 1.54-4.84 3.75-.14.54.18 1.08.72 1.22.53.14 1.08-.18 1.22-.72C9.44 3.93 10.63 3 12 3c1.65 0 3 1.35 3 3v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 11c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-8c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v8z"/></svg>
+            </div>    
+            <div v-if="tipoProyecto('cerrado')" class="svg-icon cerrado">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0V0z"/><path opacity=".87" d="M0 0h24v24H0V0z"/></g><path :fill="color" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"/></svg>
+            </div> 
         </div>
     </a>
 </template>
@@ -26,17 +33,22 @@ export default {
     color: VueTypes.string,
     bgColor: VueTypes.string,
     socialLink: VueTypes.string
+
   },
   data () {
     return {
         twitter:false,
         linkedin:false,
-        github:true
+        github:true,
+        abierto:false,
+        cerrado:false,
     }
   },
   methods: {
     socialName(parametro) {
-        //console.log(parametro)
+        return this.propName === parametro
+    },
+    tipoProyecto(parametro) {
         return this.propName === parametro
     }
   }
@@ -45,6 +57,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .svg-circle {
     height: 40px;
     width: 40px;
@@ -71,7 +84,21 @@ export default {
 }
 
 .button-svg:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 </style>
+
+<!-- NOTAS -->
+<!--
+<div class="info__redes">
+    <icons 
+        v-for="(link, index) in profileInfo.redes"
+        :key="index"
+        :propName="index"
+        bgColor="#7e64ab"
+        color="#ffffff"
+        :socialLink="link"
+    ></icons>
+</div>
+-->

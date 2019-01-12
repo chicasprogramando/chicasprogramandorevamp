@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   v-pagination {
     position: fixed;
     z-index: 1;
@@ -19,9 +19,7 @@
     background-color: #7357C2 !important;
     color: #F2F2F4 !important;
   }
-  button i {
-    color: #7357C2 !important;
-  }
+  
   button:focus {
     outline: 0;
   }
