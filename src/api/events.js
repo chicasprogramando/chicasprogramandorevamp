@@ -1,4 +1,4 @@
-const events = [
+const _events = [
   { name: 'Evento 1', date: '2018-12-2', place: 'Centro Cultural Recoleta' },
   { name: 'Evento 2' , date: '2018-4-10', place: 'Centro Cultural San Martin' },
   { name: 'Evento 3' , date: '2018-5-18', place: 'stensul' },
@@ -12,6 +12,6 @@ const events = [
 export default {
   getEvents(cb) {
     console.log(cb)
-    setTimeout( () => cb(events), 100);
+    setTimeout( () => cb(_events), 100);
   }
 }

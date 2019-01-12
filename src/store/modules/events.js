@@ -1,30 +1,34 @@
 import events from '../../api/events';
 
-const state = {
-  items: []
-}
-
-const getters = {}
-
-const actions = {
-  getAllEvents({commit}) {
-    events.getEvents( events => {
-      console.log('events', events)
-      commit('setEvents', events)
-    })
-  }
-}
-
-const mutations = {
-  setEvents(state, events) {
-    state.items = events;
-  }
-}
-
 export default {
   namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
+
+  state: {
+    items: []
+  },
+
+  getters: {
+    getAllEvents (state, getters) {
+      return state.items
+    }
+  },
+
+  mutations: {
+    setEvents (state, events) {
+      state.items = events
+    }
+  },
+
+  actions: {
+    fetchEvents({commit}) {
+      return new Promise((resolve, reject) => {
+        // make the call
+        events.getEvents(events => {
+          console.log('events', events)
+          commit('setEvents', events)
+          resolve()
+        })
+      })
+    }
+  }
 }
