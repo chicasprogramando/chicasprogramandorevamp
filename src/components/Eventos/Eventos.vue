@@ -52,6 +52,7 @@
 
 <script>
 import FormEventos from '@/components/Otros/FormEventos';
+import {mapState, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'Eventos',
   components: {
@@ -59,22 +60,31 @@ export default {
   },
   data () {
     return { 
+      loading: false,
       dialog: false
     }
   },
   computed: {
-    events() {
-      return this.$store.getters.getEvents;
-    }
+    ...mapState({
+      events: state => state.events.items
+    }),
+    ...mapGetters('events', {
+      events: 'getAllEvents'
+    })
   },
   methods: {
+    ...mapActions({
+      fetchEvents: 'events/fetchEvents'
+    }),
     formatDate(date) {
       return date.split('-').reverse().join('/');
     },
-    onCloseModal(){
-      this.dialog = false
-    }
   },
+  created () {
+    this.loading = true
+    this.fetchEvents()
+      .then(() => this.loading = false)
+  }
 }
 </script>
 
