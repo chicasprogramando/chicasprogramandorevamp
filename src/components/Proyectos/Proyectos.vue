@@ -72,6 +72,7 @@ export default {
       dialog: false
     }
   },
+  
   methods: {
     openProject(card) {
       this.cardInfo = card
@@ -84,6 +85,8 @@ export default {
       this.dialog = false
     }
   }
+
+
 }
 </script>
 
@@ -93,7 +96,7 @@ export default {
 .container-proyectos {
   margin:0;
   padding: 0;
-  height:50%;
+  height:100%;
 }
 .container-proyectos--wrapper {
   height: 100%;
