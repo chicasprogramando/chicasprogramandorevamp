@@ -1,56 +1,46 @@
 <template>
   <v-container fluid grid-list-md class="container-proyectos">
-      <v-layout class="container-proyectos--wrapper">
-        <v-flex xs12 md3>
-          <CardForm></CardForm>
-        </v-flex>
-        <v-flex xs12 md9 class="proyectos-right">
-          <v-layout row wrap class="proyectos-right__cards">
-            <v-flex 
-              v-if="!cardInfo"
-              v-for= "card in projectsInfo" 
-              :key="card.name" xs12 sm6 md4>
-              <CardExterna :cardInfo="card" @cardClick="openProject(card)"></CardExterna>
-            </v-flex>
-            <v-slide-x-transition mode="out-in">
+    <v-layout class="container-proyectos--wrapper">
+      <v-flex xs12 md3>
+        <CardForm></CardForm>
+      </v-flex>
+      <v-flex xs12 md9 class="proyectos-right">
+        <v-layout v-if="!cardInfo" row wrap class="proyectos-right__cards">
+          <v-flex v-for="card in projects" :key="card.name" xs12 sm6 md4>
+            <CardExterna :cardInfo="card" @cardClick="openProject(card)"></CardExterna>
+          </v-flex>
+          <v-slide-x-transition mode="out-in">
             <div v-if="cardInfo" class="proyectos-right__cards__modal">
-                <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
+              <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
             </div>
-            </v-slide-x-transition>
-          </v-layout>
-          <v-layout v-if="!cardInfo" row>
-            <v-flex>
-              <Pagination></Pagination>
-            </v-flex>
-          </v-layout>
-        </v-flex>
-      </v-layout>
-      <v-dialog v-model="dialog" persistent max-width="500px">
-        <v-btn
-          color="deep-purple lighten-2"
-          dark
-          fab
-          fixed
-          bottom
-          right
-          slot="activator"
-        >
+          </v-slide-x-transition>
+        </v-layout>
+        <v-layout v-if="!cardInfo" row>
+          <v-flex>
+            <Pagination></Pagination>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+    </v-layout>
+    <v-dialog v-model="dialog" persistent max-width="500px">
+      <v-btn color="deep-purple lighten-2" dark fab fixed bottom right slot="activator">
         <v-icon>add</v-icon>
-        </v-btn>
-        <FormProyecto @onCloseModal="onCloseModal()"/>
-      </v-dialog>
+      </v-btn>
+      <FormProyecto @onCloseModal="onCloseModal()"/>
+    </v-dialog>
   </v-container>
 </template>
 
 <script>
-import CardForm from '@/components/Proyectos/CardForm'
-import CardExterna from '@/components/Proyectos/CardExterna'
-import Pagination from '@/components/Proyectos/Pagination'
-import CardInterna from '@/components/Proyectos/CardInterna'
-import FormProyecto from '@/components/Otros/FormProyecto'
+import CardForm from "@/components/Proyectos/CardForm";
+import CardExterna from "@/components/Proyectos/CardExterna";
+import Pagination from "@/components/Proyectos/Pagination";
+import CardInterna from "@/components/Proyectos/CardInterna";
+import FormProyecto from "@/components/Otros/FormProyecto";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'Proyectos',
+  name: "Proyectos",
   components: {
     CardForm,
     CardExterna,
@@ -58,45 +48,49 @@ export default {
     CardInterna,
     FormProyecto
   },
-  data () {
+  data() {
     return {
       cardInfo: null,
-      projectsInfo: [
-        {projectName: 'Web Chicas Programando', name: 'Chicas Programando', technologies: 'Vue.js, Vuetify, Firebase', image: 'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
-        {projectName: 'Web Chicas Programando', name: 'Mar Calmon', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
-        {projectName: 'Web Chicas Programando', name: 'Priscila Bey', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
-        {projectName: 'Web Chicas Programando', name: 'Gia Castello', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
-        {projectName: 'Web Chicas Programando', name: 'Paola Gutierrez', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'},
-        {projectName: 'Web Chicas Programando', name: 'Sofia', technologies: 'Vue.js, Vuetify, Firebase', image:'https://programacionparatodossite.files.wordpress.com/2016/05/yeswecode.jpg?w=640', description: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'}
-      ],
       dialog: false
-    }
+    };
   },
-  
+  computed: {
+    ...mapState({
+      projects: state => state.projects.items
+    }),
+    ...mapGetters("projects", {
+      projects: "getAllProjects"
+    })
+  },
   methods: {
+    ...mapActions({
+      fetchProjects: "projects/fetchProjects"
+    }, console.log(mapActions)),
     openProject(card) {
-      this.cardInfo = card
-      console.log(card)
+      this.cardInfo = card;
+      console.log(card);
     },
     closeProject() {
-      this.cardInfo = null
+      this.cardInfo = null;
     },
-    onCloseModal(){
-      this.dialog = false
+    onCloseModal() {
+      this.dialog = false;
     }
+  },
+  created() {
+    this.loading = true;
+    this.fetchProjects().then(() => (this.loading = false));
   }
-
-
-}
+};
 </script>
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .container-proyectos {
-  margin:0;
+  margin: 0;
   padding: 0;
-  height:100%;
+  height: 100%;
 }
 .container-proyectos--wrapper {
   height: 100%;
@@ -112,6 +106,5 @@ export default {
   z-index: 20;
   height: 100%;
 }
-
 </style>
 

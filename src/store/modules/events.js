@@ -22,9 +22,8 @@ export default {
   actions: {
     fetchEvents({commit}) {
       return new Promise((resolve, reject) => {
-        // make the call
         events.getEvents(events => {
-          console.log('events', events)
+          console.log(events)
           commit('setEvents', events)
           resolve()
         })

@@ -5,11 +5,11 @@
         <v-btn class="card__btn-close" @click="OnClickClose()" fab small direction="rigth">
           X
         </v-btn>
-        <img class="card__img" :src="require('@/assets/compu.jpeg')" />
+        <img class="card__img" :src="cardInfo.image_url" />
 
         <v-card-title primary-title>
           <div>
-            <h3 class="card__project-name">{{ cardInfo.projectName }} </h3>
+            <h3 class="card__project-name">{{ cardInfo.project_name }} </h3>
             <h4 class="card__text">Creadores: {{ cardInfo.name }}</h4>
             <h4 class="card__text">Tecnologias: {{ cardInfo.technologies }}</h4>
             <div>
