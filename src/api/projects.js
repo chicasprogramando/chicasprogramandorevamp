@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 // import axios from 'axios'
 
 const _projects = [
@@ -62,6 +64,11 @@ const _projects = [
 export default {
   getProjects(cb) {
     // axios.get()
+    axios.get('https://api-chicas-programando.herokuapp.com/api/projects')
+    .then(function(result){
+      console.log('result', result)
+    })
+    .catch(error => console.log(error))
     setTimeout(() => cb(_projects), 100)
   }
 }
