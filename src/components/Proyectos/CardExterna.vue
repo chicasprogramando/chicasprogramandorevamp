@@ -37,7 +37,6 @@ import Icons from "@/components/Otros/Icons"
     methods: {
       handleClick(cardInfo) {
         this.$emit("cardClick", cardInfo)
-        console.log('card', cardInfo)
       }
     }
   }

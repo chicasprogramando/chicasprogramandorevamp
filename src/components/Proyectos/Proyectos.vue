@@ -71,10 +71,7 @@ export default {
     }),
     openProject(card) {
       this.cardInfo = card
-      console.log(this.open)
       this.open = !this.open
-      console.log(this.open)
-      console.log(JSON.stringify(this.cardInfo, null,2))
     },
     closeProject() {
       this.cardInfo = null

@@ -38,9 +38,6 @@
        
       }
     },
-    created(props) {
-      console.log('props', props)
-    },
     methods: {
       onClickClose() {
         this.$emit("closeModal")

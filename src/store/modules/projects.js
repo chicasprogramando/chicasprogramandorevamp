@@ -23,7 +23,6 @@ export default {
     fetchProjects({commit}) {
       return new Promise((resolve, reject) => {
         projects.getProjects(projects => {
-          console.log('projects', projects)
           commit('setProjects', projects)
           resolve()
         })
