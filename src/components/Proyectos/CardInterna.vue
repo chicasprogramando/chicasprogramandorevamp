@@ -2,7 +2,7 @@
   <v-layout class="modal-proyecto">
     <v-flex xs12 md9>
       <v-card class="modal-proyecto__card">
-        <v-btn class="card__btn-close" @click="OnClickClose()" fab small direction="rigth">
+        <v-btn class="card__btn-close" @click="onClickClose()" fab small direction="rigth">
           X
         </v-btn>
         <img class="card__img" :src="cardInfo.image_url" />
@@ -39,10 +39,10 @@
       }
     },
     created(props) {
-      console.log('props')
+      console.log('props', props)
     },
     methods: {
-      OnClickClose() {
+      onClickClose() {
         this.$emit("closeModal")
       }
     }

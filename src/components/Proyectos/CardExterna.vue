@@ -53,6 +53,7 @@ import Icons from "@/components/Otros/Icons"
   }
   .cardProyectos__title__h3 {
     color: #5E35B1;
+    font-weight: 500;
   }
   span {
     color: #333333;

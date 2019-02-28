@@ -9,8 +9,10 @@
           <v-flex v-for="(card, i) in projects" :key="i" xs12 sm6 md4>
             <CardExterna :cardInfo="card" @cardClick="openProject(card)"></CardExterna>
           </v-flex>
+        </v-layout>
+        <v-layout v-if="open" row wrap class="proyectos-right__cards">
           <v-slide-x-transition mode="out-in">
-            <div v-if="open" class="proyectos-right__cards__modal">
+            <div class="proyectos-right__cards__modal">
               <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
             </div>
           </v-slide-x-transition>
@@ -75,10 +77,11 @@ export default {
       console.log(JSON.stringify(this.cardInfo, null,2))
     },
     closeProject() {
-      this.cardInfo = null;
+      this.cardInfo = null
+      this.open = !this.open
     },
     onCloseModal() {
-      this.dialog = false;
+      this.dialog = false
     }
   },
   created() {
