@@ -6,7 +6,6 @@
           X
         </v-btn>
         <img class="card__img" :src="cardInfo.image_url" />
-
         <v-card-title primary-title>
           <div>
             <h3 class="card__project-name">{{ cardInfo.project_name }} </h3>
@@ -38,6 +37,9 @@
       return {
        
       }
+    },
+    created(props) {
+      console.log('props')
     },
     methods: {
       OnClickClose() {

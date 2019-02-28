@@ -7,6 +7,7 @@ import Eventos from '@/components/Eventos/Eventos'
 import Contacto from '@/components/Contacto/Contacto'
 import History from '@/components/Otros/History'
 import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
+import Login from '@/components/Login/Login'
 
 
 Vue.use(Router)
@@ -49,5 +50,10 @@ export default new Router({
       name: 'LoaderDisplay',
       component: LoaderDisplay
     },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    }
   ]
 })

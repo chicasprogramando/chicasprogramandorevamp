@@ -34,7 +34,8 @@ export default {
         { title: 'Proyectos', link: '/proyectos' },
         { title: 'Comunidad', link: '/comunidad' },
         { title: 'Eventos', link: '/eventos' },
-        { title: 'Contacto', link: '/contacto' }
+        { title: 'Contacto', link: '/contacto' },
+        { title: 'Login', link: '/login' }
       ]
     }
   },

@@ -65,10 +65,9 @@ export default {
   getProjects(cb) {
     // axios.get()
     axios.get('https://api-chicas-programando.herokuapp.com/api/projects')
-    .then(function(result){
-      console.log('result', result)
+    .then(function(res){
+      cb(res.data.projects)
     })
     .catch(error => console.log(error))
-    setTimeout(() => cb(_projects), 100)
   }
 }

@@ -7,7 +7,7 @@
         <v-card-title primary-title class="cardProyectos__title">
         <div>
           <h3 class="cardProyectos__title__h3">{{ cardInfo.project_name }}</h3>
-          <span>{{ cardInfo.name }}</span><br>
+          <span>{{ cardInfo.project_name }}</span><br>
           <span>{{ cardInfo.technologies }}</span>
           <Icons propName="cerrado" bgColor="#FF8A80" color="#ffffff"></Icons>
         </div>
@@ -16,6 +16,32 @@
     </v-flex>
   </v-layout>
 </template>   
+
+
+<script>
+import Icons from "@/components/Otros/Icons"
+
+  export default {
+    name: 'CardExterna',
+    components: {Icons},
+    props: {
+      cardInfo: {
+        type: Object
+      }
+    },
+
+    data () {
+      return {
+        }
+    },
+    methods: {
+      handleClick(cardInfo) {
+        this.$emit("cardClick", cardInfo)
+        console.log('card', cardInfo)
+      }
+    }
+  }
+</script>
 
 <style scoped>
   .cardProyectos {
@@ -32,28 +58,3 @@
     color: #333333;
   }
 </style>
-
-<script>
-import Icons from "@/components/Otros/Icons"
-
-  export default {
-    name: 'CardExterna',
-    components: {Icons},
-    props: {
-      cardInfo: {
-        type: Object
-      }
-    },
-
-    data () {
-      return {
-      }
-    },
-    methods: {
-      handleClick(cardInfo) {
-        this.$emit("cardClick", cardInfo)
-        console.log(cardInfo)
-      }
-    }
-  }
-</script>

@@ -5,12 +5,12 @@
         <CardForm></CardForm>
       </v-flex>
       <v-flex xs12 md9 class="proyectos-right">
-        <v-layout v-if="!cardInfo" row wrap class="proyectos-right__cards">
-          <v-flex v-for="card in projects" :key="card.name" xs12 sm6 md4>
+        <v-layout v-if="!open" row wrap class="proyectos-right__cards">
+          <v-flex v-for="(card, i) in projects" :key="i" xs12 sm6 md4>
             <CardExterna :cardInfo="card" @cardClick="openProject(card)"></CardExterna>
           </v-flex>
           <v-slide-x-transition mode="out-in">
-            <div v-if="cardInfo" class="proyectos-right__cards__modal">
+            <div v-if="open" class="proyectos-right__cards__modal">
               <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
             </div>
           </v-slide-x-transition>
@@ -51,7 +51,8 @@ export default {
   data() {
     return {
       cardInfo: null,
-      dialog: false
+      dialog: false,
+      open: false
     };
   },
   computed: {
@@ -65,10 +66,13 @@ export default {
   methods: {
     ...mapActions({
       fetchProjects: "projects/fetchProjects"
-    }, console.log(mapActions)),
+    }),
     openProject(card) {
-      this.cardInfo = card;
-      console.log(card);
+      this.cardInfo = card
+      console.log(this.open)
+      this.open = !this.open
+      console.log(this.open)
+      console.log(JSON.stringify(this.cardInfo, null,2))
     },
     closeProject() {
       this.cardInfo = null;
