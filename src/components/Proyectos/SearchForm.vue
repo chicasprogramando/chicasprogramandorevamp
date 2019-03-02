@@ -1,16 +1,18 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-text-field
-      v-model="Tecnologia"
-      :rules="TecnologiaRules"
+      v-model="technology"
+      :rules="technologyRules"
       label="Tecnología"
       color="white"
+      class="input"
       required>
     </v-text-field>
     <v-text-field
-      v-model="Estado"
-      :rules="EstadoRules"
+      v-model="state"
+      :rules="stateRules"
       color="white"
+      class="input"
       label="Estado del proyecto"
       required>
     </v-text-field>
@@ -20,6 +22,20 @@
     </div>
   </v-form>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      technology: '',
+      technologyRules: [],
+      state: '',
+      stateRules: [],
+      valid: ''
+    }
+  }
+}
+</script>
 
 <style scoped>
   /*hay que ponerle scoped para que no ponga todo blanco*/
@@ -34,6 +50,9 @@
   }
   .input-group__details::before {
     background-color: #F2F2F4 !important;
+  }
+  .input {
+    color: #fff;
   }
   .buttons {
     text-align: right;

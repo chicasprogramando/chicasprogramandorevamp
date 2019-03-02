@@ -9,9 +9,9 @@ const _events = [
   { name: 'Evento 4', date: '2018-10-25', place: 'Centro Cultural Recoleta' },
 ];
 
+// Created a simulation of asynchronous call
 export default {
   getEvents(cb) {
-    console.log(cb)
     setTimeout( () => cb(_events), 100);
   }
 }
