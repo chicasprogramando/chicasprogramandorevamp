@@ -55,6 +55,7 @@
                     <v-select 
                       class="text-field"
                       color="purple"
+                      v-model="role_name"
                       label="Tu rol en esta comunidad"
                       :items="role_name"
                       required
@@ -64,8 +65,9 @@
                     <v-select 
                       class="text-field"
                       color="purple"
+                      v-model="search_project"
                       label="Buscando proyectos?"
-                      :items="search_project"
+                      :items="items_search_project"
                       required
                     ></v-select>
                   </v-flex>
@@ -73,6 +75,7 @@
                     <v-select 
                       class="text-field"
                       color="purple"
+                      v-model="senority"
                       label="Seniority"
                       :items="senority"
                       required
@@ -120,6 +123,7 @@
 
 <script>
 import { campoRequeridoRules } from '../../validaciones'
+
 export default {
   name: 'FormComunidad',
   data() {
@@ -130,8 +134,9 @@ export default {
       title: '',
       image: '',
       about_me: '',
+      search_project: '',
       role_name: ['Core Team', 'Member', 'Mentor'],
-      search_project: ['Sí', 'No'],
+      items_search_project: ['Sí', 'No'],
       senority: ['Trainee', 'Jr', 'Ssr', 'Sr'],
       skills: '',
       linkedin: '',
@@ -155,7 +160,7 @@ export default {
         github: this.github,
         twitter: this.twitter
       }
-      this.$store.dispatch('createProfile', formData)
+      this.$store.dispatch('profiles/createProfile', formData)
       this.$emit('onCloseModal')
     },
     clear() {
