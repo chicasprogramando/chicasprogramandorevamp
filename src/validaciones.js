@@ -1,3 +1,5 @@
+import {isNil} from 'ramda'
+
 export const nombreRules = [
   v => !!v || 'Nombre requerido',
   v => v.length <= 40 || 'El nombre debe tener menos de 40 caracteres'
@@ -11,7 +13,7 @@ export const campoRequeridoRules = [
 ]
 
 export const descripcionRules = [
-  v => v.length <= 500 || 'El texto puede tener hasta 500 caracteres',
+  v => !isNil(v) && v.length <= 500 || 'El texto puede tener hasta 500 caracteres',
   v => !!v || 'Campo requerido'
 ]
 

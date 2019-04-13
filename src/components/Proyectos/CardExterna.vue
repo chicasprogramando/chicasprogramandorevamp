@@ -2,16 +2,16 @@
   <v-layout @click="handleClick(cardInfo)">
     <v-flex class="cardProyectos">
       <v-card>
-        <v-card-media :src="cardInfo.image_url" height="180px">
-        </v-card-media>
+        <v-card-media :src="cardInfo.image_url" height="180px"></v-card-media>
         <v-card-title primary-title class="cardProyectos__title">
-        <div>
-          <h3 class="cardProyectos__title__h3">{{ cardInfo.project_name }}</h3>
-          <span>{{ cardInfo.project_name }}</span><br>
-          <span>{{ cardInfo.technologies }}</span>
-          <Icons propName="cerrado" bgColor="#FF8A80" color="#ffffff"></Icons>
-        </div>
-          </v-card-title>
+          <div>
+            <h3 class="cardProyectos__title__h3">{{ cardInfo.project_name }}</h3>
+            <span>{{ cardInfo.creator }}</span>
+            <br>
+            <span>{{ cardInfo.technologies }}</span>
+            <Icons propName="cerrado" bgcolor="#FF8A80" color="#ffffff"></Icons>
+          </div>
+        </v-card-title>
       </v-card>
     </v-flex>
   </v-layout>
@@ -19,42 +19,41 @@
 
 
 <script>
-import Icons from "@/components/Otros/Icons"
+import Icons from "@/components/Otros/Icons";
 
-  export default {
-    name: 'CardExterna',
-    components: {Icons},
-    props: {
-      cardInfo: {
-        type: Object
-      }
-    },
+export default {
+  name: "CardExterna",
+  components: { Icons },
+  props: {
+    cardInfo: {
+      type: Object
+    }
+  },
 
-    data () {
-      return {
-        }
-    },
-    methods: {
-      handleClick(cardInfo) {
-        this.$emit("cardClick", cardInfo)
-      }
+  data() {
+    return {};
+  },
+  methods: {
+    handleClick(cardInfo) {
+      this.$emit("cardClick", cardInfo);
     }
   }
+};
 </script>
 
 <style scoped>
-  .cardProyectos {
-    height: 100%;
-  }
-  .cardProyectos__title {
-    background-color: #F4F2F2;
-    box-shadow: none;
-  }
-  .cardProyectos__title__h3 {
-    color: #5E35B1;
-    font-weight: 500;
-  }
-  span {
-    color: #333333;
-  }
+.cardProyectos {
+  height: 100%;
+}
+.cardProyectos__title {
+  background-color: #f4f2f2;
+  box-shadow: none;
+}
+.cardProyectos__title__h3 {
+  color: #5e35b1;
+  font-weight: 500;
+}
+span {
+  color: #333333;
+}
 </style>
