@@ -17,7 +17,7 @@
   </v-layout>
   <v-layout row wrap class="comunidad__profiles--padding"> 
     <v-flex
-      v-for= "item in filteredProfiles"
+      v-for= "item in profiles(search)"
       :key="item.name"
       xs12 md6 lg3>
       <profile-card :data="item" @profileCardClick="openProfileCard(item)"> </profile-card> 
@@ -55,6 +55,8 @@ import ProfileCard from './ProfileCard'
 import ProfileDetail from './ProfileDetail'
 import FormComunidad from './FormComunidad'
 
+import { mapState, mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'Comunidad',
   components: {
@@ -64,23 +66,25 @@ export default {
   },
   data () {
     return {
+      loading: false,
       singleProfile: null,
       search: '',
-      dialog: false
+      dialog: false,
     }
   },
   computed: {
-    profiles() {
-      return this.$store.getters.getProfiles
-    },
-    filteredProfiles(){
-      const search = this.search.toUpperCase()
-      return this.profiles.filter( profile => {
-        return profile.name.toUpperCase().includes(search)
-      })
-    }
+    ...mapState({
+      profiles: state => state.profiles.items,
+    }),
+    ...mapGetters('profiles', {
+      // profiles: 'getAllProfiles', <--- returns all the profiles without filters
+      profiles: 'getFilteredProfiles',
+    }),
   },
   methods: {
+    ...mapActions({
+      fetchProfiles: 'profiles/fetchProfiles',
+    }),
     openProfileCard(item) {
       this.singleProfile = item
     },
@@ -89,8 +93,13 @@ export default {
     },
     onCloseModal(){
       this.dialog = false
-    }
-  }
+    },
+  },
+  created () {
+    this.loading = true
+    this.fetchProfiles()
+      .then(() => this.loading = false)
+  },
 }
 </script>
 
