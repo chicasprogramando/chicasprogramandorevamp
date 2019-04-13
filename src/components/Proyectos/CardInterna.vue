@@ -2,14 +2,12 @@
   <v-layout class="modal-proyecto">
     <v-flex xs12 md9>
       <v-card class="modal-proyecto__card">
-        <v-btn class="card__btn-close" @click="onClickClose()" fab small direction="rigth">
-          X
-        </v-btn>
-        <img class="card__img" :src="cardInfo.image_url" />
+        <v-btn class="card__btn-close" @click="onClickClose()" fab small direction="rigth">X</v-btn>
+        <img class="card__img" :src="cardInfo.image_url">
         <v-card-title primary-title>
           <div>
-            <h3 class="card__project-name">{{ cardInfo.project_name }} </h3>
-            <h4 class="card__text">Creadores: {{ cardInfo.name }}</h4>
+            <h3 class="card__project-name">{{ cardInfo.project_name }}</h3>
+            <h4 class="card__text">Creadores: {{ cardInfo.creator }}</h4>
             <h4 class="card__text">Tecnologias: {{ cardInfo.technologies }}</h4>
             <div>
               <p>Descripcion: {{ cardInfo.description }}</p>
@@ -25,25 +23,23 @@
 </template>
 
 <script>
-  export default {
-    name: 'CardInterna',
-    props: {
-      cardInfo: {
-        type: Object
-      }
-    },
+export default {
+  name: "CardInterna",
+  props: {
+    cardInfo: {
+      type: Object
+    }
+  },
 
-    data () {
-      return {
-       
-      }
-    },
-    methods: {
-      onClickClose() {
-        this.$emit("closeModal")
-      }
+  data() {
+    return {};
+  },
+  methods: {
+    onClickClose() {
+      this.$emit("closeModal");
     }
   }
+};
 </script>
 
 <style scoped>
@@ -55,7 +51,7 @@
 }
 .modal-proyecto__card {
   min-height: 40em;
-  background-color: #F4F2F2;
+  background-color: #f4f2f2;
 }
 
 .card__btn-close {
@@ -74,14 +70,13 @@
   background-size: cover;
 }
 
-.card__project-name{
+.card__project-name {
   font-weight: 500;
-  color: #7E57C2;
+  color: #7e57c2;
 }
 
 .card__text {
   color: #333333;
   font-weight: 500;
 }
-
 </style>

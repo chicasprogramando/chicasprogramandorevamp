@@ -7,9 +7,8 @@ const _events = [
   { name: 'Evento 7' , date: '2018-11-4', place: 'stensul' },
   { name: 'Evento 8', date: '2018-3-1', place: 'Centro Cultural Recoleta' },
   { name: 'Evento 4', date: '2018-10-25', place: 'Centro Cultural Recoleta' },
-];
+]
 
-// Created a simulation of asynchronous call
 export default {
   getEvents(cb) {
     setTimeout( () => cb(_events), 100);
