@@ -31,14 +31,14 @@ export default {
       return new Promise((resolve, reject) => {
         // make the call
         profiles.getProfiles(profiles => {
-          console.log('profiles', profiles)
+          // console.log('profiles', profiles)
           commit('SET_PROFILES', profiles)
           resolve()
         })
       })
     },
     createProfile({commit}, payload) {      
-        console.log('adding profile', payload)
+        // console.log('adding profile', payload)
         commit('CREATE_PROFILE', payload)
     }
     

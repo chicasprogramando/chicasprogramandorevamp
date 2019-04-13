@@ -113,7 +113,7 @@ const _profiles = [
 
 export default {
   getProfiles(cb) {
-    console.log(cb)
+    // console.log(cb)
     setTimeout( () => cb(_profiles), 100);
   }
 }
