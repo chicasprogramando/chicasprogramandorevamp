@@ -50,8 +50,8 @@ import {
   emailRules,
   campoRequeridoRules,
   descripcionRules
-} from "../../validaciones";
-import Icons from "@/components/Otros/Icons";
+} from "../../utils/validaciones.js";
+import Icons from "@/components/Icons/Icons";
 
 export default {
   name: "Login",

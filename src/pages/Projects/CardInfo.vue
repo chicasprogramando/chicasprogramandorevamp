@@ -1,7 +1,7 @@
 <template>
-  <v-layout class="modal-proyecto">
+  <v-layout class="modal-project">
     <v-flex xs12 md9>
-      <v-card class="modal-proyecto__card">
+      <v-card class="modal-project__card">
         <v-btn class="card__btn-close" @click="onClickClose()" fab small direction="rigth">X</v-btn>
         <img class="card__img" :src="cardInfo.image_url">
         <v-card-title primary-title>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "CardInterna",
+  name: "CardInfo",
   props: {
     cardInfo: {
       type: Object
@@ -43,13 +43,13 @@ export default {
 </script>
 
 <style scoped>
-.modal-proyecto {
+.modal-project {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.modal-proyecto__card {
+.modal-project__card {
   min-height: 40em;
   background-color: #f4f2f2;
 }

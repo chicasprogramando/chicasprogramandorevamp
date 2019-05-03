@@ -116,10 +116,10 @@ import {
   emailRules,
   campoRequeridoRules,
   descripcionRules
-} from "../../validaciones";
+} from "../../utils/validaciones";
 
 export default {
-  name: "FormProyecto",
+  name: "ProjectForm",
   components: {},
   data() {
     return {

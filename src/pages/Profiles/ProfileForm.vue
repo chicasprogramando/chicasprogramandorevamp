@@ -124,10 +124,10 @@
 </template>
 
 <script>
-import { campoRequeridoRules } from "../../validaciones";
+import { campoRequeridoRules } from "../../utils/validaciones.js";
 
 export default {
-  name: "FormComunidad",
+  name: "ProfileForm",
   data() {
     return {
       valid: false,
