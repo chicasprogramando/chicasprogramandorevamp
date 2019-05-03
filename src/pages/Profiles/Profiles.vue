@@ -63,7 +63,6 @@ export default {
       profiles: state => state.profiles.items
     }),
     ...mapGetters("profiles", {
-      // profiles: 'getAllProfiles', <--- returns all the profiles without filters
       profiles: "getFilteredProfiles"
     })
   },

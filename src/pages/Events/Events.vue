@@ -47,6 +47,7 @@
 <script>
 import EventsForm from "@/pages/Events/EventsForm";
 import { mapState, mapGetters, mapActions } from "vuex";
+import moment from "moment";
 
 export default {
   name: "Events",
@@ -72,10 +73,7 @@ export default {
       fetchEvents: "events/fetchEvents"
     }),
     formatDate(date) {
-      return date
-        .split("-")
-        .reverse()
-        .join("/");
+      return moment(date).format("DD/MM/YYYY");
     }
   },
   created() {
@@ -126,7 +124,8 @@ export default {
   font-size: 12px;
   background-color: #7e64ab;
   padding: 0.5em 1em;
-  margin-right: 0.8em;
+  margin-left: 1em;
+  border-radius: 500px;
   color: #ffffff;
 }
 .cards {
