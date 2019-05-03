@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid class="eventos">
+  <v-container fluid class="events">
     <v-layout align-space-between justify-space-between row fill-height height="100%">
-      <v-flex md6 class="eventos__half-left" height="100%" fill-height>
+      <v-flex md6 class="events__half-left" height="100%" fill-height>
         <h1 class="half-left__h1">Eventos y capacitaciones</h1>
         <p
           class="half-left__p"
@@ -26,7 +26,7 @@
         </v-card>
       </v-flex>
 
-      <v-card sm6 class="eventos__half-right" fill-height>
+      <v-card sm6 class="events__half-right" fill-height>
         <h2 class="half-right__h2">Otras capacitaciones</h2>
         <v-flex v-for="(twit,index) in 10" :key="index">
           <v-card flat class="half-right__tweets">
@@ -39,19 +39,20 @@
       <v-btn color="deep-purple lighten-2" dark fab fixed bottom left slot="activator">
         <v-icon>add</v-icon>
       </v-btn>
-      <FormEventos @onCloseModal="onCloseModal()"/>
+      <EventsForm @onCloseModal="onCloseModal()"/>
     </v-dialog>
   </v-container>
 </template>
 
 <script>
-import FormEventos from "@/components/Otros/FormEventos";
+import EventsForm from "@/pages/Events/EventsForm";
 import { mapState, mapGetters, mapActions } from "vuex";
+import moment from "moment";
 
 export default {
-  name: "Eventos",
+  name: "Events",
   components: {
-    FormEventos
+    EventsForm
   },
   data() {
     return {
@@ -72,10 +73,7 @@ export default {
       fetchEvents: "events/fetchEvents"
     }),
     formatDate(date) {
-      return date
-        .split("-")
-        .reverse()
-        .join("/");
+      return moment(date).format("DD/MM/YYYY");
     }
   },
   created() {
@@ -86,14 +84,14 @@ export default {
 </script>
 
 <style scoped>
-.eventos {
+.events {
   margin: 0;
   padding: 0;
 }
-.eventos__half-left {
+.events__half-left {
   padding: 1.5em;
 }
-.eventos__half-right {
+.events__half-right {
   background-color: #7e64ab;
   opacity: 0.8;
   background-image: url(../../assets/bgimageSixx.png);
@@ -126,7 +124,8 @@ export default {
   font-size: 12px;
   background-color: #7e64ab;
   padding: 0.5em 1em;
-  margin-right: 0.8em;
+  margin-left: 1em;
+  border-radius: 500px;
   color: #ffffff;
 }
 .cards {

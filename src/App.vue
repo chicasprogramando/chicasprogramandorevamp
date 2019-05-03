@@ -2,22 +2,23 @@
   <div id="app">
     <v-app id="inspire">
       <v-toolbar class="nav" flat>
-        <v-toolbar-title class="mt-2"><img class="logo" src="@/assets/logoOnly.png" alt="Logo"></v-toolbar-title>
-        <v-spacer></v-spacer> 
+        <v-toolbar-title class="mt-2">
+          <img class="logo" src="@/assets/logoOnly.png" alt="Logo">
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn
             flat
             v-for="item in menuItems"
             :key="item.title"
             :to="item.link"
-            class="deep-purple--text lighten-1">
-            {{ item.title }}
-          </v-btn>
+            class="deep-purple--text lighten-1"
+          >{{ item.title }}</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <main>
         <v-slide-x-transition mode="out-in">
-          <router-view> </router-view>
+          <router-view></router-view>
         </v-slide-x-transition>
       </main>
     </v-app>
@@ -26,23 +27,23 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
       menuItems: [
-        { title: 'Home', link: '/' },
-        { title: 'Proyectos', link: '/proyectos' },
-        { title: 'Comunidad', link: '/comunidad' },
-        { title: 'Eventos', link: '/eventos' },
-        { title: 'Contacto', link: '/contacto' },
-        { title: 'Login', link: '/login' }
+        { title: "Home", link: "/" },
+        { title: "Proyectos", link: "/projects" },
+        { title: "Comunidad", link: "/profiles" },
+        { title: "Eventos", link: "/events" },
+        { title: "Contacto", link: "/contact" },
+        { title: "Login", link: "/login" }
       ]
-    }
+    };
   },
   created() {
-    this.$store.dispatch("fetchProfiles")
-  },
-}
+    this.$store.dispatch("fetchProfiles");
+  }
+};
 </script>
 
 <style>
@@ -56,7 +57,10 @@ h2 {
   font-size: 34px;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 300;
 }
 
@@ -71,14 +75,15 @@ h1, h2, h3, h4 {
   color: #7e64ab;
 }
 
-.page-enter-active, .page-leave-active {
+.page-enter-active,
+.page-leave-active {
   transition: all 1s ease-out;
 }
 
-.page-enter, .page-leave-active {
+.page-enter,
+.page-leave-active {
   opacity: 0;
   transform: scale(0.95);
   transform-origin: 200% 50%;
 }
-
 </style>

@@ -1,5 +1,5 @@
 <template>
-<!-- Saque el flex y el layout the esto por que se pisaban con los del padre, no se tienen que volver a llamar en los hijos si el padre ya se los esta poniendo -->
+  <!-- Saque el flex y el layout the esto por que se pisaban con los del padre, no se tienen que volver a llamar en los hijos si el padre ya se los esta poniendo -->
   <v-card class="cardform" height="100%">
     <div>
       <h2>Buscador de Proyectos</h2>
@@ -14,27 +14,24 @@
 </template>
 
 <script>
-import SearchForm from '@/components/Proyectos/SearchForm'
+import SearchForm from "@/pages/Projects/SearchForm";
 
 export default {
-  name: 'CardForm',
-  data () {
-    return {
-
-    }
+  name: "SearchFormContainer",
+  data() {
+    return {};
   },
   components: {
     SearchForm
   }
-}
+};
 </script>
 
 <style scoped>
- 
-  .cardform {
-    background-color: #7E57C2;
-    color: #F2F2F4;
-    padding: 2em;
-    width: 100%;
-  }
+.cardform {
+  background-color: #7e57c2;
+  color: #f2f2f4;
+  padding: 2em;
+  width: 100%;
+}
 </style>

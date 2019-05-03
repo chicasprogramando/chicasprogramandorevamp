@@ -85,12 +85,12 @@
       </v-card-text>
       <v-flex class="form__buttons-container pb-4">
         <v-btn
+          dark
           round
-          class="buttons-container__singlebtn buttons-container__singlebtn--white"
           color="deep-purple lighten-1"
-          @click="onCreateProject()"
-          :disabled="!valid"
-        >Crear</v-btn>
+          class="buttons-container__singlebtn"
+          @click="handleClickModal()"
+        >Cancelar</v-btn>
         <v-btn
           dark
           round
@@ -99,12 +99,12 @@
           @click="clear"
         >Limpiar</v-btn>
         <v-btn
-          dark
           round
+          class="buttons-container__singlebtn buttons-container__singlebtn--white"
           color="deep-purple lighten-1"
-          class="buttons-container__singlebtn"
-          @click="handleClickModal()"
-        >Cancelar</v-btn>
+          @click="onCreateProject()"
+          :disabled="!valid"
+        >Crear</v-btn>
       </v-flex>
     </v-form>
   </v-card>
@@ -116,10 +116,10 @@ import {
   emailRules,
   campoRequeridoRules,
   descripcionRules
-} from "../../validaciones";
+} from "../../utils/validaciones";
 
 export default {
-  name: "FormProyecto",
+  name: "ProjectForm",
   components: {},
   data() {
     return {

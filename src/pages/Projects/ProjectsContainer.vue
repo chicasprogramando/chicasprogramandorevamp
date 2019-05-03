@@ -1,19 +1,19 @@
 <template>
-  <v-container fluid grid-list-md class="container-proyectos">
-    <v-layout class="container-proyectos--wrapper">
+  <v-container fluid grid-list-md class="container-projects">
+    <v-layout class="container-projects--wrapper">
       <v-flex xs12 md3>
-        <CardForm></CardForm>
+        <SearchFormContainer></SearchFormContainer>
       </v-flex>
-      <v-flex xs12 md9 class="proyectos-right">
-        <v-layout v-if="!open" row wrap class="proyectos-right__cards">
+      <v-flex xs12 md9 class="projects-right">
+        <v-layout v-if="!open" row wrap class="projects-right__cards">
           <v-flex v-for="(card, i) in projects" :key="i" xs12 sm6 md4>
-            <CardExterna :cardInfo="card" @cardClick="openProject(card)"></CardExterna>
+            <CardCover :cardInfo="card" @cardClick="openProject(card)"></CardCover>
           </v-flex>
         </v-layout>
-        <v-layout v-if="open" row wrap class="proyectos-right__cards">
+        <v-layout v-if="open" row wrap class="projects-right__cards">
           <v-slide-x-transition mode="out-in">
-            <div class="proyectos-right__cards__modal">
-              <CardInterna :cardInfo="cardInfo" @closeModal="closeProject()"></CardInterna>
+            <div class="projects-right__cards__modal">
+              <CardInfo :cardInfo="cardInfo" @closeModal="closeProject()"></CardInfo>
             </div>
           </v-slide-x-transition>
         </v-layout>
@@ -28,27 +28,27 @@
       <v-btn color="deep-purple lighten-2" dark fab fixed bottom right slot="activator">
         <v-icon>add</v-icon>
       </v-btn>
-      <FormProyecto @onCloseModal="onCloseModal()"/>
+      <ProjectForm @onCloseModal="onCloseModal()"/>
     </v-dialog>
   </v-container>
 </template>
 
 <script>
-import CardForm from "@/components/Proyectos/CardForm";
-import CardExterna from "@/components/Proyectos/CardExterna";
-import Pagination from "@/components/Proyectos/Pagination";
-import CardInterna from "@/components/Proyectos/CardInterna";
-import FormProyecto from "@/components/Otros/FormProyecto";
+import SearchFormContainer from "@/pages/Projects/SearchFormContainer";
+import CardCover from "@/pages/Projects/CardCover";
+import Pagination from "@/pages/Projects/Pagination";
+import CardInfo from "@/pages/Projects/CardInfo";
+import ProjectForm from "@/pages/Projects/ProjectForm";
 import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "Proyectos",
+  name: "ProjectsContainer",
   components: {
-    CardForm,
-    CardExterna,
+    SearchFormContainer,
+    CardCover,
     Pagination,
-    CardInterna,
-    FormProyecto
+    CardInfo,
+    ProjectForm
   },
   data() {
     return {
@@ -70,15 +70,15 @@ export default {
       fetchProjects: "projects/fetchProjects"
     }),
     openProject(card) {
-      this.cardInfo = card
-      this.open = !this.open
+      this.cardInfo = card;
+      this.open = !this.open;
     },
     closeProject() {
-      this.cardInfo = null
-      this.open = !this.open
+      this.cardInfo = null;
+      this.open = !this.open;
     },
     onCloseModal() {
-      this.dialog = false
+      this.dialog = false;
     }
   },
   created() {
@@ -91,19 +91,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.container-proyectos {
+.container-projects {
   margin: 0;
   padding: 0;
   height: 100%;
 }
-.container-proyectos--wrapper {
+.container-projects--wrapper {
   height: 100%;
 }
-.proyectos-right {
+.projects-right {
   position: relative;
   height: 100%;
 }
-.proyectos-right__cards__modal {
+.projects-right__cards__modal {
   position: absolute;
   right: 0;
   top: 0;

@@ -1,11 +1,11 @@
 <template>
   <v-layout @click="handleClick(cardInfo)">
-    <v-flex class="cardProyectos">
+    <v-flex class="cardProjects">
       <v-card>
         <v-card-media :src="cardInfo.image_url" height="180px"></v-card-media>
-        <v-card-title primary-title class="cardProyectos__title">
+        <v-card-title primary-title class="cardProjects__title">
           <div>
-            <h3 class="cardProyectos__title__h3">{{ cardInfo.project_name }}</h3>
+            <h3 class="cardProjects__title__h3">{{ cardInfo.project_name }}</h3>
             <span>{{ cardInfo.creator }}</span>
             <br>
             <span>{{ cardInfo.technologies }}</span>
@@ -19,10 +19,10 @@
 
 
 <script>
-import Icons from "@/components/Otros/Icons";
+import Icons from "@/components/Icons/Icons";
 
 export default {
-  name: "CardExterna",
+  name: "CardCover",
   components: { Icons },
   props: {
     cardInfo: {
@@ -42,14 +42,14 @@ export default {
 </script>
 
 <style scoped>
-.cardProyectos {
+.cardProjects {
   height: 100%;
 }
-.cardProyectos__title {
+.cardProjects__title {
   background-color: #f4f2f2;
   box-shadow: none;
 }
-.cardProyectos__title__h3 {
+.cardProjects__title__h3 {
   color: #5e35b1;
   font-weight: 500;
 }

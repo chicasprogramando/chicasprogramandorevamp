@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home/Home'
-import Proyectos from '@/components/Proyectos/Proyectos'
-import Comunidad from '@/components/Comunidad/Comunidad'
-import Eventos from '@/components/Eventos/Eventos'
-import Contacto from '@/components/Contacto/Contacto'
-import History from '@/components/Otros/History'
+import Home from '@/pages/Home/Home'
+import ProjectsContainer from '@/pages/Projects/ProjectsContainer'
+import Profiles from '@/pages/Profiles/Profiles'
+import Events from '@/pages/Events/Events'
+import Contact from '@/pages/Contact/Contact'
+import History from '@/pages/History/History'
 import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
-import Login from '@/components/Login/Login'
-
+import Login from '@/pages/Login/Login'
 
 Vue.use(Router)
 
@@ -20,25 +19,25 @@ export default new Router({
       component: Home
     },
     {
-      path: '/proyectos',
-      name: 'Proyectos',
-      component: Proyectos,
+      path: '/projects',
+      name: 'Projects',
+      component: ProjectsContainer
     },
     {
-      path: '/comunidad',
-      name: 'Comunidad',
+      path: '/profiles',
+      name: 'Profiles',
       props: true,
-      component: Comunidad
+      component: Profiles
     },
     {
-      path: '/eventos',
-      name: 'Eventos',
-      component: Eventos
+      path: '/events',
+      name: 'Events',
+      component: Events
     },
     {
-      path: '/contacto',
-      name: 'Contacto',
-      component: Contacto
+      path: '/contact',
+      name: 'Contact',
+      component: Contact
     },
     {
       path: '/history',

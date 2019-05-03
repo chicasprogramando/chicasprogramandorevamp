@@ -16,11 +16,11 @@ const _projects = [
 
 export default {
   getProjects(cb) {
-    axios.get('https://api-chicas-programando.herokuapp.com/api/projects')
-    .then(function(res){
-      cb(res.data.projects)
-      console.log(res.data.projects)
-    })
-    .catch(error => console.log(error))
+    axios
+      .get('https://api-chicas-programando.herokuapp.com/api/projects')
+      .then(function(res) {
+        cb(res.data.projects)
+      })
+      .catch(error => console.log(error))
   }
 }
