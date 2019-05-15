@@ -93,6 +93,12 @@
             <v-flex xs12>
               <v-text-field v-model="twitter" label="Twitter" color="purple"></v-text-field>
             </v-flex>
+            <v-flex xs12>
+              <v-text-field v-model="email" label="Email" color="purple"></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-text-field v-model="password" label="Password" color="purple"></v-text-field>
+            </v-flex>
           </v-layout>
         </v-container>
       </v-card-text>
@@ -143,7 +149,9 @@ export default {
       skills: "",
       linkedin: "",
       github: "",
-      twitter: ""
+      twitter: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
@@ -160,7 +168,9 @@ export default {
         about_me: this.about_me,
         linkedin: this.linkedin,
         github: this.github,
-        twitter: this.twitter
+        twitter: this.twitter,
+        email: this.email,
+        password: this.password
       };
       this.$store.dispatch("profiles/createProfile", formData);
       this.$emit("onCloseModal");
