@@ -16,46 +16,37 @@
     </v-layout>
     <v-layout row wrap class="comunidad__profiles--padding">
       <v-flex v-for="item in profiles(search)" :key="item.name" xs12 md6 lg3>
-        <profile-card :data="item" @profileCardClick="openProfileCard(item)"></profile-card>
+        <community-profile-card :data="item" @profileCardClick="openProfileCard(item)"></community-profile-card>
       </v-flex>
       <v-slide-x-transition mode="out-in">
         <v-flex class="profile-container" v-if="singleProfile">
           <div class="profile_modal">
             <button class="profile-modal__btn" @click="closeProfileCard()">X</button>
-            <profile-detail :profileInfo="singleProfile"></profile-detail>
+            <community-profile-detail :profileInfo="singleProfile"></community-profile-detail>
           </div>
         </v-flex>
       </v-slide-x-transition>
-      <v-dialog v-model="dialog" persistent max-width="500px">
-        <v-btn color="deep-purple lighten-2" dark fab fixed bottom right slot="activator">
-          <v-icon>add</v-icon>
-        </v-btn>
-        <ProfileForm @onCloseModal="onCloseModal()"/>
-      </v-dialog>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import ProfileCard from "./ProfileCard";
-import ProfileDetail from "./ProfileDetail";
-import ProfileForm from "./ProfileForm";
+import CommunityProfileCard from "./CommunityProfileCard";
+import CommunityProfileDetail from "./CommunityProfileDetail";
 
 import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "Profiles",
+  name: "Community",
   components: {
-    ProfileCard,
-    ProfileDetail,
-    ProfileForm
+    CommunityProfileCard,
+    CommunityProfileDetail
   },
   data() {
     return {
       loading: false,
       singleProfile: null,
-      search: "",
-      dialog: false
+      search: ""
     };
   },
   computed: {
@@ -75,9 +66,6 @@ export default {
     },
     closeProfileCard() {
       this.singleProfile = null;
-    },
-    onCloseModal() {
-      this.dialog = false;
     }
   },
   created() {

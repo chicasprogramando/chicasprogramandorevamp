@@ -45,7 +45,7 @@ import VueTypes from "vue-types";
 import Icons from "@/components/Icons/Icons";
 
 export default {
-  name: "ProfileCard",
+  name: "CommunityProfileCard",
   components: {
     Icons
   },

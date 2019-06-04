@@ -56,7 +56,7 @@
             <p
               class="skw-page__description mb-4"
             >Mirá quienes están detrás de los proyectos, en qué lenguajes programan, qué están haciendo y cómo contactarlxs.</p>
-            <v-btn flat round class="botones" to="/profiles">Conocelxs</v-btn>
+            <v-btn flat round class="botones" to="/community">Conocelxs</v-btn>
           </div>
         </div>
       </div>

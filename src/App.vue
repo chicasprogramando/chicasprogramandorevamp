@@ -33,7 +33,7 @@ export default {
       menuItems: [
         { title: "Home", link: "/" },
         { title: "Proyectos", link: "/projects" },
-        { title: "Comunidad", link: "/profiles" },
+        { title: "Comunidad", link: "/community" },
         { title: "Eventos", link: "/events" },
         { title: "Contacto", link: "/contact" },
         { title: "Login", link: "/login" }
