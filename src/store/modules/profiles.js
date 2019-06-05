@@ -21,6 +21,7 @@ export default {
       state.items = profiles
     },
     CREATE_PROFILE(state, profile) {
+      console.log(profile)
       state.items = [...state.items, profile]
     }
   },

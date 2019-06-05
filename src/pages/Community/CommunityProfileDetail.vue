@@ -21,10 +21,6 @@
           <span>Tecnologías:</span>
           {{ profileInfo.skills }}
         </p>
-        <p class="about__text">
-          <span>About:</span>
-          {{ profileInfo.about_me }}
-        </p>
       </div>
       <div class="info__redes">
         <icons

@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs12 md6>
         <v-card color="deep-purple lighten-2" class="white--text">
-          <v-card-media>
+          <v-card-media height="350px">
             <img :src="require('@/assets/compu.jpeg')">
           </v-card-media>
           <v-layout>
