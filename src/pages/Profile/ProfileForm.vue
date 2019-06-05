@@ -23,22 +23,6 @@
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
-            <img :src="image" height="150px">
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field
-              default
-              class="text-field"
-              color="purple"
-              v-model="about_me"
-              label="Contanos algo sobre vos"
-              counter="500"
-              rows="3"
-              textarea
-              required
-            ></v-text-field>
-          </v-flex>
-          <v-flex xs12>
             <v-select
               class="text-field"
               color="purple"
@@ -104,7 +88,7 @@
         class="buttons__single-btn buttons__single-btn--white"
         type="submit"
         :disabled="!valid"
-      >Crear</v-btn>
+      >Actualizar</v-btn>
     </v-flex>
   </v-form>
 </template>
