@@ -13,14 +13,14 @@
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
-            <v-text-field
+            <v-select
               v-model="title"
               :rules="campoRequeridoRules"
-              placeholder="Ej. Front End Dev"
               label="Título"
               color="purple"
+              :items="title"
               required
-            ></v-text-field>
+            ></v-select>
           </v-flex>
           <v-flex xs12>
             <v-select
@@ -103,7 +103,14 @@ export default {
       valid: false,
       campoRequeridoRules: campoRequeridoRules,
       name: "",
-      title: "",
+      title: [
+        "Front End Dev",
+        "Back End Dev",
+        "Full Stack Dev",
+        "QA",
+        "Seguridad Informática",
+        "UX/UI"
+      ],
       search_project: "",
       role_name: ["Core Team", "Member", "Mentor"],
       items_search_project: ["Sí", "No"],
