@@ -8,10 +8,14 @@ import Contact from '@/pages/Contact/Contact'
 import History from '@/pages/History/History'
 import LoaderDisplay from '@/components/Loaders/LoaderDisplay'
 import Login from '@/pages/Login/Login'
+import Signup from '@/pages/Signup/Signup'
+import Callback from '@/views/Callback.vue'
 
 Vue.use(Router)
 
-export default new Router({
+// export default new Router({
+const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -53,6 +57,30 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    // auth 
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
+    },
+    {
+      path: '/callback',
+      name: 'callback',
+      component: Callback
     }
   ]
 })
+
+// very basic "setup" of a global guard
+router.beforeEach((to, from, next) => {
+  if(to.name == 'callback') { // check if "to"-route is "callback" and allow access
+    next()
+  } else if (router.app.$auth.isAuthenticated()) { // if authenticated allow access
+    next()
+  } else { // trigger auth0 login
+    router.app.$auth.login()
+  }
+})
+
+export default router;

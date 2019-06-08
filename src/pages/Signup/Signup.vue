@@ -1,13 +1,20 @@
-  <template>
-  <v-layout align-center justify-start class="login">
-    <v-flex class="login__colorbg">
+<template>
+  <v-layout align-center justify-start class="signup">
+    <v-flex class="signup__colorbg">
       <div xs12 sm5 offset-sm1 class="tarjeta">
         <div class="tarjeta__flex">
-          <!-- <img class="login--logo" src="@/assets/logo200.png" alt=""> -->
           <div class="tarjeta__title--border">
-            <h2 class="tarjeta__title">Login</h2>
+            <h2 class="tarjeta__title">Sign Up</h2>
           </div>
-          <v-form @submit.prevent="login" ref="form">
+          <v-form @submit.prevent="signup" ref="form">
+            <v-text-field
+              v-model="username"
+              label="User Name"
+              type="text"
+              :rules="campoRequeridoRules"
+              id="inputUsername"
+              required
+            ></v-text-field>
             <v-text-field
               v-model="email"
               label="E-mail"
@@ -27,98 +34,67 @@
               @click:append="show1 = !show1"
               required
             ></v-text-field>
-            <v-flex class="form__btns login__btn--padding">
+            <v-text-field
+              v-model="repeatPassword"
+              hint="At least 8 characters"
+              type="password"
+              id="inputRepeatPassword"
+              label="Repeat Password"
+              :rules="campoRequeridoRules"
+              counter
+              @click:append="show1 = !show1"
+              required
+            ></v-text-field>
+            <v-flex class="form__btns">
               <v-btn
                 round
                 class="form_btns--white"
                 color="deep-purple lighten-1"
                 dark
                 @click="submit()"
-              > Log in </v-btn>
+              >Sign Up</v-btn>
             </v-flex>
           </v-form>
-          <div class="signup-link__container">
-            <router-link to="/signup">
-              <a class="signup-link__color">¿No tenés cuenta aún?</a>
-            </router-link>
-          </div>
         </div>
       </div>
     </v-flex>
   </v-layout>
 </template>
-          
+
 <script>
-// import axios from 'axios'; ** habria que instalar axios npm i --save axios
-import {
-  nombreRules,
-  emailRules,
-  campoRequeridoRules,
-  descripcionRules
-} from "../../utils/validaciones.js";
-import Icons from "@/components/Icons/Icons";
-
-export default {
-  name: "Login",
-  components: {
-    Icons
-  },
-  data: () => ({
-    loggedIn: false,
-    valid: false,
-    email: "",
-    emailRules: emailRules,
-    password: "",
-    campoRequeridoRules: campoRequeridoRules,
-
-    // temporarily removing this since I dont think its neccessary
-    // name: '',
-    // nameRules: [
-    //   v => !!v || 'Name is required',
-    //   v => v.length <= 10 || 'Name must be less than 10 characters'
-    // ],
-    // email: '',
-    // emailRules: [
-    //   v => !!v || 'E-mail is required',
-    //   v => /.+@.+/.test(v) || 'E-mail must be valid'
-    // ],
-
-    // ask if i should move this to validaciones.js
-    show1: false,
-    show2: true,
-    show3: false,
-    show4: false,
-    password: "",
-    rules: {
-      required: value => !!value || "Required.",
-      min: v => v.length >= 8 || "Min 8 characters",
-      emailMatch: () => "The email and password you entered don't match"
-    }
-  }),
-  methods: {
-    submit() {
-      // if (this.$refs.form.validate()) {
-      //   // Native form submission is not yet supported
-      //   axios.post('/api/submit', {
-      //   descripcion: this.descripcion,
-      //   })
-      console.log("email: ", this.email, "pass:", this.password);
-    },
-    clear() {
-      this.$refs.form.reset();
+  import {
+    emailRules,
+    campoRequeridoRules
+  } from "../../utils/validaciones.js";
+  export default {
+    name: "Signup",
+    data: () => ({
+      valid: false,
+      username: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      emailRules: emailRules,
+      campoRequeridoRules: campoRequeridoRules,
+    }),
+    methods: {
+      submit() {
+        console.log('submitted from Signup')
+      },
+      clear() {
+        this.$refs.form.reset();
+      }
     }
   }
-};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.login {
+<style>
+.signup {
   width: 100%;
   height: 100%;
 }
 
-.login__colorbg {
+.signup__colorbg {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -169,7 +145,7 @@ export default {
   color: rgba(125, 99, 171, 0.8);
 }
 
-.login--logo {
+.signup--logo {
   width: 100px;
   height: 100px;
   margin: 1em;
@@ -190,9 +166,13 @@ form {
   width: 100px;
 }
 
-.login__btn--padding {
+.signup__btn--padding {
   /* padding-bottom: 1.5rem; */
   padding: 0.5rem 0 1.5rem 0;
+}
+
+.register-text__padding {
+  padding: 1em;
 }
 
 .input-group {
@@ -216,4 +196,5 @@ form {
   color: #7e64ab;
   padding-bottom: 1rem;
 }
+
 </style>

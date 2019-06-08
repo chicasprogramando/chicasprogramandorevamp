@@ -13,6 +13,7 @@
     "ajv": "^6.5.2",
     "animate.css": "^3.6.1",
     "animated-vue": "^0.5.3",
+    "auth0-js": "^9.10.4",
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
     "moment": "^2.24.0",

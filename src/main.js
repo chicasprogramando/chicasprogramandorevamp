@@ -10,6 +10,15 @@ global.Jquery = Jquery
 global.$ = Jquery
 //tmb podria ser let $ = jQuery
 import { store } from './store'
+import auth from '@/auth'
+
+Vue.use(auth)
+
+// Import the plugin here
+// import AuthPlugin from "./plugins/auth";
+
+// Install the authentication plugin here
+// Vue.use(AuthPlugin);
 
 Vue.use(Vuetify)
 

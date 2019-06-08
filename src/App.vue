@@ -21,6 +21,17 @@
           <router-view></router-view>
         </v-slide-x-transition>
       </main>
+      <ul>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li v-if="!isAuthenticated">
+          <a href="#" @click.prevent="login">Login</a>
+        </li>
+        <li v-if="isAuthenticated">
+          <a href="#" @click.prevent="logout">Log out</a>
+        </li>
+      </ul>
     </v-app>
   </div>
 </template>
@@ -30,6 +41,7 @@ export default {
   name: "App",
   data() {
     return {
+      isAuthenticated: false,
       menuItems: [
         { title: "Home", link: "/" },
         { title: "Proyectos", link: "/projects" },
@@ -40,8 +52,24 @@ export default {
       ]
     };
   },
-  created() {
-    this.$store.dispatch("fetchProfiles");
+  async created() {
+    try {
+      await this.$auth.renewTokens();
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  methods: {
+    login() {
+      this.$auth.login();
+    },
+    logout() {
+      this.$auth.logOut();
+    },
+    handleLoginEvent(data) {
+      this.isAuthenticated = data.loggedIn;
+      this.profile = data.profile;
+    }
   }
 };
 </script>
