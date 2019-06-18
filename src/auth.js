@@ -3,12 +3,12 @@ import Vue from 'vue'
 
 // exchange the object with your own from the setup step above.
 let webAuth = new auth0.WebAuth({
-  domain: 'dev-exk-xl9z.auth0.com',
-  clientID: 'nJ6w7iU2k1bNauqRbxuGKHAAPodUx083',
+  domain: process.env.AUTH_DOMAIN,
+  clientID: process.env.AUTH_CLIENT_ID,
   // make sure this line is contains the port: 8080
-  redirectUri: 'http://localhost:8080/callback',
+  redirectUri: process.env.AUTH_REDIRECT_URI,
   // we will use the api/v2/ to access the user information as payload
-  audience: 'https://' + 'dev-exk-xl9z.auth0.com' + '/api/v2/', 
+  audience: process.env.AUTH_AUDIENCE, 
   responseType: 'token id_token',
   scope: 'openid profile' // define the scopes you want to use
 })
@@ -61,7 +61,7 @@ let auth = new Vue({
         localStorage.removeItem('user')
         webAuth.logout({
           returnTo: 'http://localhost:8080/#/login', // Allowed logout URL listed in dashboard
-          clientID: 'nJ6w7iU2k1bNauqRbxuGKHAAPodUx083', // Your client ID
+          clientID: process.env.AUTH_CLIENT_ID, // Your client ID
         })
       })
     },
