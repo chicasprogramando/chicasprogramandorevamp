@@ -10,8 +10,8 @@
             <v-flex xs12>
               <v-card-title primary-title align>
                 <div class="header-container">
-                  <h2 class="headline">{{ name }}</h2>
-                  <h3 class="sub-headline">{{title}}</h3>
+                  <h2 class="headline">{{ userProfile.name }}</h2>
+                  <h3 class="sub-headline">{{ userProfile.title }}</h3>
                 </div>
               </v-card-title>
             </v-flex>
@@ -21,19 +21,19 @@
               <v-card-text>
                 <p class="about__text">
                   <span>Rol en la comunidad:</span>
-                  {{ role_name }}
+                  {{ userProfile.role_name }}
                 </p>
                 <p class="about__text">
                   <span>Busco Proyecto:</span>
-                  {{ search_project }}
+                  {{ userProfile.search_project }}
                 </p>
                 <p class="about__text">
                   <span>Experiencia:</span>
-                  {{ senority }}
+                  {{ userProfile.senority }}
                 </p>
                 <p class="about__text">
                   <span>Tecnologías:</span>
-                  {{ skills }}
+                  {{ userProfile.skills }}
                 </p>
               </v-card-text>
             </v-flex>
@@ -49,7 +49,6 @@
 
 <script>
 import ProfileForm from "./ProfileForm";
-
 import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
@@ -59,18 +58,21 @@ export default {
   },
   data() {
     return {
-      loading: false,
-      name: "Puri",
-      title: "Front end dev",
-      role_name: "Co-founder",
-      search_project: true,
-      senority: "Ssr",
-      skills: ["vue", "react", "jest", "js", "html"]
+      loading: false
     };
   },
-  computed: {},
-  methods: {},
-  created() {}
+  computed: {
+    ...mapState("profiles", {
+      userProfile: state => state.userProfile[0]
+    })
+  },
+  methods: {
+    ...mapActions("profiles", ["fetchUserProfile"])
+  },
+  created() {
+    this.loading = true;
+    this.fetchUserProfile().then(() => (this.loading = false));
+  }
 };
 </script>
 
@@ -86,5 +88,8 @@ export default {
 }
 .sub-headline {
   font-size: 20px;
+}
+.about__text span {
+  font-weight: 500;
 }
 </style>

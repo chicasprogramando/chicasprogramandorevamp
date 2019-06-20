@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     ...mapState({
-      profiles: state => state.profiles.items
+      profiles: state => state.profiles.profileList
     }),
     ...mapGetters("profiles", {
       profiles: "getFilteredProfiles"

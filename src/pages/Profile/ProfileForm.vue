@@ -1,5 +1,5 @@
 <template>
-  <v-form class="form" ref="form" v-model="valid" @submit.prevent="onCreateProfile">
+  <v-form class="form" ref="form" v-model="valid" @submit.prevent="onUpdateProfile">
     <v-card-text>
       <v-container grid-list-md>
         <v-layout wrap>
@@ -18,7 +18,7 @@
               :rules="campoRequeridoRules"
               label="Título"
               color="purple"
-              :items="title"
+              :items="title_items"
               required
             ></v-select>
           </v-flex>
@@ -28,7 +28,7 @@
               color="purple"
               v-model="role_name"
               label="Tu rol en esta comunidad"
-              :items="role_name"
+              :items="role_name_items"
               required
             ></v-select>
           </v-flex>
@@ -48,7 +48,7 @@
               color="purple"
               v-model="senority"
               label="Seniority"
-              :items="senority"
+              :items="senority_items"
               required
             ></v-select>
           </v-flex>
@@ -73,15 +73,8 @@
         round
         color="deep-purple lighten-1"
         class="buttons__single-btn"
-        @click="handleClickModal()"
-      >Cancelar</v-btn>
-      <v-btn
-        dark
-        round
-        color="deep-purple lighten-1"
-        class="buttons__single-btn"
         @click="clear"
-      >Limpiar</v-btn>
+      >Cancelar</v-btn>
       <v-btn
         round
         color="deep-purple lighten-1"
@@ -103,7 +96,8 @@ export default {
       valid: false,
       campoRequeridoRules: campoRequeridoRules,
       name: "",
-      title: [
+      title: "",
+      title_items: [
         "Front End Dev",
         "Back End Dev",
         "Full Stack Dev",
@@ -112,9 +106,11 @@ export default {
         "UX/UI"
       ],
       search_project: "",
-      role_name: ["Core Team", "Member", "Mentor"],
       items_search_project: ["Sí", "No"],
-      senority: ["Trainee", "Jr", "Ssr", "Sr"],
+      role_name: "",
+      role_name_items: ["Core Team", "Member", "Mentor"],
+      senority: "",
+      senority_items: ["Trainee", "Jr", "Ssr", "Sr"],
       skills: "",
       linkedin: "",
       github: "",
@@ -122,9 +118,8 @@ export default {
     };
   },
   methods: {
-    onCreateProfile() {
+    onUpdateProfile() {
       const formData = {
-        id: 1,
         name: this.name,
         title: this.title,
         role_name: this.role_name,
@@ -135,14 +130,11 @@ export default {
         github: this.github,
         twitter: this.twitter
       };
-      this.$store.dispatch("profiles/createProfile", formData);
-      this.$emit("onCloseModal");
+      this.$store.dispatch("profiles/updateUserProfile", formData);
+      this.$refs.form.reset();
     },
     clear() {
       this.$refs.form.reset();
-    },
-    handleClickModal() {
-      this.$emit("onCloseModal");
     }
   }
 };

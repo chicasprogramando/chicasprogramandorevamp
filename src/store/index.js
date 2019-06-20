@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import profiles from './modules/profiles';
-import events from './modules/events';
-import projects from './modules/projects';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import profiles from './modules/profiles'
+import events from './modules/events'
+import projects from './modules/projects'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 

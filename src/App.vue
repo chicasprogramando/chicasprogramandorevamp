@@ -39,9 +39,6 @@ export default {
         { title: "Login", link: "/login" }
       ]
     };
-  },
-  created() {
-    this.$store.dispatch("fetchProfiles");
   }
 };
 </script>
