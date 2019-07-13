@@ -19,25 +19,15 @@ export default new Router({
       component: Home
     },
     {
-      path: '/projects',
-      name: 'Projects',
-      component: ProjectsContainer
+      path: '/contact',
+      name: 'Contact',
+      component: Contact
     },
     {
       path: '/profiles',
       name: 'Profiles',
       props: true,
       component: Profiles
-    },
-    {
-      path: '/events',
-      name: 'Events',
-      component: Events
-    },
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact
     },
     {
       path: '/history',
