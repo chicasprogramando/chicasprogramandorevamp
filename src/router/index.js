@@ -20,9 +20,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/projects',
-      name: 'Projects',
-      component: ProjectsContainer
+      path: '/contact',
+      name: 'Contact',
+      component: Contact
     },
     {
       path: '/community',
@@ -34,16 +34,6 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
-    },
-    {
-      path: '/events',
-      name: 'Events',
-      component: Events
-    },
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact
     },
     {
       path: '/history',

@@ -1,72 +1,63 @@
 <template>
   <v-form class="form" ref="form" v-model="valid" @submit.prevent="onUpdateProfile">
-    <v-card-text>
-      <v-container grid-list-md>
-        <v-layout wrap>
-          <v-flex xs12>
-            <v-text-field
-              v-model="name"
-              :rules="campoRequeridoRules"
-              label="Nombre Completo"
-              color="purple"
-              required
-            ></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-select
-              v-model="title"
-              :rules="campoRequeridoRules"
-              label="Título"
-              color="purple"
-              :items="title_items"
-              required
-            ></v-select>
-          </v-flex>
-          <v-flex xs12>
-            <v-select
-              class="text-field"
-              color="purple"
-              v-model="role_name"
-              label="Tu rol en esta comunidad"
-              :items="role_name_items"
-              required
-            ></v-select>
-          </v-flex>
-          <v-flex xs12>
-            <v-select
-              class="text-field"
-              color="purple"
-              v-model="search_project"
-              label="Buscando proyectos?"
-              :items="items_search_project"
-              required
-            ></v-select>
-          </v-flex>
-          <v-flex xs12>
-            <v-select
-              class="text-field"
-              color="purple"
-              v-model="senority"
-              label="Seniority"
-              :items="senority_items"
-              required
-            ></v-select>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field v-model="skills" label="Qué tecnologías manejas?" color="purple"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field v-model="github" label="GitHub" color="purple"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field v-model="linkedin" label="LinkedIn" color="purple"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field v-model="twitter" label="Twitter" color="purple"></v-text-field>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card-text>
+    <v-container grid-list-md class="profile_form_container">
+      <v-layout wrap>
+        <v-flex xs12>
+          <v-text-field
+            v-model="name"
+            :rules="campoRequeridoRules"
+            label="Nombre Completo"
+            color="purple"
+            required
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12>
+          <v-select
+            v-model="title"
+            :rules="campoRequeridoRules"
+            label="Especialidad"
+            color="purple"
+            :items="title_items"
+            required
+          ></v-select>
+        </v-flex>
+        <v-flex xs12>
+          <v-select
+            class="text-field"
+            color="purple"
+            v-model="search_project"
+            label="Buscando proyectos?"
+            :items="items_search_project"
+            required
+          ></v-select>
+        </v-flex>
+        <v-flex xs12>
+          <v-select
+            class="text-field"
+            color="purple"
+            v-model="senority"
+            label="Seniority"
+            :items="senority_items"
+            required
+          ></v-select>
+        </v-flex>
+        <v-flex xs12>
+          <v-text-field v-model="skills" label="Qué tecnologías manejas?" color="purple"></v-text-field>
+        </v-flex>
+        <v-flex xs12>
+          <v-text-field v-model="about" label="Contanos algo sobre vos" color="purple"></v-text-field>
+        </v-flex>
+        <v-flex xs12>
+          <v-text-field v-model="github" label="GitHub" color="purple"></v-text-field>
+        </v-flex>
+        <v-flex xs12>
+          <v-text-field v-model="linkedin" label="LinkedIn" color="purple"></v-text-field>
+        </v-flex>
+        <v-flex xs12>
+          <v-text-field v-model="twitter" label="Twitter" color="purple"></v-text-field>
+        </v-flex>
+      </v-layout>
+    </v-container>
     <v-flex class="buttons">
       <v-btn
         dark
@@ -97,6 +88,7 @@ export default {
       campoRequeridoRules: campoRequeridoRules,
       name: "",
       title: "",
+      about: "",
       title_items: [
         "Front End Dev",
         "Back End Dev",
@@ -107,8 +99,6 @@ export default {
       ],
       search_project: "",
       items_search_project: ["Sí", "No"],
-      role_name: "",
-      role_name_items: ["Core Team", "Member", "Mentor"],
       senority: "",
       senority_items: ["Trainee", "Jr", "Ssr", "Sr"],
       skills: "",
@@ -122,7 +112,7 @@ export default {
       const formData = {
         name: this.name,
         title: this.title,
-        role_name: this.role_name,
+        about: this.about,
         search_project: this.search_project,
         senority: this.senority,
         skills: this.skills,
@@ -145,6 +135,9 @@ h3 {
   color: #7e64ab;
   text-align: center;
   font-size: 30px;
+}
+.profile_form_container {
+  max-width: 95%;
 }
 
 .buttons {

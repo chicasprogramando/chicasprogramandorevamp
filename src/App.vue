@@ -3,7 +3,7 @@
     <v-app id="inspire">
       <v-toolbar class="nav" flat>
         <v-toolbar-title class="mt-2">
-          <img class="logo" src="@/assets/logoOnly.png" alt="Logo">
+          <img class="logo" src="@/assets/logoOnly.png" alt="Logo" />
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
@@ -32,9 +32,7 @@ export default {
     return {
       menuItems: [
         { title: "Home", link: "/" },
-        { title: "Proyectos", link: "/projects" },
         { title: "Comunidad", link: "/community" },
-        { title: "Eventos", link: "/events" },
         { title: "Contacto", link: "/contact" },
         { title: "Login", link: "/login" }
       ]
