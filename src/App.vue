@@ -32,9 +32,7 @@ export default {
     return {
       menuItems: [
         { title: "Home", link: "/" },
-        { title: "Proyectos", link: "/projects" },
         { title: "Comunidad", link: "/profiles" },
-        { title: "Eventos", link: "/events" },
         { title: "Contacto", link: "/contact" },
         { title: "Login", link: "/login" }
       ]

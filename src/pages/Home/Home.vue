@@ -43,7 +43,8 @@
             <p
               class="skw-page__description mb-4"
             >Queremos visibilizar emprendimientos que tengan al menos a una mujer o programadorx no binarie. Podés buscar por nombre del proyecto, por lenguaje o por programadorx.</p>
-            <v-btn round class="botones" to="/projects" flat>Ir a Proyectos</v-btn>
+            <p class="skw-page__description mb-4">(Próximamente)</p>
+            <v-btn round class="botones" to="/projects" flat disabled>Ir a Proyectos</v-btn>
           </div>
         </div>
       </div>
@@ -79,7 +80,8 @@
             <p
               class="skw-page__description mb-4"
             >Aquí vas a enterarte de qué se está haciendo, en dónde, cuándo y cómo sumarte.</p>
-            <v-btn round flat class="botones" to="/eventos">Próximas fechas</v-btn>
+            <p class="skw-page__description mb-4">(Próximamente)</p>
+            <v-btn round flat class="botones" to="/eventos" disabled>Próximas fechas</v-btn>
           </div>
         </div>
       </div>
@@ -343,21 +345,6 @@ body {
   color: white;
   border-radius: 500px;
 }
-
-/*
-.botones:hover{
-  border: none;
-  color: #7e64ab;
-  background-color: white;
-} 
-
-.botones1{
-  width: 25vh;
-  height: 8vh;
-  font-size: 1.5rem;
-  text-transform: none;
-  color: #7e64ab; 
-} */
 
 .animar-enter-active {
   transition: all 2s ease;
