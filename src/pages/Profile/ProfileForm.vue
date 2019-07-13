@@ -45,7 +45,7 @@
           <v-text-field v-model="skills" label="Qué tecnologías manejas?" color="purple"></v-text-field>
         </v-flex>
         <v-flex xs12>
-          <v-text-field v-model="about" label="Contanos algo sobre vos" color="purple"></v-text-field>
+          <v-text-field v-model="about_me" label="Contanos algo sobre vos" color="purple"></v-text-field>
         </v-flex>
         <v-flex xs12>
           <v-text-field v-model="github" label="GitHub" color="purple"></v-text-field>
@@ -88,7 +88,7 @@ export default {
       campoRequeridoRules: campoRequeridoRules,
       name: "",
       title: "",
-      about: "",
+      about_me: "",
       title_items: [
         "Front End Dev",
         "Back End Dev",
@@ -112,7 +112,7 @@ export default {
       const formData = {
         name: this.name,
         title: this.title,
-        about: this.about,
+        about_me: this.about_me,
         search_project: this.search_project,
         senority: this.senority,
         skills: this.skills,

@@ -4,7 +4,7 @@
       <v-flex xs12 md6>
         <v-card color="deep-purple lighten-2" class="white--text">
           <v-card-media height="350px">
-            <img :src="require('@/assets/compu.jpeg')">
+            <img :src="require('@/assets/compu.jpeg')" />
           </v-card-media>
           <v-layout>
             <v-flex xs12>
@@ -20,10 +20,6 @@
             <v-flex xs12>
               <v-card-text>
                 <p class="about__text">
-                  <span>Rol en la comunidad:</span>
-                  {{ userProfile.role_name }}
-                </p>
-                <p class="about__text">
                   <span>Busco Proyecto:</span>
                   {{ userProfile.search_project }}
                 </p>
@@ -35,13 +31,17 @@
                   <span>Tecnologías:</span>
                   {{ userProfile.skills }}
                 </p>
+                <p class="about__text">
+                  <span>Algo sobre mi:</span>
+                  {{ userProfile.about_me }}
+                </p>
               </v-card-text>
             </v-flex>
           </v-layout>
         </v-card>
       </v-flex>
       <v-flex xs12 md6>
-        <ProfileForm/>
+        <ProfileForm />
       </v-flex>
     </v-layout>
   </v-container>
