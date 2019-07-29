@@ -1,5 +1,4 @@
-import axios from 'axios'
-const _profiles = [
+export const profiles = [
   {
     id: 1,
     name: 'Puri Bey',
@@ -10,23 +9,10 @@ const _profiles = [
     senority: 'Jr',
     skills: 'Html5, Css3, Javascript, Vue.js, Bootstrap, React.js',
     about_me: 's,cmvn slvknfjc slvknvsdvmnc dklnvsdn sdvn sdjvnj skdjvn',
-    redes: {
-      linkedin: 'https://ar.linkedin.com/',
-      github: 'https://github.com/',
-      twitter: 'https://twitter.com'
-    },
+    linkedin: 'https://ar.linkedin.com/',
+    github: 'https://github.com/',
+    twitter: 'https://twitter.com',
     created_at: '2018-10-17T21:27:58.810Z',
     updated_at: '2018-10-17T21:27:58.810Z'
   }
 ]
-
-export default {
-  getProfiles(cb) {
-    axios
-      .get('https://api-chicas-programando.herokuapp.com/api/users')
-      .then(function(res) {
-        cb(res.data)
-      })
-      .catch(error => console.log(error))
-  }
-}

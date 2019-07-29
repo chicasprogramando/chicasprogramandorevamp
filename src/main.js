@@ -6,7 +6,7 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Jquery from 'jquery'
-global.Jquery = Jquery 
+global.Jquery = Jquery
 global.$ = Jquery
 //tmb podria ser let $ = jQuery
 import { store } from './store'
