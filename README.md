@@ -1,23 +1,51 @@
-# chicas-programando 
+# Chicas Programando
 
-> New website from chicas programando 
+> Esta plataforma fue creada para pormover los perfiles de mujeres en tecnología. Nuestro stack se conforma de Vue.js para el front-end y Ruby on Rails para el back-end.
 
-## Build Setup
+# Documentación
+Acá dejamos algunos datos útiles para el área de desarrollo de la plataforma.
 
-``` bash
-# install dependencies
-npm install
+### router.beforeEach Explanation
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
+router.beforeEach((to, from, next) => {
+  // Allow finishing callback url for logging in
+  if (to.matched.some(record => record.path == "/callback")) {
+    Store.dispatch("auth0HandleAuthentication");
+    next(false);
+  }
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+  // check if user is logged in (start assuming the user is not logged in = false)
+  let routerAuthCheck = false;
+  // Verify all the proper access variables are present for proper authorization
+  if (
+    localStorage.getItem("access_token") &&
+    localStorage.getItem("id_token") &&
+    localStorage.getItem("expires_at")
+  ) {
+    // Check whether the current time is past the Access Token's expiry time
+    let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+    // set localAuthTokenCheck true if unexpired / false if expired
+    routerAuthCheck = new Date().getTime() < expiresAt;
+  }
 
-*****
+  // set global ui understanding of authentication
+  Store.commit("setUserIsAuthenticated", routerAuthCheck);
+
+  // check if the route to be accessed requires authorizaton
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // Check if user is Authenticated
+    if (routerAuthCheck) {
+      // user is Authenticated - allow access
+      next();
+    } else {
+      // user is not authenticated - redirect to login
+      router.replace("/login");
+    }
+  }
+  // Allow page to load
+  else {
+    next();
+  }
+});
+```

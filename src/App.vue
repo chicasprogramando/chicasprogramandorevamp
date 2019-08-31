@@ -1,42 +1,52 @@
 <template>
-  <div id="app">
-    <v-app id="inspire">
-      <v-toolbar class="nav" flat>
-        <v-toolbar-title class="mt-2">
-          <img class="logo" src="@/assets/logoOnly.png" alt="Logo" />
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-btn
-            flat
-            v-for="item in menuItems"
-            :key="item.title"
-            :to="item.link"
-            class="deep-purple--text lighten-1"
-          >{{ item.title }}</v-btn>
-        </v-toolbar-items>
-      </v-toolbar>
-      <main>
-        <v-slide-x-transition mode="out-in">
-          <router-view></router-view>
-        </v-slide-x-transition>
-      </main>
-    </v-app>
-  </div>
+  <v-app>
+    <v-app-bar app flat>
+      <v-toolbar-title class="headline text-uppercase">
+        <v-img :src="require('./assets/logoOnly.png')" class="logo" contain height="100"></v-img>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.link"
+          class="deep-purple--text lighten-1 menu-btn"
+        >{{ item.title }}</v-btn>
+        <v-btn to="/login"
+          class="deep-purple--text lighten-1 menu-btn" v-if="!this.$store.state.userIsAuthorized">Login</v-btn>
+        <v-btn
+          class="deep-purple--text lighten-1 menu-btn" to="/profile" v-if="this.$store.state.userIsAuthorized">Profile</v-btn>
+        <v-btn
+          class="deep-purple--text lighten-1 menu-btn" @click="logout" v-if="this.$store.state.userIsAuthorized">Logout</v-btn>
+      </v-toolbar-items>
+    </v-app-bar>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
+
+
 export default {
   name: "App",
-  data() {
-    return {
-      menuItems: [
-        { title: "Home", link: "/" },
-        { title: "Comunidad", link: "/community" },
-        { title: "Contacto", link: "/contact" },
-        { title: "Login", link: "/login" }
-      ]
-    };
+  components: {
+
+  },
+  data: () => ({
+    menuItems: [
+      { title: "Home", link: "/" },
+      { title: "Comunidad", link: "/community" },
+      { title: "Contacto", link: "/contact" },
+    ],
+    clientId: process.env.VUE_APP_AUTH0_CONFIG_DOMAIN
+  }),
+  methods: {
+    logout(){
+      this.$store.dispatch('auth0Logout');
+      console.log("logout")
+    }
   }
 };
 </script>
@@ -66,19 +76,44 @@ h4 {
 .logo {
   width: 100px;
 }
+.menu-btn.v-btn--contained{
+  box-shadow: none;
+}
 .main-link {
   color: #7e64ab;
 }
-
-.page-enter-active,
-.page-leave-active {
-  transition: all 1s ease-out;
-}
-
-.page-enter,
-.page-leave-active {
-  opacity: 0;
-  transform: scale(0.95);
-  transform-origin: 200% 50%;
+.purple__colorbg {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: rgb(125, 99, 171);
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(125, 99, 171, 0.8),
+    rgba(166, 134, 216, 0.8)
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(125, 99, 171, 0.8),
+    rgb(166, 134, 216, 0.8)
+  );
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(125, 99, 171, 0.8),
+    rgb(166, 134, 216, 0.8)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(125, 91, 171, 0.8),
+    rgb(166, 134, 216, 0.8)
+  );
 }
 </style>
+
