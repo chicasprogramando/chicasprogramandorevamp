@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import auth0 from "auth0-js";
 import router from "./router";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
       redirectUri: process.env.VUE_APP_DOMAINURL + "/callback",
       responseType: process.env.VUE_APP_AUTH0_CONFIG_RESPONSETYPE,
       scope: process.env.VUE_APP_AUTH0_CONFIG_SCOPE
-    })
+    }),
+    user: {}
   },
   mutations: {
     setUserIsAuthenticated(state, replacement) {
@@ -41,8 +43,7 @@ export default new Vuex.Store({
             err,
             user
           ) {
-            // eslint-disable-next-line
-            console.log(user);
+            context.dispatch("getUser", user);
           });
         } else if (err) {
           alert("login failed. Error #KJN838");
@@ -58,6 +59,47 @@ export default new Vuex.Store({
       localStorage.removeItem("expires_at");
 
       window.location.reload();
+    },
+    getUser(context, payload) {
+      const { name, nickname, email, sub, given_name } = payload;
+      // eslint-disable-next-line
+      console.log("getUSer", payload);
+      axios
+        .get(
+          `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/${sub}`
+        )
+        .then(res => {
+          // eslint-disable-next-line
+          console.log(res);
+        })
+        .catch(e => {
+          const { status } = e.response;
+          if (status === 404) {
+            context.dispatch("createUser", {
+              user_name: nickname || name || given_name,
+              auth_sub: sub,
+              email: email
+            });
+          } else {
+            // eslint-disable-next-line
+            console.log(e);
+          }
+        });
+    },
+    createUser(context, payload) {
+      axios
+        .post(
+          `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/`,
+          payload
+        )
+        .then(res => {
+          // eslint-disable-next-line
+          console.log(res);
+        })
+        .catch(e => {
+          // eslint-disable-next-line
+          console.log(e);
+        });
     }
   }
 });
