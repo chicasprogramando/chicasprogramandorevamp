@@ -7,6 +7,7 @@ import Profile from "./views/Profile/Profile.vue";
 import Login from "./views/Login/Login.vue";
 import AuthCallBack from "./views/Others/AuthCallBack.vue";
 import PageNotFound from "./views/Others/PageNotFound.vue";
+import Terms from "./views/Terms/Terms.vue";
 import Store from "./store";
 
 Vue.use(Router);
@@ -40,6 +41,12 @@ const router = new Router({
       path: "/callback",
       name: "AuthCallBack",
       component: AuthCallBack
+    },
+    {
+      path: "/terms",
+      name: "Terms",
+      component: Terms,
+      meta: { requiresAuth: true }
     },
     {
       path: "*",

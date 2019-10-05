@@ -9,7 +9,7 @@
           <p class="login__text">Quiero unirme a esta comunidad</p>
           </div>
         <v-card-actions>
-          <v-btn dark rounded color="deep-purple lighten-1" class="login__btn" @click="auth0Login()">Login</v-btn>
+          <v-btn dark rounded color="deep-purple lighten-1" class="login__btn" @click="auth0Login()">Login / Sign Up</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>

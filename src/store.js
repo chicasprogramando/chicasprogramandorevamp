@@ -21,6 +21,11 @@ export default new Vuex.Store({
   mutations: {
     setUserIsAuthenticated(state, replacement) {
       state.userIsAuthorized = replacement;
+    },
+    setUserInfo(state, user) {
+      // eslint-disable-next-line
+      console.log('setUserInfo', user);
+      state.user = user;
     }
   },
   actions: {
@@ -38,7 +43,7 @@ export default new Vuex.Store({
           localStorage.setItem("id_token", authResult.idToken);
           localStorage.setItem("expires_at", expiresAt);
 
-          router.replace("/profile");
+          // router.replace("/profile");
           context.state.auth0.client.userInfo(authResult.accessToken, function(
             err,
             user
@@ -62,15 +67,22 @@ export default new Vuex.Store({
     },
     getUser(context, payload) {
       const { name, nickname, email, sub, given_name } = payload;
-      // eslint-disable-next-line
-      console.log("getUSer", payload);
       axios
         .get(
           `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/${sub}`
         )
         .then(res => {
+          const {data} = res.data
           // eslint-disable-next-line
-          console.log(res);
+          console.log("getUSer", data);
+          context.commit('setUserInfo', data);
+          if(!data.accepted_terms) {
+            router.replace("/terms");
+          } else if(!data.completed_profile) {
+            router.replace("/profile");
+          } else {
+            router.replace("/");
+          }
         })
         .catch(e => {
           const { status } = e.response;
@@ -83,10 +95,12 @@ export default new Vuex.Store({
           } else {
             // eslint-disable-next-line
             console.log(e);
+            
           }
         });
     },
     createUser(context, payload) {
+      console.log(payload)
       axios
         .post(
           `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/`,
@@ -95,11 +109,52 @@ export default new Vuex.Store({
         .then(res => {
           // eslint-disable-next-line
           console.log(res);
+          const {data} = res.data
+          // eslint-disable-next-line
+          console.log("getUSer", data);
+          context.commit('setUserInfo', data);
+          if(!data.accepted_terms) {
+            router.replace("/terms");
+          } else if(!data.completed_profile) {
+            router.replace("/profile");
+          } else {
+            router.replace("/");
+          }
+        })
+        .catch(e => {
+          // eslint-disable-next-line
+          console.log(e);
+        });
+    },
+    acceptedTerms(context, payload) {
+      // eslint-disable-next-line
+      console.log(payload)
+      const user = context.getters.getUserData;
+      axios
+        .put(
+          `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/${user.id}`,
+          payload
+        )
+        .then(res => {
+          // eslint-disable-next-line
+          console.log("acceptedTerms", res);
+          if(!user.completed_profile) {
+            router.replace("/profile");
+          } else {
+            router.replace("/");
+          }
         })
         .catch(e => {
           // eslint-disable-next-line
           console.log(e);
         });
     }
-  }
+  },
+  getters: {
+    getUserData: state => {
+      // eslint-disable-next-line
+      console.log("user", state.user);
+      return state.user;
+    }
+}
 });

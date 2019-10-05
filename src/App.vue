@@ -13,7 +13,7 @@
           class="deep-purple--text lighten-1 menu-btn"
         >{{ item.title }}</v-btn>
         <v-btn to="/login"
-          class="deep-purple--text lighten-1 menu-btn" v-if="!this.$store.state.userIsAuthorized">Login</v-btn>
+          class="deep-purple--text lighten-1 menu-btn" v-if="!this.$store.state.userIsAuthorized">Login / Sign Up</v-btn>
         <v-btn
           class="deep-purple--text lighten-1 menu-btn" to="/profile" v-if="this.$store.state.userIsAuthorized">Profile</v-btn>
         <v-btn
@@ -45,7 +45,6 @@ export default {
   methods: {
     logout(){
       this.$store.dispatch('auth0Logout');
-      console.log("logout")
     }
   }
 };
