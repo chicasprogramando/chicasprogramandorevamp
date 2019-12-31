@@ -4,8 +4,10 @@
       <div xs12 sm5 offset-sm1 class="tarjeta">
         <div class="tarjeta__flex">
           <h2>HABLEMOS</h2>
-          <v-card-text class="texto">¿Tenés algo que contarnos? ¡Escribinos!</v-card-text>
-          <v-form v-model="valid" ref="form" >
+          <v-card-text class="texto"
+            >¿Tenés algo que contarnos? ¡Escribinos!</v-card-text
+          >
+          <v-form v-model="valid" ref="form">
             <v-text-field
               v-model="name"
               color="deep-purple"
@@ -44,38 +46,36 @@
                 color="deep-purple lighten-1"
                 dark
                 @click="submit"
-              >Enviar</v-btn>
+                >Enviar</v-btn
+              >
               <v-btn
                 dark
                 rounded
                 color="deep-purple lighten-1"
                 class="form_btns"
                 @click="clear"
-              >Limpiar</v-btn>
+                >Limpiar</v-btn
+              >
             </v-flex>
           </v-form>
-          <div class="tarjeta__redes">
-          </div>
+          <div class="tarjeta__redes"></div>
         </div>
       </div>
     </v-flex>
   </v-layout>
 </template>
-          
+
 <script>
-import axios from 'axios';
+// import axios from "axios";
 import {
   nombreRules,
   emailRules,
-  campoRequeridoRules,
-  descripcionRules
+  campoRequeridoRules
 } from "../../utils/validaciones";
 
 export default {
   name: "Contact",
-  components: {
-
-  },
+  components: {},
   data() {
     return {
       valid: false,
@@ -92,12 +92,12 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
-        axios.post("http://localhost:3000/api/contact", {
-          name: this.name,
-          email: this.mail,
-          descripcion: this.descriction,
-          message: this.message
-        });
+        // axios.post("http://localhost:3000/api/contact", {
+        //   name: this.name,
+        //   email: this.mail,
+        //   descripcion: this.descriction,
+        //   message: this.message
+        // });
       }
     },
     clear() {

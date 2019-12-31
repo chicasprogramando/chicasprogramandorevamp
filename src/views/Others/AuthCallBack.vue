@@ -1,9 +1,13 @@
-  <template>
+<template>
   <v-layout align-center justify-start class="welcome">
     <v-flex class="purple__colorbg">
       <v-card xs12 sm6 offset-sm3 class="welcome__card">
         <v-card-title primary-title>
-          <v-img :src="require('@/assets/logo200.png')" contain height="100"></v-img>
+          <v-img
+            :src="require('@/assets/logo200.png')"
+            contain
+            height="100"
+          ></v-img>
         </v-card-title>
         <v-card-actions>
           <p class="welcome_text">Te damos la Bienvenida!</p>
@@ -12,7 +16,7 @@
     </v-flex>
   </v-layout>
 </template>
-          
+
 <script>
 export default {
   name: "AuthCallBack",
@@ -31,8 +35,8 @@ export default {
 }
 
 .welcome__card {
-      width: 100%;
-    max-width: 500px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .welcome_text {
@@ -41,5 +45,4 @@ export default {
   margin: 0 auto;
   margin-bottom: 10px;
 }
-
 </style>

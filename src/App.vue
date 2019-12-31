@@ -2,7 +2,12 @@
   <v-app>
     <v-app-bar app flat>
       <v-toolbar-title class="headline text-uppercase">
-        <v-img :src="require('./assets/logoOnly.png')" class="logo" contain height="100"></v-img>
+        <v-img
+          :src="require('./assets/logoOnly.png')"
+          class="logo"
+          contain
+          height="100"
+        ></v-img>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
@@ -11,13 +16,30 @@
           :key="item.title"
           :to="item.link"
           class="deep-purple--text lighten-1 menu-btn"
-        >{{ item.title }}</v-btn>
-        <v-btn to="/login"
-          class="deep-purple--text lighten-1 menu-btn" v-if="!this.$store.state.userIsAuthorized">Login / Sign Up</v-btn>
+        >
+          {{ item.title }}
+        </v-btn>
         <v-btn
-          class="deep-purple--text lighten-1 menu-btn" to="/profile" v-if="this.$store.state.userIsAuthorized">Profile</v-btn>
+          to="/login"
+          class="deep-purple--text lighten-1 menu-btn"
+          v-if="!this.$store.state.userIsAuthorized"
+        >
+          Login / Sign Up
+        </v-btn>
         <v-btn
-          class="deep-purple--text lighten-1 menu-btn" @click="logout" v-if="this.$store.state.userIsAuthorized">Logout</v-btn>
+          class="deep-purple--text lighten-1 menu-btn"
+          to="/profile"
+          v-if="this.$store.state.userIsAuthorized"
+        >
+          Profile
+        </v-btn>
+        <v-btn
+          class="deep-purple--text lighten-1 menu-btn"
+          @click="logout"
+          v-if="this.$store.state.userIsAuthorized"
+        >
+          Logout
+        </v-btn>
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
@@ -25,26 +47,21 @@
     </v-content>
   </v-app>
 </template>
-
 <script>
-
-
 export default {
   name: "App",
-  components: {
-
-  },
+  components: {},
   data: () => ({
     menuItems: [
       { title: "Home", link: "/" },
       { title: "Comunidad", link: "/community" },
-      { title: "Contacto", link: "/contact" },
+      { title: "Contacto", link: "/contact" }
     ],
     clientId: process.env.VUE_APP_AUTH0_CONFIG_DOMAIN
   }),
   methods: {
-    logout(){
-      this.$store.dispatch('auth0Logout');
+    logout() {
+      this.$store.dispatch("auth0Logout");
     }
   }
 };
@@ -75,7 +92,7 @@ h4 {
 .logo {
   width: 100px;
 }
-.menu-btn.v-btn--contained{
+.menu-btn.v-btn--contained {
   box-shadow: none;
 }
 .main-link {
@@ -115,4 +132,3 @@ h4 {
   );
 }
 </style>
-

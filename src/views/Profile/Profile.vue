@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs12 md6>
         <v-card color="deep-purple lighten-2" class="white--text">
-            <v-img :src="require('@/assets/compu.jpeg')"></v-img>
+          <v-img :src="require('@/assets/compu.jpeg')"></v-img>
           <v-layout>
             <v-flex xs12>
               <v-card-title primary-title align>
@@ -54,10 +54,8 @@ export default {
     ProfileForm
   },
   data() {
-    return {
-      
-    };
-  },
+    return {};
+  }
 };
 </script>
 

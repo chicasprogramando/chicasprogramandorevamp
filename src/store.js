@@ -24,7 +24,7 @@ export default new Vuex.Store({
     },
     setUserInfo(state, user) {
       // eslint-disable-next-line
-      console.log('setUserInfo', user);
+      console.log("setUserInfo", user);
       state.user = user;
     }
   },
@@ -68,17 +68,15 @@ export default new Vuex.Store({
     getUser(context, payload) {
       const { name, nickname, email, sub, given_name } = payload;
       axios
-        .get(
-          `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/${sub}`
-        )
+        .get(`${process.env.VUE_APP_API_URL}/api/user/${sub}`)
         .then(res => {
-          const {data} = res.data
+          const { data } = res.data;
           // eslint-disable-next-line
           console.log("getUSer", data);
-          context.commit('setUserInfo', data);
-          if(!data.accepted_terms) {
+          context.commit("setUserInfo", data);
+          if (!data.accepted_terms) {
             router.replace("/terms");
-          } else if(!data.completed_profile) {
+          } else if (!data.completed_profile) {
             router.replace("/profile");
           } else {
             router.replace("/");
@@ -95,27 +93,22 @@ export default new Vuex.Store({
           } else {
             // eslint-disable-next-line
             console.log(e);
-            
           }
         });
     },
     createUser(context, payload) {
-      console.log(payload)
       axios
-        .post(
-          `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/`,
-          payload
-        )
+        .post(`${process.env.VUE_APP_API_URL}/api/user/`, payload)
         .then(res => {
           // eslint-disable-next-line
           console.log(res);
-          const {data} = res.data
+          const { data } = res.data;
           // eslint-disable-next-line
           console.log("getUSer", data);
-          context.commit('setUserInfo', data);
-          if(!data.accepted_terms) {
+          context.commit("setUserInfo", data);
+          if (!data.accepted_terms) {
             router.replace("/terms");
-          } else if(!data.completed_profile) {
+          } else if (!data.completed_profile) {
             router.replace("/profile");
           } else {
             router.replace("/");
@@ -127,18 +120,13 @@ export default new Vuex.Store({
         });
     },
     acceptedTerms(context, payload) {
-      // eslint-disable-next-line
-      console.log(payload)
       const user = context.getters.getUserData;
       axios
-        .put(
-          `https://plataforma-chicas-prog-staging.herokuapp.com/api/user/${user.id}`,
-          payload
-        )
+        .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
         .then(res => {
           // eslint-disable-next-line
           console.log("acceptedTerms", res);
-          if(!user.completed_profile) {
+          if (!user.completed_profile) {
             router.replace("/profile");
           } else {
             router.replace("/");
@@ -152,9 +140,7 @@ export default new Vuex.Store({
   },
   getters: {
     getUserData: state => {
-      // eslint-disable-next-line
-      console.log("user", state.user);
       return state.user;
     }
-}
+  }
 });

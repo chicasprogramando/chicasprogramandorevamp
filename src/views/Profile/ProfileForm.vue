@@ -1,5 +1,10 @@
 <template>
-  <v-form class="form" ref="form" v-model="valid" @submit.prevent="onUpdateProfile">
+  <v-form
+    class="form"
+    ref="form"
+    v-model="valid"
+    @submit.prevent="onUpdateProfile"
+  >
     <v-container grid-list-md class="profile_form_container">
       <v-layout wrap>
         <v-flex xs12>
@@ -42,19 +47,39 @@
           ></v-select>
         </v-flex>
         <v-flex xs12>
-          <v-text-field v-model="skills" label="Qué tecnologías manejas?" color="purple"></v-text-field>
+          <v-text-field
+            v-model="skills"
+            label="Qué tecnologías manejas?"
+            color="purple"
+          ></v-text-field>
         </v-flex>
         <v-flex xs12>
-          <v-text-field v-model="about_me" label="Contanos algo sobre vos" color="purple"></v-text-field>
+          <v-text-field
+            v-model="about_me"
+            label="Contanos algo sobre vos"
+            color="purple"
+          ></v-text-field>
         </v-flex>
         <v-flex xs12>
-          <v-text-field v-model="github" label="GitHub" color="purple"></v-text-field>
+          <v-text-field
+            v-model="github"
+            label="GitHub"
+            color="purple"
+          ></v-text-field>
         </v-flex>
         <v-flex xs12>
-          <v-text-field v-model="linkedin" label="LinkedIn" color="purple"></v-text-field>
+          <v-text-field
+            v-model="linkedin"
+            label="LinkedIn"
+            color="purple"
+          ></v-text-field>
         </v-flex>
         <v-flex xs12>
-          <v-text-field v-model="twitter" label="Twitter" color="purple"></v-text-field>
+          <v-text-field
+            v-model="twitter"
+            label="Twitter"
+            color="purple"
+          ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
@@ -65,14 +90,16 @@
         color="deep-purple lighten-1"
         class="buttons__single-btn"
         @click="clear"
-      >Cancelar</v-btn>
+        >Cancelar</v-btn
+      >
       <v-btn
         rounded
         color="deep-purple lighten-1"
         class="buttons__single-btn buttons__single-btn--white"
         type="submit"
         :disabled="!valid"
-      >Actualizar</v-btn>
+        >Actualizar</v-btn
+      >
     </v-flex>
   </v-form>
 </template>
