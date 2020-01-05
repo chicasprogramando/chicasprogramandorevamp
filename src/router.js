@@ -73,7 +73,7 @@ router.beforeEach((to, from, next) => {
     routerAuthCheck = new Date().getTime() < expiresAt;
   }
 
-  Store.commit("setUserIsAuthenticated", routerAuthCheck);
+  Store.commit("SET_USER_IS_AUTH", routerAuthCheck);
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (routerAuthCheck) {
