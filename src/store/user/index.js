@@ -13,6 +13,8 @@ const mutations = {
 const actions = {
   getUser(context, payload) {
     const { name, nickname, email, sub, given_name } = payload;
+    // eslint-disable-next-line
+    console.log("getUser payload", payload);
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/user/${sub}`)
       .then(res => {
@@ -28,6 +30,8 @@ const actions = {
       })
       .catch(e => {
         const { status } = e.response;
+        // eslint-disable-next-line
+        console.log("getUser error", status);
         if (status === 404) {
           context.dispatch("createUser", {
             user_name: nickname || name || given_name,
@@ -45,6 +49,8 @@ const actions = {
       .post(`${process.env.VUE_APP_API_URL}/api/user/`, payload)
       .then(res => {
         const { data } = res.data;
+        // eslint-disable-next-line
+        console.log("createUser data", data);
         context.commit("SET_USER_INFO", data);
         if (!data.accepted_terms) {
           router.replace("/terms");

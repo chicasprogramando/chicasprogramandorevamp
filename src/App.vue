@@ -22,21 +22,21 @@
         <v-btn
           to="/login"
           class="deep-purple--text lighten-1 menu-btn"
-          v-if="!this.$store.state.userIsAuthorized"
+          v-if="!this.$store.state.auth.userIsAuthorized"
         >
           Login / Sign Up
         </v-btn>
         <v-btn
           class="deep-purple--text lighten-1 menu-btn"
           to="/profile"
-          v-if="this.$store.state.userIsAuthorized"
+          v-if="this.$store.state.auth.userIsAuthorized"
         >
           Profile
         </v-btn>
         <v-btn
           class="deep-purple--text lighten-1 menu-btn"
           @click="logout"
-          v-if="this.$store.state.userIsAuthorized"
+          v-if="this.$store.state.auth.userIsAuthorized"
         >
           Logout
         </v-btn>
