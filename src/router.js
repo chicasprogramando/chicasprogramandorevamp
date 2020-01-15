@@ -6,7 +6,7 @@ import Contact from "./views/Contact/Contact.vue";
 import Profile from "./views/Profile/Profile.vue";
 import Login from "./views/Login/Login.vue";
 import AuthCallBack from "./views/Others/AuthCallBack.vue";
-import PageNotFound from "./views/Others/PageNotFound.vue";
+import ErrorPage from "./views/Others/ErrorPage.vue";
 import Terms from "./views/Terms/Terms.vue";
 import Store from "./store";
 
@@ -51,7 +51,12 @@ const router = new Router({
     {
       path: "*",
       name: "PageNotFound",
-      component: PageNotFound
+      component: ErrorPage
+    },
+    {
+      path: "/error",
+      name: "ErrorPage",
+      component: ErrorPage
     }
   ]
 });
