@@ -7,7 +7,7 @@ const state = {
 
 const mutations = {
   SET_USER_INFO(state, payload) {
-    state.user = payload;
+    state.user = { ...state.user, ...payload };
   }
 };
 const actions = {
@@ -21,8 +21,6 @@ const actions = {
       .then(res => {
         const { data } = res.data;
         context.commit("SET_USER_INFO", data);
-        // accepted terms and profile completion flow
-        context.dispatch("userAcceptanceFlow");
       })
       .catch(e => {
         const { status } = e.response;
@@ -53,10 +51,11 @@ const actions = {
       .catch(e => {
         const { message } = e.response.data;
         // eslint-disable-next-line
-        console.log(e.response)
+        console.log(e.response);
         localStorage.removeItem("access_token");
         localStorage.removeItem("id_token");
         localStorage.removeItem("expires_at");
+        localStorage.removeItem("sub");
 
         context.commit("SET_ERROR_MSJ", message);
         router.replace("/error");
@@ -67,8 +66,10 @@ const actions = {
     axios
       .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
       .then(res => {
+        const { data } = res.data;
         // eslint-disable-next-line
-        console.log("acceptedTerms", res);
+        console.log("acceptedTerms", data);
+        context.commit("SET_USER_INFO", data);
         if (!user.completed_profile) {
           router.replace("/profile");
         } else {

@@ -54,6 +54,7 @@ export default {
   data: () => ({
     menuItems: [
       { title: "Home", link: "/" },
+      { title: "Codigo de conducta", link: "/terms" },
       { title: "Comunidad", link: "/community" },
       { title: "Contacto", link: "/contact" }
     ],
@@ -62,6 +63,13 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("auth0Logout");
+    }
+  },
+  mounted() {
+    // every time someone enters the app we check for the sub to get the user info
+    const sub = localStorage.getItem("sub");
+    if (sub) {
+      this.$store.dispatch("getUser", { sub: sub });
     }
   }
 };

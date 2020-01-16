@@ -21,7 +21,7 @@ const actions = {
   auth0Login({ state }) {
     state.auth0.authorize();
   },
-  auth0HandleAuthentication({ dispatch, state }) {
+  auth0HandleAuthentication({ dispatch, state, commit }) {
     state.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         let expiresAt = JSON.stringify(
@@ -32,15 +32,17 @@ const actions = {
         localStorage.setItem("id_token", authResult.idToken);
         localStorage.setItem("expires_at", expiresAt);
 
-        // router.replace("/profile");
         state.auth0.client.userInfo(authResult.accessToken, function(
           err,
           user
         ) {
+          localStorage.setItem("sub", user.sub);
           dispatch("getUser", user);
+          commit("SET_USER_IS_AUTH", true);
         });
       } else if (err) {
-        alert("login failed. Error #KJN838");
+        // eslint-disable-next-line
+        console.log("login failed. Error #KJN838");
         router.replace("/login");
       }
     });
@@ -50,6 +52,7 @@ const actions = {
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    localStorage.removeItem("sub");
 
     // reload page
     window.location.reload();
