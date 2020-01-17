@@ -126,6 +126,10 @@
                   rounded
                   color="deep-purple lighten-1"
                   class="terms__btn"
+                  v-if="
+                    this.$store.state.auth.userIsAuthorized &&
+                      !this.$store.state.user.user.accepted_terms
+                  "
                   @click="acceptedTerms()"
                   >Acepto código de conducta</v-btn
                 >

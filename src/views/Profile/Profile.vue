@@ -47,6 +47,7 @@
 
 <script>
 import ProfileForm from "./ProfileForm";
+import router from "../../router";
 
 export default {
   name: "Profile",
@@ -55,6 +56,12 @@ export default {
   },
   data() {
     return {};
+  },
+  mounted() {
+    const acceptedTerms = this.$store.state.user.user.accepted_terms;
+    if (!acceptedTerms) {
+      router.replace("/terms");
+    }
   }
 };
 </script>
