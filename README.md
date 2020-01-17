@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // set global ui understanding of authentication
-  Store.commit("setUserIsAuthenticated", routerAuthCheck);
+  Store.commit("SET_USER_IS_AUTH", routerAuthCheck);
 
   // check if the route to be accessed requires authorizaton
   if (to.matched.some(record => record.meta.requiresAuth)) {

@@ -10,7 +10,12 @@
           ></v-img>
         </v-card-title>
         <v-card-actions>
-          <p class="error_text">404 - Esta ruta no existe</p>
+          <p class="error_text" v-if="!this.$store.state.errors.error">
+            404 - Esta ruta no existe
+          </p>
+          <p class="error_text" v-if="this.$store.state.errors.error">
+            {{ `Error - ${this.$store.state.errors.error}` }}
+          </p>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -19,8 +24,13 @@
 
 <script>
 export default {
-  name: "PageNotFound",
-  data: () => ({})
+  name: "ErrorPage",
+  data: () => ({}),
+  beforeDestroy() {
+    if (this.$store.state.errors.error) {
+      this.$store.dispatch("clearError");
+    }
+  }
 };
 </script>
 
