@@ -71,6 +71,7 @@ export default {
     if (sub) {
       this.$store.dispatch("getUser", { sub: sub });
     }
+    this.$store.dispatch("getSharedData");
   }
 };
 </script>
