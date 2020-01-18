@@ -45,7 +45,7 @@ const router = new Router({
     {
       path: "/terms",
       name: "Terms",
-      component: Terms,
+      component: Terms
     },
     {
       path: "*",
@@ -91,13 +91,16 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some(record => record.meta.requiresTerms)) {
     const user = Store.getters.getUserData;
-    if (user.accepted_terms) {
-      next();
+    // TODO: when refreshing the page in /profile user data comes undefined and redirects to /terms
+    if (user) {
+      if (user.accepted_terms) {
+        next();
+      } else {
+        Store.dispatch("userAcceptanceFlow");
+      }
     } else {
-      Store.dispatch("userAcceptanceFlow");
+      next();
     }
-  } else {
-    next();
   }
 });
 
