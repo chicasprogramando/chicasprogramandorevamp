@@ -19,6 +19,9 @@ const actions = {
       .then(res => {
         const { data } = res.data;
         context.commit("SET_USER_INFO", data);
+        if (data.profile) {
+          context.dispatch("getProfile");
+        }
       })
       .catch(e => {
         const { status } = e.response;

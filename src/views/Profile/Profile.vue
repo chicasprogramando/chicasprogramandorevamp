@@ -10,13 +10,12 @@
                 <div class="header-container">
                   <span class="headline">{{ user.user_name }}</span>
                   <v-btn
-                    class="ma-2"
+                    class="ml-3"
                     color="deep-purple lighten-1"
                     dark
                     @click="toggleIsEditingName"
                   >
-                    <v-icon class="mr-1" medium>edit</v-icon>
-                    Editar nombre
+                    <v-icon medium>edit</v-icon>
                   </v-btn>
                 </div>
               </v-card-title>
@@ -53,7 +52,7 @@
         </v-form>
       </v-flex>
       <v-flex xs12 md6>
-        <ProfileForm />
+        <ProfileForm :user="user" />
       </v-flex>
     </v-layout>
   </v-container>
@@ -69,7 +68,6 @@ export default {
   },
   data() {
     return {
-      userId: "",
       user_name: "",
       isEditingName: false
     };

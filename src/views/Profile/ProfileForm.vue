@@ -78,6 +78,16 @@
         class="buttons__single-btn buttons__single-btn--white"
         type="submit"
         :disabled="!valid"
+        v-if="!user.profile"
+        >Finalizar Perfil</v-btn
+      >
+      <v-btn
+        rounded
+        color="deep-purple lighten-1"
+        class="buttons__single-btn buttons__single-btn--white"
+        type="submit"
+        :disabled="!valid"
+        v-if="user.profile"
         >Actualizar</v-btn
       >
     </v-flex>
@@ -89,6 +99,11 @@ import { campoRequeridoRules } from "../../utils/validaciones.js";
 
 export default {
   name: "ProfileForm",
+  props: {
+    user: {
+      type: Object
+    }
+  },
   data() {
     return {
       valid: false,
@@ -103,6 +118,26 @@ export default {
   },
   methods: {
     onUpdateProfile() {
+      const specialties = this.selectedSpecialties.map(specialty => {
+        return { id: specialty.value, description: specialty.text };
+      });
+      const skills = this.selectedSkills.map(skill => {
+        return { id: skill.value, description: skill.text };
+      });
+      const formData = {
+        image_path: this.image_path,
+        linkedin: this.linkedin,
+        github: this.github,
+        twitter: this.twitter,
+        specialties: specialties,
+        skills: skills
+      };
+
+      if (this.user.profile) {
+        this.$store.dispatch("updateProfile", formData);
+      } else {
+        this.$store.dispatch("createProfile", formData);
+      }
       this.$refs.form.reset();
     },
     clear() {
