@@ -3,23 +3,41 @@
     <v-layout>
       <v-flex xs12 md6>
         <v-card color="deep-purple lighten-2" class="white--text">
-          <v-img :src="require('@/assets/compu.jpeg')"></v-img>
+          <v-img
+            :src="require('@/assets/compu.jpeg')"
+            v-if="!profile.image_path"
+          ></v-img>
+          <v-img :src="profile.image_path" v-if="profile.image_path"></v-img>
           <v-layout>
             <v-flex xs12>
               <v-card-title primary-title>
                 <div class="header-container">
-                  <span class="headline">{{ user.user_name }}</span>
+                  <h1 class="headline">{{ user.user_name }}</h1>
                   <v-btn
-                    class="ml-3"
+                    class="ma-2"
                     color="deep-purple lighten-1"
                     dark
                     @click="toggleIsEditingName"
                   >
-                    <v-icon medium>edit</v-icon>
+                    <v-icon class="mr-1" medium>edit</v-icon>
+                    Editar nombre
                   </v-btn>
                 </div>
               </v-card-title>
             </v-flex>
+          </v-layout>
+          <v-layout>
+            <v-card-text>
+              <p class="about__text white--text" v-if="profile.github">
+                <span>Github: </span>{{ profile.github }}
+              </p>
+              <p class="about__text white--text" v-if="profile.linkedin">
+                <span>LinkedIn: </span>{{ profile.linkedin }}
+              </p>
+              <p class="about__text white--text" v-if="profile.twitter">
+                <span>Twitter: </span>{{ profile.twitter }}
+              </p>
+            </v-card-text>
           </v-layout>
         </v-card>
         <v-form
@@ -75,6 +93,9 @@ export default {
   computed: {
     user() {
       return this.$store.getters["getUserData"];
+    },
+    profile() {
+      return this.$store.getters["getProfileData"];
     }
   },
   methods: {
@@ -101,6 +122,9 @@ export default {
 }
 .sub-headline {
   font-size: 20px;
+}
+.about__text {
+  margin: 0;
 }
 .about__text span {
   font-weight: 500;

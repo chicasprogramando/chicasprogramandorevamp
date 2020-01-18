@@ -172,7 +172,6 @@ h3 {
 .profile_form_container {
   max-width: 95%;
 }
-
 .buttons {
   display: flex;
   justify-content: center;
