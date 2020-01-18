@@ -13,8 +13,6 @@ const mutations = {
 const actions = {
   getUser(context, payload) {
     const { name, nickname, email, sub, given_name } = payload;
-    // eslint-disable-next-line
-    console.log("getUser payload", payload);
     // gets user using auth0 sub
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/user/${sub}`)
@@ -24,8 +22,6 @@ const actions = {
       })
       .catch(e => {
         const { status } = e.response;
-        // eslint-disable-next-line
-        console.log("getUser error", status);
         // as user doesn't exist we need to create one
         if (status === 404) {
           context.dispatch("createUser", {
@@ -50,8 +46,6 @@ const actions = {
       })
       .catch(e => {
         const { message } = e.response.data;
-        // eslint-disable-next-line
-        console.log(e.response);
         localStorage.removeItem("access_token");
         localStorage.removeItem("id_token");
         localStorage.removeItem("expires_at");
@@ -67,8 +61,6 @@ const actions = {
       .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
       .then(res => {
         const { data } = res.data;
-        // eslint-disable-next-line
-        console.log("acceptedTerms", data);
         context.commit("SET_USER_INFO", data);
         if (!user.completed_profile) {
           router.replace("/profile");
@@ -90,6 +82,19 @@ const actions = {
     } else {
       router.replace("/");
     }
+  },
+  updateUserName(context, payload) {
+    const user = context.getters.getUserData;
+    axios
+      .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
+      .then(res => {
+        const { data } = res.data;
+        context.commit("SET_USER_INFO", data);
+      })
+      .catch(e => {
+        // eslint-disable-next-line
+        console.log(e);
+      });
   }
 };
 const getters = {

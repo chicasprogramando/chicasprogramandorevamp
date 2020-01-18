@@ -6,37 +6,51 @@
           <v-img :src="require('@/assets/compu.jpeg')"></v-img>
           <v-layout>
             <v-flex xs12>
-              <v-card-title primary-title align>
+              <v-card-title primary-title>
                 <div class="header-container">
-                  <h2 class="headline">Hardcoded name</h2>
-                  <h3 class="sub-headline">Hardcoded title</h3>
+                  <span class="headline">{{ user.user_name }}</span>
+                  <v-btn
+                    class="ma-2"
+                    color="deep-purple lighten-1"
+                    dark
+                    @click="toggleIsEditingName"
+                  >
+                    <v-icon class="mr-1" medium>edit</v-icon>
+                    Editar nombre
+                  </v-btn>
                 </div>
               </v-card-title>
             </v-flex>
           </v-layout>
-          <v-layout>
-            <v-flex xs12>
-              <v-card-text>
-                <p class="about__text">
-                  <span>Busco Proyecto:</span>
-                  Si
-                </p>
-                <p class="about__text">
-                  <span>Experiencia:</span>
-                  Sr
-                </p>
-                <p class="about__text">
-                  <span>Tecnologías:</span>
-                  HTML
-                </p>
-                <p class="about__text">
-                  <span>Algo sobre mi:</span>
-                  Hello world
-                </p>
-              </v-card-text>
-            </v-flex>
-          </v-layout>
         </v-card>
+        <v-form
+          class="form"
+          ref="form"
+          @submit.prevent="onUpdateUserName"
+          v-if="this.isEditingName"
+        >
+          <v-container grid-list-md fluid>
+            <v-layout class="align-center">
+              <v-flex md9>
+                <v-text-field
+                  v-model="user_name"
+                  :placeholder="user.user_name"
+                  color="purple"
+                ></v-text-field>
+              </v-flex>
+              <v-flex md3>
+                <v-btn
+                  rounded
+                  color="deep-purple lighten-1"
+                  class="buttons__single-btn buttons__single-btn--white"
+                  type="submit"
+                  dark
+                  >Guardar</v-btn
+                >
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-form>
       </v-flex>
       <v-flex xs12 md6>
         <ProfileForm />
@@ -47,7 +61,6 @@
 
 <script>
 import ProfileForm from "./ProfileForm";
-import router from "../../router";
 
 export default {
   name: "Profile",
@@ -55,12 +68,24 @@ export default {
     ProfileForm
   },
   data() {
-    return {};
+    return {
+      userId: "",
+      user_name: "",
+      isEditingName: false
+    };
   },
-  mounted() {
-    const acceptedTerms = this.$store.state.user.user.accepted_terms;
-    if (!acceptedTerms) {
-      router.replace("/terms");
+  computed: {
+    user() {
+      return this.$store.getters["getUserData"];
+    }
+  },
+  methods: {
+    toggleIsEditingName() {
+      this.isEditingName = !this.isEditingName;
+    },
+    onUpdateUserName() {
+      this.$store.dispatch("updateUserName", { user_name: this.user_name });
+      this.isEditingName = false;
     }
   }
 };

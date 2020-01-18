@@ -8,76 +8,56 @@
     <v-container grid-list-md class="profile_form_container">
       <v-layout wrap>
         <v-flex xs12>
-          <v-text-field
-            v-model="name"
-            :rules="campoRequeridoRules"
-            label="Nombre Completo"
+          <v-autocomplete
+            v-model="selectedSpecialties"
+            :items="specialties"
+            label="Especialidades"
+            placeholder="Buscá tus especialidades"
+            return-object
+            chips
+            deletable-chips
+            multiple
             color="purple"
-            required
-          ></v-text-field>
+          ></v-autocomplete>
         </v-flex>
         <v-flex xs12>
-          <v-select
-            v-model="title"
-            :rules="campoRequeridoRules"
-            label="Especialidad"
-            color="purple"
-            :items="title_items"
-            required
-          ></v-select>
-        </v-flex>
-        <v-flex xs12>
-          <v-select
-            class="text-field"
-            color="purple"
-            v-model="search_project"
-            label="Buscando proyectos?"
-            :items="items_search_project"
-            required
-          ></v-select>
-        </v-flex>
-        <v-flex xs12>
-          <v-select
-            class="text-field"
-            color="purple"
-            v-model="senority"
-            label="Seniority"
-            :items="senority_items"
-            required
-          ></v-select>
-        </v-flex>
-        <v-flex xs12>
-          <v-text-field
-            v-model="skills"
+          <v-autocomplete
+            v-model="selectedSkills"
+            :items="skills"
             label="Qué tecnologías manejas?"
+            placeholder="Buscá tus skills"
+            return-object
+            chips
+            deletable-chips
+            multiple
             color="purple"
-          ></v-text-field>
+          ></v-autocomplete>
         </v-flex>
         <v-flex xs12>
           <v-text-field
-            v-model="about_me"
-            label="Contanos algo sobre vos"
+            v-model="image_path"
+            label="Url de imagen para el perfil"
             color="purple"
           ></v-text-field>
         </v-flex>
         <v-flex xs12>
           <v-text-field
             v-model="github"
-            label="GitHub"
+            label="GitHub link"
             color="purple"
           ></v-text-field>
         </v-flex>
         <v-flex xs12>
           <v-text-field
             v-model="linkedin"
-            label="LinkedIn"
+            label="LinkedIn link"
             color="purple"
           ></v-text-field>
         </v-flex>
         <v-flex xs12>
           <v-text-field
             v-model="twitter"
-            label="Twitter"
+            label="Twitter link"
             color="purple"
           ></v-text-field>
         </v-flex>
@@ -113,45 +93,36 @@ export default {
     return {
       valid: false,
       campoRequeridoRules: campoRequeridoRules,
-      name: "",
-      title: "",
-      about_me: "",
-      title_items: [
-        "Front End Dev",
-        "Back End Dev",
-        "Full Stack Dev",
-        "QA",
-        "Seguridad Informática",
-        "UX/UI"
-      ],
-      search_project: "",
-      items_search_project: ["Sí", "No"],
-      senority: "",
-      senority_items: ["Trainee", "Jr", "Ssr", "Sr"],
-      skills: "",
-      linkedin: "",
-      github: "",
-      twitter: ""
+      image_path: null,
+      linkedin: null,
+      github: null,
+      twitter: null,
+      selectedSpecialties: [],
+      selectedSkills: []
     };
   },
   methods: {
     onUpdateProfile() {
-      const formData = {
-        name: this.name,
-        title: this.title,
-        about_me: this.about_me,
-        search_project: this.search_project,
-        senority: this.senority,
-        skills: this.skills,
-        linkedin: this.linkedin,
-        github: this.github,
-        twitter: this.twitter
-      };
-      this.$store.dispatch("profiles/updateUserProfile", formData);
       this.$refs.form.reset();
     },
     clear() {
       this.$refs.form.reset();
+    }
+  },
+  computed: {
+    skills() {
+      const skills = this.$store.getters["getSkillsList"];
+      const formatedSkills = skills.map(skill => {
+        return { text: skill.description, value: skill.id };
+      });
+      return formatedSkills;
+    },
+    specialties() {
+      const specialties = this.$store.getters["getSpecialtiesList"];
+      const formatedSpecialties = specialties.map(specialty => {
+        return { text: specialty.description, value: specialty.id };
+      });
+      return formatedSpecialties;
     }
   }
 };
