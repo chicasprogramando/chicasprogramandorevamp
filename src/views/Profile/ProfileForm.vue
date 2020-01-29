@@ -1,34 +1,18 @@
 <template>
   <div>
-    <v-container grid-list-md class="profile_form_container">
-      <v-form class="form" ref="form" @submit.prevent="onUpdateUserName">
-        <v-layout class="align-center">
-          <v-flex md9>
-            <v-text-field
-              label="Nombre de usuario"
-              v-model="user_name"
-              color="purple"
-            ></v-text-field>
-          </v-flex>
-          <v-flex md3>
-            <v-btn
-              rounded
-              color="deep-purple lighten-1"
-              class="buttons__single-btn buttons__single-btn--white"
-              type="submit"
-              dark
-              >Guardar</v-btn
-            >
-          </v-flex>
-        </v-layout>
-      </v-form>
-    </v-container>
     <v-form class="form" ref="form" @submit.prevent="onUpdateProfile">
       <v-container grid-list-md class="profile_form_container">
         <v-layout wrap>
           <v-flex xs12>
+            <v-text-field
+              label="Nombre"
+              color="purple"
+              v-model="name"
+            ></v-text-field>
+          </v-flex>
+          <v-flex xs12>
             <v-autocomplete
-              v-model="stateProfile.specialty"
+              v-model="selectedSpecialties"
               :items="specialties"
               label="Especialidades"
               placeholder="Buscá tus especialidades"
@@ -41,7 +25,7 @@
           </v-flex>
           <v-flex xs12>
             <v-autocomplete
-              v-model="stateProfile.skill"
+              v-model="selectedSkills"
               :items="skills"
               label="Qué tecnologías manejas?"
               placeholder="Buscá tus skills"
@@ -54,30 +38,30 @@
           </v-flex>
           <v-flex xs12>
             <v-text-field
-              v-model="stateProfile.image_path"
+              v-model="image_path"
               label="Url de imagen para el perfil"
               color="purple"
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
             <v-text-field
-              v-model="stateProfile.github"
+              v-model="github"
               label="GitHub link"
               color="purple"
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
             <v-text-field
-              v-model="stateProfile.linkedin"
+              v-model="linkedin"
               label="LinkedIn link"
               color="purple"
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
             <v-text-field
-              v-model="stateProfile.twitter"
               label="Twitter link"
               color="purple"
+              v-model="twitter"
             ></v-text-field>
           </v-flex>
           <v-flex xs12 v-if="!user.accepted_terms">
@@ -89,14 +73,6 @@
         </v-layout>
       </v-container>
       <v-flex class="buttons">
-        <v-btn
-          dark
-          rounded
-          color="deep-purple lighten-1"
-          class="buttons__single-btn"
-          @click="clear"
-          >Cancelar</v-btn
-        >
         <v-btn
           rounded
           color="deep-purple lighten-1"
@@ -120,39 +96,27 @@
 </template>
 
 <script>
-import { formatListForApi } from "../../utils/helpers";
+import { omit, merge } from "ramda";
+import { mapFields } from "vuex-map-fields";
+import { formatListForApi, formatListForAutoSelect } from "../../utils/helpers";
 export default {
   name: "ProfileForm",
-  props: {
-    user: {
-      type: Object
-    },
-    profile: {
-      type: Object
-    }
-  },
   data() {
     return {
-      stateProfile: this.profile,
-      user_name: this.user.user_name,
       generalError: null
     };
   },
   methods: {
-    onUpdateUserName() {
-      this.$store.dispatch("updateUserName", { user_name: this.user_name });
-    },
     onUpdateProfile() {
+      const profile = omit(
+        ["skill", "specialty", "id", "UserId", "createdAt", "updatedAt"],
+        this.$store.state.profile.profile
+      );
 
-      const formData = {
-        image_path: this.stateProfile.image_path,
-        twitter: this.stateProfile.twitter,
-        linkedin: this.stateProfile.linkedin,
-        github: this.stateProfile.github,
-        specialty: formatListForApi(this.stateProfile.specialty),
-        skill: formatListForApi(this.stateProfile.skill)
-      };
-
+      const formData = merge(profile, {
+        skills: this.$store.state.profile.profile.skill,
+        specialties: this.$store.state.profile.profile.specialty
+      });
       if (this.user.profile) {
         this.$store.dispatch("updateProfile", formData);
       } else {
@@ -164,6 +128,39 @@ export default {
     }
   },
   computed: {
+    ...mapFields([
+      "profile.name",
+      "profile.image_path",
+      "profile.twitter",
+      "profile.linkedin",
+      "profile.github"
+    ]),
+    selectedSpecialties: {
+      get() {
+        const formatedSpecialties = formatListForAutoSelect(
+          this.$store.state.profile.profile.specialty
+        );
+        return formatedSpecialties;
+      },
+      set(value) {
+        const formatedSpecialties = formatListForApi(value);
+        this.$store.commit("SET_PROFILE_INFO", {
+          specialty: formatedSpecialties
+        });
+      }
+    },
+    selectedSkills: {
+      get() {
+        const formatedSkills = formatListForAutoSelect(
+          this.$store.state.profile.profile.skill
+        );
+        return formatedSkills;
+      },
+      set(value) {
+        const formatedSkills = formatListForApi(value);
+        this.$store.commit("SET_PROFILE_INFO", { skill: formatedSkills });
+      }
+    },
     skills() {
       const skills = this.$store.getters["getSkillsList"];
       const formatedSkills = skills.map(skill => {
@@ -177,14 +174,9 @@ export default {
         return { text: specialty.description, value: specialty.id };
       });
       return formatedSpecialties;
-    }
-  },
-  watch: {
-    user: function() {
-      this.user_name = this.user.user_name;
     },
-    profile: function() {
-      this.stateProfile = this.profile;
+    user() {
+      return this.$store.getters["getUserData"];
     }
   }
 };

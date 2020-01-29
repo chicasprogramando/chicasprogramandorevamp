@@ -11,7 +11,7 @@
         </v-card>
       </v-flex>
       <v-flex xs12 md6>
-        <ProfileForm :user="user" :profile="profile" />
+        <ProfileForm />
       </v-flex>
     </v-layout>
   </v-container>
@@ -26,9 +26,6 @@ export default {
     ProfileForm
   },
   computed: {
-    user() {
-      return this.$store.getters["getUserData"];
-    },
     profile() {
       return this.$store.getters["getProfileData"];
     }

@@ -1,16 +1,27 @@
 import axios from "axios";
 import router from "../../router";
 import { formatListForAutoSelect } from "../../utils/helpers";
+import { getField, updateField } from "vuex-map-fields";
 
 const state = {
-  profile: {},
+  profile: {
+    name: "",
+    image_path: "",
+    twitter: "",
+    linkedin: "",
+    github: "",
+    skill: [],
+    specialty: []
+  },
   profileList: []
 };
 
 const mutations = {
   SET_PROFILE_INFO(state, payload) {
     state.profile = { ...state.profile, ...payload };
-  }
+  },
+  // updateField is use to mutate form fields directly
+  updateField
 };
 const actions = {
   createProfile(context, payload) {
@@ -24,9 +35,8 @@ const actions = {
       .post(`${process.env.VUE_APP_API_URL}/api/profile`, profileInfo)
       .then(res => {
         const { data } = res.data;
-        // TODO: data should return skills and specialties
-        // WORK AROUND
         context.dispatch("getProfile", data.id);
+        context.dispatch("getUser", { id: user.id });
       })
       .catch(e => {
         const { message } = e.response.data;
@@ -41,6 +51,7 @@ const actions = {
       .then(res => {
         const { data } = res.data;
         context.commit("SET_PROFILE_INFO", data);
+        router.replace("/community");
       })
       .catch(e => {
         const { message } = e.response.data;
@@ -80,7 +91,9 @@ const getters = {
       };
     }
     return state.profile;
-  }
+  },
+  // getField is use to get form fields values from state
+  getField
 };
 
 const profile = {
