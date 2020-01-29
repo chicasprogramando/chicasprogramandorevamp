@@ -8,69 +8,10 @@
             v-if="!profile.image_path"
           ></v-img>
           <v-img :src="profile.image_path" v-if="profile.image_path"></v-img>
-          <v-layout>
-            <v-flex xs12>
-              <v-card-title primary-title>
-                <div class="header-container">
-                  <h1 class="headline">{{ user.user_name }}</h1>
-                  <v-btn
-                    class="ma-2"
-                    color="deep-purple lighten-1"
-                    dark
-                    @click="toggleIsEditingName"
-                  >
-                    <v-icon class="mr-1" medium>edit</v-icon>
-                    Editar nombre
-                  </v-btn>
-                </div>
-              </v-card-title>
-            </v-flex>
-          </v-layout>
-          <v-layout>
-            <v-card-text>
-              <p class="about__text white--text" v-if="profile.github">
-                <span>Github: </span>{{ profile.github }}
-              </p>
-              <p class="about__text white--text" v-if="profile.linkedin">
-                <span>LinkedIn: </span>{{ profile.linkedin }}
-              </p>
-              <p class="about__text white--text" v-if="profile.twitter">
-                <span>Twitter: </span>{{ profile.twitter }}
-              </p>
-            </v-card-text>
-          </v-layout>
         </v-card>
-        <v-form
-          class="form"
-          ref="form"
-          @submit.prevent="onUpdateUserName"
-          v-if="this.isEditingName"
-        >
-          <v-container grid-list-md fluid>
-            <v-layout class="align-center">
-              <v-flex md9>
-                <v-text-field
-                  v-model="user_name"
-                  :placeholder="user.user_name"
-                  color="purple"
-                ></v-text-field>
-              </v-flex>
-              <v-flex md3>
-                <v-btn
-                  rounded
-                  color="deep-purple lighten-1"
-                  class="buttons__single-btn buttons__single-btn--white"
-                  type="submit"
-                  dark
-                  >Guardar</v-btn
-                >
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-form>
       </v-flex>
       <v-flex xs12 md6>
-        <ProfileForm :user="user" />
+        <ProfileForm :user="user" :profile="profile" />
       </v-flex>
     </v-layout>
   </v-container>
@@ -84,27 +25,12 @@ export default {
   components: {
     ProfileForm
   },
-  data() {
-    return {
-      user_name: "",
-      isEditingName: false
-    };
-  },
   computed: {
     user() {
       return this.$store.getters["getUserData"];
     },
     profile() {
       return this.$store.getters["getProfileData"];
-    }
-  },
-  methods: {
-    toggleIsEditingName() {
-      this.isEditingName = !this.isEditingName;
-    },
-    onUpdateUserName() {
-      this.$store.dispatch("updateUserName", { user_name: this.user_name });
-      this.isEditingName = false;
     }
   }
 };
