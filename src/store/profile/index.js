@@ -1,5 +1,6 @@
 import axios from "axios";
 import router from "../../router";
+import { formatListForAutoSelect } from "../../utils/helpers";
 
 const state = {
   profile: {},
@@ -14,7 +15,10 @@ const mutations = {
 const actions = {
   createProfile(context, payload) {
     const user = context.getters.getUserData;
-    const profileInfo = { ...payload, UserId: user.id };
+    const profileInfo = {
+      ...payload,
+      UserId: user.id
+    };
 
     axios
       .post(`${process.env.VUE_APP_API_URL}/api/profile`, profileInfo)
@@ -32,7 +36,6 @@ const actions = {
   },
   updateProfile(context, payload) {
     const profile = context.getters.getProfileData;
-
     axios
       .put(`${process.env.VUE_APP_API_URL}/api/profile/${profile.id}`, payload)
       .then(res => {
@@ -65,6 +68,17 @@ const actions = {
 };
 const getters = {
   getProfileData: state => {
+    if (state.profile.specialty && state.profile.skill) {
+      const formatedSpecialties = formatListForAutoSelect(
+        state.profile.specialty
+      );
+      const formatedSkills = formatListForAutoSelect(state.profile.skill);
+      return {
+        ...state.profile,
+        specialty: formatedSpecialties,
+        skill: formatedSkills
+      };
+    }
     return state.profile;
   }
 };
