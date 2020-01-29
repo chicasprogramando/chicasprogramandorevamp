@@ -36,9 +36,7 @@ const actions = {
           err,
           user
         ) {
-          // TODO: this will change for id soon
-          localStorage.setItem("sub", user.sub);
-          dispatch("getUser", user);
+          dispatch("createUser", user);
           commit("SET_USER_IS_AUTH", true);
         });
       } else if (err) {
