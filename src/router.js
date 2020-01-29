@@ -30,7 +30,7 @@ const router = new Router({
       path: "/profile",
       name: "Profile",
       component: Profile,
-      meta: { requiresAuth: true, requiresTerms: true }
+      meta: { requiresAuth: true }
     },
     {
       path: "/login",
@@ -87,20 +87,6 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     next();
-  }
-
-  if (to.matched.some(record => record.meta.requiresTerms)) {
-    const user = Store.getters.getUserData;
-    // TODO: when refreshing the page in /profile user data comes undefined and redirects to /terms
-    if (user) {
-      if (user.accepted_terms) {
-        next();
-      } else {
-        Store.dispatch("userAcceptanceFlow");
-      }
-    } else {
-      next();
-    }
   }
 });
 
