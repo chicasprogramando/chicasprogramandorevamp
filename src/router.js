@@ -30,7 +30,7 @@ const router = new Router({
       path: "/profile",
       name: "Profile",
       component: Profile,
-      meta: { requiresAuth: true, requiresTerms: true }
+      meta: { requiresAuth: true }
     },
     {
       path: "/login",
@@ -45,7 +45,7 @@ const router = new Router({
     {
       path: "/terms",
       name: "Terms",
-      component: Terms,
+      component: Terms
     },
     {
       path: "*",
@@ -84,17 +84,6 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       router.replace("/login");
-    }
-  } else {
-    next();
-  }
-
-  if (to.matched.some(record => record.meta.requiresTerms)) {
-    const user = Store.getters.getUserData;
-    if (user.accepted_terms) {
-      next();
-    } else {
-      Store.dispatch("userAcceptanceFlow");
     }
   } else {
     next();

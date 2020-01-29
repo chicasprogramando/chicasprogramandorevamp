@@ -1,157 +1,182 @@
 <template>
-  <v-form
-    class="form"
-    ref="form"
-    v-model="valid"
-    @submit.prevent="onUpdateProfile"
-  >
-    <v-container grid-list-md class="profile_form_container">
-      <v-layout wrap>
-        <v-flex xs12>
-          <v-text-field
-            v-model="name"
-            :rules="campoRequeridoRules"
-            label="Nombre Completo"
-            color="purple"
-            required
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs12>
-          <v-select
-            v-model="title"
-            :rules="campoRequeridoRules"
-            label="Especialidad"
-            color="purple"
-            :items="title_items"
-            required
-          ></v-select>
-        </v-flex>
-        <v-flex xs12>
-          <v-select
-            class="text-field"
-            color="purple"
-            v-model="search_project"
-            label="Buscando proyectos?"
-            :items="items_search_project"
-            required
-          ></v-select>
-        </v-flex>
-        <v-flex xs12>
-          <v-select
-            class="text-field"
-            color="purple"
-            v-model="senority"
-            label="Seniority"
-            :items="senority_items"
-            required
-          ></v-select>
-        </v-flex>
-        <v-flex xs12>
-          <v-text-field
-            v-model="skills"
-            label="Qué tecnologías manejas?"
-            color="purple"
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs12>
-          <v-text-field
-            v-model="about_me"
-            label="Contanos algo sobre vos"
-            color="purple"
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs12>
-          <v-text-field
-            v-model="github"
-            label="GitHub"
-            color="purple"
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs12>
-          <v-text-field
-            v-model="linkedin"
-            label="LinkedIn"
-            color="purple"
-          ></v-text-field>
-        </v-flex>
-        <v-flex xs12>
-          <v-text-field
-            v-model="twitter"
-            label="Twitter"
-            color="purple"
-          ></v-text-field>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    <v-flex class="buttons">
-      <v-btn
-        dark
-        rounded
-        color="deep-purple lighten-1"
-        class="buttons__single-btn"
-        @click="clear"
-        >Cancelar</v-btn
-      >
-      <v-btn
-        rounded
-        color="deep-purple lighten-1"
-        class="buttons__single-btn buttons__single-btn--white"
-        type="submit"
-        :disabled="!valid"
-        >Actualizar</v-btn
-      >
-    </v-flex>
-  </v-form>
+  <div>
+    <v-form class="form" ref="form" @submit.prevent="onUpdateProfile">
+      <v-container grid-list-md class="profile_form_container">
+        <v-layout wrap>
+          <v-flex xs12>
+            <v-text-field
+              label="Nombre"
+              color="purple"
+              v-model="name"
+            ></v-text-field>
+          </v-flex>
+          <v-flex xs12>
+            <v-autocomplete
+              v-model="selectedSpecialties"
+              :items="specialties"
+              label="Especialidades"
+              placeholder="Buscá tus especialidades"
+              return-object
+              chips
+              deletable-chips
+              multiple
+              color="purple"
+            ></v-autocomplete>
+          </v-flex>
+          <v-flex xs12>
+            <v-autocomplete
+              v-model="selectedSkills"
+              :items="skills"
+              label="Qué tecnologías manejas?"
+              placeholder="Buscá tus skills"
+              return-object
+              chips
+              deletable-chips
+              multiple
+              color="purple"
+            ></v-autocomplete>
+          </v-flex>
+          <v-flex xs12>
+            <v-text-field
+              v-model="image_path"
+              label="Url de imagen para el perfil"
+              color="purple"
+            ></v-text-field>
+          </v-flex>
+          <v-flex xs12>
+            <v-text-field
+              v-model="github"
+              label="GitHub link"
+              color="purple"
+            ></v-text-field>
+          </v-flex>
+          <v-flex xs12>
+            <v-text-field
+              v-model="linkedin"
+              label="LinkedIn link"
+              color="purple"
+            ></v-text-field>
+          </v-flex>
+          <v-flex xs12>
+            <v-text-field
+              label="Twitter link"
+              color="purple"
+              v-model="twitter"
+            ></v-text-field>
+          </v-flex>
+          <v-flex xs12 v-if="!user.accepted_terms">
+            <p>
+              Para poder completar tu perfil debes aceptar nuestro
+              <router-link to="/terms">codigo de conducta</router-link> primero.
+            </p>
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <v-flex class="buttons">
+        <v-btn
+          rounded
+          color="deep-purple lighten-1"
+          class="buttons__single-btn buttons__single-btn--white"
+          type="submit"
+          :disabled="!user.accepted_terms"
+          v-if="!user.profile"
+          >Finalizar Perfil</v-btn
+        >
+        <v-btn
+          rounded
+          color="deep-purple lighten-1"
+          class="buttons__single-btn buttons__single-btn--white"
+          type="submit"
+          v-if="user.profile"
+          >Actualizar</v-btn
+        >
+      </v-flex>
+    </v-form>
+  </div>
 </template>
 
 <script>
-import { campoRequeridoRules } from "../../utils/validaciones.js";
-
+import { omit, merge } from "ramda";
+import { mapFields } from "vuex-map-fields";
+import { formatListForApi, formatListForAutoSelect } from "../../utils/helpers";
 export default {
   name: "ProfileForm",
   data() {
     return {
-      valid: false,
-      campoRequeridoRules: campoRequeridoRules,
-      name: "",
-      title: "",
-      about_me: "",
-      title_items: [
-        "Front End Dev",
-        "Back End Dev",
-        "Full Stack Dev",
-        "QA",
-        "Seguridad Informática",
-        "UX/UI"
-      ],
-      search_project: "",
-      items_search_project: ["Sí", "No"],
-      senority: "",
-      senority_items: ["Trainee", "Jr", "Ssr", "Sr"],
-      skills: "",
-      linkedin: "",
-      github: "",
-      twitter: ""
+      generalError: null
     };
   },
   methods: {
     onUpdateProfile() {
-      const formData = {
-        name: this.name,
-        title: this.title,
-        about_me: this.about_me,
-        search_project: this.search_project,
-        senority: this.senority,
-        skills: this.skills,
-        linkedin: this.linkedin,
-        github: this.github,
-        twitter: this.twitter
-      };
-      this.$store.dispatch("profiles/updateUserProfile", formData);
-      this.$refs.form.reset();
+      const profile = omit(
+        ["skill", "specialty", "id", "UserId", "createdAt", "updatedAt"],
+        this.$store.state.profile.profile
+      );
+
+      const formData = merge(profile, {
+        skills: this.$store.state.profile.profile.skill,
+        specialties: this.$store.state.profile.profile.specialty
+      });
+      if (this.user.profile) {
+        this.$store.dispatch("updateProfile", formData);
+      } else {
+        this.$store.dispatch("createProfile", formData);
+      }
     },
     clear() {
       this.$refs.form.reset();
+    }
+  },
+  computed: {
+    ...mapFields([
+      "profile.name",
+      "profile.image_path",
+      "profile.twitter",
+      "profile.linkedin",
+      "profile.github"
+    ]),
+    selectedSpecialties: {
+      get() {
+        const formatedSpecialties = formatListForAutoSelect(
+          this.$store.state.profile.profile.specialty
+        );
+        return formatedSpecialties;
+      },
+      set(value) {
+        const formatedSpecialties = formatListForApi(value);
+        this.$store.commit("SET_PROFILE_INFO", {
+          specialty: formatedSpecialties
+        });
+      }
+    },
+    selectedSkills: {
+      get() {
+        const formatedSkills = formatListForAutoSelect(
+          this.$store.state.profile.profile.skill
+        );
+        return formatedSkills;
+      },
+      set(value) {
+        const formatedSkills = formatListForApi(value);
+        this.$store.commit("SET_PROFILE_INFO", { skill: formatedSkills });
+      }
+    },
+    skills() {
+      const skills = this.$store.getters["getSkillsList"];
+      const formatedSkills = skills.map(skill => {
+        return { text: skill.description, value: skill.id };
+      });
+      return formatedSkills;
+    },
+    specialties() {
+      const specialties = this.$store.getters["getSpecialtiesList"];
+      const formatedSpecialties = specialties.map(specialty => {
+        return { text: specialty.description, value: specialty.id };
+      });
+      return formatedSpecialties;
+    },
+    user() {
+      return this.$store.getters["getUserData"];
     }
   }
 };
@@ -166,7 +191,6 @@ h3 {
 .profile_form_container {
   max-width: 95%;
 }
-
 .buttons {
   display: flex;
   justify-content: center;
