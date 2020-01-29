@@ -49,10 +49,8 @@ const actions = {
       })
       .catch(e => {
         const { message } = e.response.data;
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("id_token");
-        localStorage.removeItem("expires_at");
-        localStorage.removeItem("sub");
+        // clear localStorage from all the things we saved previously
+        localStorage.clear();
 
         context.commit("SET_ERROR_MSJ", message);
         router.replace("/error");

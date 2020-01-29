@@ -36,6 +36,7 @@ const actions = {
           err,
           user
         ) {
+          // TODO: this will change for id soon
           localStorage.setItem("sub", user.sub);
           dispatch("getUser", user);
           commit("SET_USER_IS_AUTH", true);
@@ -48,11 +49,8 @@ const actions = {
     });
   },
   auth0Logout() {
-    // clear access token and id token from local storage
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
-    localStorage.removeItem("sub");
+    // clear localStorage from all the things we saved previously
+    localStorage.clear();
 
     // reload page
     window.location.reload();
