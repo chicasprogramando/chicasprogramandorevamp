@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-form class="form" ref="form" @submit.prevent="onUpdateProfile">
+    <v-form
+      class="form"
+      ref="form"
+      v-model="valid"
+      lazy-validation
+      @submit.prevent="onUpdateProfile"
+    >
       <v-container grid-list-md class="profile_form_container">
         <v-layout wrap>
           <v-flex xs12>
@@ -8,6 +14,8 @@
               label="Nombre"
               color="purple"
               v-model="name"
+              :rules="requiredField"
+              required
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
@@ -21,6 +29,8 @@
               deletable-chips
               multiple
               color="purple"
+              :rules="autocompleteRequired"
+              required
             ></v-autocomplete>
           </v-flex>
           <v-flex xs12>
@@ -34,6 +44,8 @@
               deletable-chips
               multiple
               color="purple"
+              :rules="autocompleteRequired"
+              required
             ></v-autocomplete>
           </v-flex>
           <v-flex xs12>
@@ -48,6 +60,7 @@
               v-model="github"
               label="GitHub link"
               color="purple"
+              :rules="[formIsValid || requiredSocial]"
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
@@ -55,6 +68,7 @@
               v-model="linkedin"
               label="LinkedIn link"
               color="purple"
+              :rules="[formIsValid || requiredSocial]"
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
@@ -62,6 +76,7 @@
               label="Twitter link"
               color="purple"
               v-model="twitter"
+              :rules="[formIsValid || requiredSocial]"
             ></v-text-field>
           </v-flex>
           <v-flex xs12 v-if="!user.accepted_terms">
@@ -78,7 +93,7 @@
           color="deep-purple lighten-1"
           class="buttons__single-btn buttons__single-btn--white"
           type="submit"
-          :disabled="!user.accepted_terms"
+          :disabled="(!user.accepted_terms && !valid) || !formIsValid"
           v-if="!user.profile"
           >Finalizar Perfil</v-btn
         >
@@ -88,6 +103,7 @@
           class="buttons__single-btn buttons__single-btn--white"
           type="submit"
           v-if="user.profile"
+          :disabled="!valid || !formIsValid"
           >Actualizar</v-btn
         >
       </v-flex>
@@ -99,11 +115,17 @@
 import { omit, merge } from "ramda";
 import { mapFields } from "vuex-map-fields";
 import { formatListForApi, formatListForAutoSelect } from "../../utils/helpers";
+
 export default {
   name: "ProfileForm",
   data() {
     return {
-      generalError: null
+      valid: true,
+      requiredField: [v => !!v || "Este campo es requerido"],
+      autocompleteRequired: [
+        v => v.length > 0 || "Debes elegir por lo menos una opción"
+      ],
+      requiredSocial: "Debes elegir alguna red social"
     };
   },
   methods: {
@@ -117,6 +139,7 @@ export default {
         skills: this.$store.state.profile.profile.skill,
         specialties: this.$store.state.profile.profile.specialty
       });
+
       if (this.user.profile) {
         this.$store.dispatch("updateProfile", formData);
       } else {
@@ -177,6 +200,17 @@ export default {
     },
     user() {
       return this.$store.getters["getUserData"];
+    },
+    formIsValid() {
+      const profile = omit(
+        ["skill", "specialty", "id", "UserId", "createdAt", "updatedAt"],
+        this.$store.state.profile.profile
+      );
+      return (
+        profile.github !== "" ||
+        profile.linkedin !== "" ||
+        profile.twitter !== ""
+      );
     }
   }
 };
