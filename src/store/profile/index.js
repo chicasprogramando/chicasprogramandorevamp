@@ -30,13 +30,14 @@ const actions = {
       ...payload,
       UserId: user.id
     };
-
+    // first time the user posts a profile it needs the user id
     axios
       .post(`${process.env.VUE_APP_API_URL}/api/profile`, profileInfo)
       .then(res => {
         const { data } = res.data;
         context.dispatch("getProfile", data.id);
         context.dispatch("getUser", { id: user.id });
+        // profile should appear in /community updated
         router.replace("/community");
       })
       .catch(e => {
@@ -52,6 +53,7 @@ const actions = {
       .then(res => {
         const { data } = res.data;
         context.commit("SET_PROFILE_INFO", data);
+        // profile should appear in /community
         router.replace("/community");
       })
       .catch(e => {
@@ -81,6 +83,7 @@ const actions = {
 const getters = {
   getProfileData: state => {
     if (state.profile.specialty && state.profile.skill) {
+      // we need to format these two things to use them with the autocomplete input
       const formatedSpecialties = formatListForAutoSelect(
         state.profile.specialty
       );

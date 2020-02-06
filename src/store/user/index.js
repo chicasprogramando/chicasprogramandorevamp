@@ -13,6 +13,7 @@ const mutations = {
 const actions = {
   checkUserOnSignIn(context, payload) {
     const { name, nickname, email, sub, given_name } = payload;
+    // checks if the user exists with the email returned by auth0
     axios
       .post(`${process.env.VUE_APP_API_URL}/api/user/signin`, { email: email })
       .then(res => {
@@ -27,6 +28,7 @@ const actions = {
       })
       .catch(e => {
         const { status } = e.response;
+        // when de user doesn't exist it creates a new one using auth0 info
         if (status === 404) {
           const body = {
             user_name: nickname || name || given_name,
@@ -113,19 +115,6 @@ const actions = {
     } else {
       router.replace("/");
     }
-  },
-  updateUserName(context, payload) {
-    const user = context.getters.getUserData;
-    axios
-      .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
-      .then(res => {
-        const { data } = res.data;
-        context.commit("SET_USER_INFO", data);
-      })
-      .catch(e => {
-        // eslint-disable-next-line
-        console.log(e);
-      });
   }
 };
 const getters = {
