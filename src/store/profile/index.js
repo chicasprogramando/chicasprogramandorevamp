@@ -37,6 +37,7 @@ const actions = {
         const { data } = res.data;
         context.dispatch("getProfile", data.id);
         context.dispatch("getUser", { id: user.id });
+        router.replace("/community");
       })
       .catch(e => {
         const { message } = e.response.data;

@@ -36,7 +36,7 @@ const actions = {
           err,
           user
         ) {
-          dispatch("createUser", user);
+          dispatch("checkUserOnSignIn", user);
           commit("SET_USER_IS_AUTH", true);
         });
       } else if (err) {

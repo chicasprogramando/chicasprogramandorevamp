@@ -11,6 +11,38 @@ const mutations = {
   }
 };
 const actions = {
+  checkUserOnSignIn(context, payload) {
+    const { name, nickname, email, sub, given_name } = payload;
+    axios
+      .post(`${process.env.VUE_APP_API_URL}/api/user/signin`, { email: email })
+      .then(res => {
+        const { data } = res.data;
+        localStorage.setItem("user_id", data.id);
+        context.commit("SET_USER_INFO", data);
+        // accepted terms and profile completion flow
+        context.dispatch("userAcceptanceFlow");
+        if (data.profile) {
+          context.dispatch("getProfile");
+        }
+      })
+      .catch(e => {
+        const { status } = e.response;
+        if (status === 404) {
+          const body = {
+            user_name: nickname || name || given_name,
+            auth_sub: sub,
+            email: email
+          };
+          context.dispatch("createUser", body);
+        } else {
+          // clear localStorage from all the things we saved previously
+          localStorage.clear();
+
+          context.commit("SET_ERROR_MSJ", e.response.data.message);
+          router.replace("/error");
+        }
+      });
+  },
   getUser(context, payload) {
     const { id } = payload;
     axios
@@ -18,9 +50,12 @@ const actions = {
       .then(res => {
         const { data } = res.data;
         context.commit("SET_USER_INFO", data);
-        // accepted terms and profile completion flow
-        context.dispatch("userAcceptanceFlow");
+        if (!data.accepted_terms) {
+          // accepted terms and profile completion flow
+          context.dispatch("userAcceptanceFlow");
+        }
         if (data.profile) {
+          // if profile exists get it
           context.dispatch("getProfile");
         }
       })
@@ -34,14 +69,8 @@ const actions = {
       });
   },
   createUser(context, payload) {
-    const { name, nickname, email, sub, given_name } = payload;
-    const body = {
-      user_name: nickname || name || given_name,
-      auth_sub: sub,
-      email: email
-    };
     axios
-      .post(`${process.env.VUE_APP_API_URL}/api/user/`, body)
+      .post(`${process.env.VUE_APP_API_URL}/api/user/`, payload)
       .then(res => {
         const { data } = res.data;
         localStorage.setItem("user_id", data.id);
@@ -51,20 +80,10 @@ const actions = {
       })
       .catch(e => {
         const { message } = e.response.data;
-        // TODO: this is just a work around
-        const user_id = message
-          .split(":")
-          .pop()
-          .split(";")[0];
-        if (user_id) {
-          localStorage.setItem("user_id", user_id);
-          context.dispatch("getUser", { id: user_id });
-        } else {
-          // clear localStorage from all the things we saved previously
-          localStorage.clear();
-          context.commit("SET_ERROR_MSJ", message);
-          router.replace("/error");
-        }
+        // clear localStorage from all the things we saved previously
+        localStorage.clear();
+        context.commit("SET_ERROR_MSJ", message);
+        router.replace("/error");
       });
   },
   acceptedTerms(context, payload) {
@@ -89,7 +108,7 @@ const actions = {
     const user = context.getters.getUserData;
     if (!user.accepted_terms) {
       router.replace("/terms");
-    } else if (!user.completed_profile) {
+    } else if (!user.profile) {
       router.replace("/profile");
     } else {
       router.replace("/");
