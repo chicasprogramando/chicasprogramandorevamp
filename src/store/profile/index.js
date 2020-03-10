@@ -20,6 +20,9 @@ const mutations = {
   SET_PROFILE_INFO(state, payload) {
     state.profile = { ...state.profile, ...payload };
   },
+  SET_ALL_PROFILES(state, payload) {
+    state.profileList = payload;
+  },
   // updateField is use to mutate form fields directly
   updateField
 };
@@ -78,6 +81,20 @@ const actions = {
         context.commit("SET_ERROR_MSJ", message);
         router.replace("/error");
       });
+  },
+  fetchAllProfiles(context) {
+    axios
+      .get(`${process.env.VUE_APP_API_URL}/api/profile`)
+      .then(res => {
+        const { data } = res.data;
+        // TODO: data should return skills and specialties
+        context.commit("SET_ALL_PROFILES", data);
+      })
+      .catch(e => {
+        const { message } = e.response.data;
+        context.commit("SET_ERROR_MSJ", message);
+        router.replace("/error");
+      });
   }
 };
 const getters = {
@@ -95,6 +112,9 @@ const getters = {
       };
     }
     return state.profile;
+  },
+  getAllProfiles: state => {
+    return state.profileList;
   },
   // getField is use to get form fields values from state
   getField
