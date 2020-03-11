@@ -14,41 +14,7 @@
             v-for="profile in profiles"
             :key="profile.id"
           >
-            <v-card v-for="n in 1" :key="n" class="profile-card-cover">
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                position="top center"
-                :src="profile.image_path"
-                style="position: relative"
-              >
-                <v-card-title>
-                  <span class="profile-card-name">
-                    {{ profile.name }}
-                  </span>
-                </v-card-title>
-                <v-btn
-                  small
-                  absolute
-                  dark
-                  top
-                  right
-                  rounded
-                  color="deep-purple lighten-1"
-                >
-                  <v-icon>mdi-plus</v-icon>
-                </v-btn>
-              </v-img>
-
-              <v-card-text class="text--primary">
-                <p>
-                  <b>
-                    {{ profile.specialty.map(s => s.description).join(", ") }}
-                  </b>
-                </p>
-                <p>{{ profile.skill.map(s => s.description).join(", ") }}</p>
-              </v-card-text>
-            </v-card>
+            <ProfileCardCover :profile="profile" />
           </v-col>
         </v-row>
       </v-container>
@@ -57,8 +23,12 @@
 </template>
 
 <script>
+import ProfileCardCover from "./ProfileCardCover";
 export default {
   name: "Community",
+  components: {
+    ProfileCardCover
+  },
   data: () => ({}),
   mounted() {
     this.$store.dispatch("fetchAllProfiles");
