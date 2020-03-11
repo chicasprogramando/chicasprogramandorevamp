@@ -3,6 +3,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home/Home.vue";
 import Contact from "./views/Contact/Contact.vue";
+import Community from "./views/Community/Community.vue";
 import Profile from "./views/Profile/Profile.vue";
 import Login from "./views/Login/Login.vue";
 import AuthCallBack from "./views/Others/AuthCallBack.vue";
@@ -25,6 +26,11 @@ const router = new Router({
       path: "/contact",
       name: "Contact",
       component: Contact
+    },
+    {
+      path: "/community",
+      name: "Community",
+      component: Community
     },
     {
       path: "/profile",
