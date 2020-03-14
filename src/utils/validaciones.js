@@ -1,4 +1,4 @@
-import { isNil } from "ramda";
+import { isNil, isEmpty } from "ramda";
 
 export const nombreRules = [
   v => !!v || "Nombre requerido",
@@ -18,3 +18,20 @@ export const descripcionRules = [
     "El texto puede tener hasta 500 caracteres",
   v => !!v || "Campo requerido"
 ];
+
+export const checkCommunityQueries = (skills, specialties) => {
+  if (!isEmpty(skills) && !isEmpty(specialties)) {
+    return {
+      skills,
+      specialties
+    };
+  } else if (isEmpty(specialties) && isEmpty(skills)) {
+    return {};
+  } else if (isEmpty(specialties)) {
+    return {
+      skills
+    };
+  } else {
+    return { specialties };
+  }
+};

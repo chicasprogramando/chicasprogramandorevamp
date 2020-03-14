@@ -23,7 +23,7 @@ const actions = {
         // accepted terms and profile completion flow
         context.dispatch("userAcceptanceFlow");
         if (data.profile) {
-          context.dispatch("getProfile");
+          context.dispatch("fetchProfile");
         }
       })
       .catch(e => {
@@ -45,7 +45,7 @@ const actions = {
         }
       });
   },
-  getUser(context, payload) {
+  fetchUser(context, payload) {
     const { id } = payload;
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/user/${id}`)
@@ -58,7 +58,7 @@ const actions = {
         }
         if (data.profile) {
           // if profile exists get it
-          context.dispatch("getProfile");
+          context.dispatch("fetchProfile");
         }
       })
       .catch(e => {

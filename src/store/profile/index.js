@@ -38,8 +38,8 @@ const actions = {
       .post(`${process.env.VUE_APP_API_URL}/api/profile`, profileInfo)
       .then(res => {
         const { data } = res.data;
-        context.dispatch("getProfile", data.id);
-        context.dispatch("getUser", { id: user.id });
+        context.dispatch("fetchProfile", data.id);
+        context.dispatch("fetchUser", { id: user.id });
         // profile should appear in /community updated
         router.replace("/community");
       })
@@ -79,7 +79,7 @@ const actions = {
         router.replace("/error");
       });
   },
-  getProfile(context, payload) {
+  fetchProfile(context, payload) {
     const user = context.getters.getUserData;
     const profileId = payload ? payload : user.ProfileId;
 
@@ -96,9 +96,12 @@ const actions = {
         router.replace("/error");
       });
   },
-  fetchAllProfiles(context) {
+  fetchAllProfiles(context, payload) {
     axios
-      .get(`${process.env.VUE_APP_API_URL}/api/profile`)
+      .get(
+        `${process.env.VUE_APP_API_URL}/api/profile`,
+        payload ? { params: payload } : {}
+      )
       .then(res => {
         const { data } = res.data;
         // TODO: data should return skills and specialties

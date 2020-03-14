@@ -15,20 +15,19 @@
     </v-img>
 
     <v-card-text class="text--primary">
-      <p>
+      <p v-if="profile.specialty">
         <b>
           {{ profile.specialty.map(s => s.description).join(", ") }}
         </b>
       </p>
-      <p>{{ profile.skill.map(s => s.description).join(", ") }}</p>
-      <p
-        v-for="(value, name) in social"
-        :key="name"
-        class="profile-card-social"
-      >
-        <span>{{ name }}</span
-        >: <a :href="value" target="_blank">{{ value }}</a>
+      <p v-if="profile.skill">
+        {{ profile.skill.map(s => s.description).join(", ") }}
       </p>
+      <div class="profile-card-social">
+        <p v-for="(value, name) in social" :key="name">
+          <a :href="value" target="_blank">{{ name }}</a> <span> / </span>
+        </p>
+      </div>
     </v-card-text>
   </v-card>
 </template>
@@ -66,7 +65,15 @@ export default {
   color: #ffffff;
   padding: 0 5px;
 }
-.profile-card-social span {
+.profile-card-social {
+  display: flex;
+}
+.profile-card-social a {
   text-transform: capitalize;
+  color: #7e57c2;
+}
+
+.profile-card-social p:last-of-type span {
+  display: none;
 }
 </style>

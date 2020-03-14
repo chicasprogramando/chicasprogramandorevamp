@@ -73,7 +73,7 @@ export default {
     // every time someone enters the app we check for the sub to get the user info
     const user_id = localStorage.getItem("user_id");
     if (user_id) {
-      this.$store.dispatch("getUser", { id: user_id });
+      this.$store.dispatch("fetchUser", { id: user_id });
     }
     this.$store.dispatch("getSharedData");
   }
