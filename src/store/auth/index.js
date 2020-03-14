@@ -36,6 +36,7 @@ const actions = {
           err,
           user
         ) {
+          localStorage.setItem("auth_sub", user.sub);
           dispatch("checkUserOnSignIn", user);
           commit("SET_USER_IS_AUTH", true);
         });

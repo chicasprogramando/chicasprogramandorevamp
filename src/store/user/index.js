@@ -90,8 +90,21 @@ const actions = {
   },
   acceptedTerms(context, payload) {
     const user = context.getters.getUserData;
+    const auth_sub = localStorage.getItem("auth_sub");
+    const token = localStorage.getItem("id_token");
     axios
-      .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
+      .put(
+        `${process.env.VUE_APP_API_URL}/api/user/${user.id}`,
+        {
+          ...payload,
+          auth_sub
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
       .then(res => {
         const { data } = res.data;
         context.commit("SET_USER_INFO", data);
