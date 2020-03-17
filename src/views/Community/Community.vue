@@ -1,6 +1,6 @@
 <template>
-  <div class="community-conteiner">
-    <div class="community-header-conteiner">
+  <div class="community-container">
+    <div class="community-header-container">
       <h2>Nuestra comunidad</h2>
       <div>
         <v-form class="form" ref="form" @submit.prevent="onSearch">
@@ -26,6 +26,7 @@
                 deletable-chips
                 multiple
                 color="purple"
+                :loading="!specialties.length ? true : false"
               ></v-autocomplete>
             </v-col>
             <v-col cols="6" sm="4" md="3">
@@ -38,26 +39,36 @@
                 deletable-chips
                 multiple
                 color="purple"
+                :loading="!skills.length ? true : false"
               ></v-autocomplete>
             </v-col>
             <v-col cols="6" sm="4" md="3">
-              <v-btn rounded color="deep-purple lighten-1" dark type="submit"
+              <v-btn
+                rounded
+                color="deep-purple lighten-1"
+                class="white--text"
+                type="submit"
+                :disabled="!specialties.length && !skills.length"
                 >Filtrar</v-btn
               >
               <v-btn
                 rounded
+                class="ml-2 white--text"
                 color="deep-purple lighten-1"
-                dark
                 @click="clearSearch"
-                >Borrar
+                :disabled="
+                  !selectedSkills.length && !selectedSpecialties.length
+                "
+              >
+                <v-icon>mdi-refresh</v-icon>
               </v-btn>
             </v-col>
           </v-row>
         </v-form>
       </div>
     </div>
-    <div class="community-main-conteiner container-grid">
-      <v-container fluid>
+    <div class="community-main-container container-grid">
+      <v-container fluid v-if="!this.$store.state.profile.isLoadingProfileList">
         <v-row>
           <v-col
             cols="6"
@@ -70,22 +81,30 @@
           </v-col>
         </v-row>
       </v-container>
+      <v-container
+        fluid
+        class="loader-component"
+        v-if="this.$store.state.profile.isLoadingProfileList"
+      >
+        <Loader />
+      </v-container>
     </div>
   </div>
 </template>
 
 <script>
 import ProfileCardCover from "./ProfileCardCover";
+import Loader from "../../components/Loader";
 import { checkCommunityQueries } from "../../utils/validaciones";
 import { formatListForAutoSelect } from "../../utils/helpers";
 
 export default {
   name: "Community",
   components: {
-    ProfileCardCover
+    ProfileCardCover,
+    Loader
   },
   data: () => ({
-    loading: true,
     searchQuery: "",
     selectedSpecialties: [],
     selectedSkills: []
@@ -163,26 +182,22 @@ export default {
 </script>
 
 <style scoped>
-.community-conteiner {
+.community-container {
   height: 100%;
 }
-.community-header-conteiner {
+.community-header-container {
   padding: 20px;
 }
-.community-main-conteiner {
+.community-main-container {
   background-color: #ffffff;
   padding: 10px;
   height: 100%;
 }
-.profile-card-cover p {
-  margin: 0;
-}
-.profile-card-name {
-  background: rgb(125, 99, 171);
-  color: #ffffff;
-  padding: 0 5px;
-}
 .community-name-input {
   margin-top: 5px;
+}
+.loader-component {
+  justify-content: center;
+  align-items: center;
 }
 </style>

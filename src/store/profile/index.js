@@ -13,7 +13,9 @@ const state = {
     skill: [],
     specialty: []
   },
-  profileList: []
+  profileList: [],
+  isLoadingProfile: true,
+  isLoadingProfileList: true
 };
 
 const mutations = {
@@ -22,6 +24,12 @@ const mutations = {
   },
   SET_ALL_PROFILES(state, payload) {
     state.profileList = payload;
+  },
+  UPDATE_PROFILE_LOADING(state, payload) {
+    state.isLoadingProfile = payload;
+  },
+  UPDATE_PROFILE_LIST_LOADING(state, payload) {
+    state.isLoadingProfileList = payload;
   },
   // updateField is use to mutate form fields directly
   updateField
@@ -82,13 +90,13 @@ const actions = {
   fetchProfile(context, payload) {
     const user = context.getters.getUserData;
     const profileId = payload ? payload : user.ProfileId;
-
+    context.commit("UPDATE_PROFILE_LOADING", true);
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/profile/${profileId}`)
       .then(res => {
         const { data } = res.data;
-        // TODO: data should return skills and specialties
         context.commit("SET_PROFILE_INFO", data);
+        context.commit("UPDATE_PROFILE_LOADING", false);
       })
       .catch(e => {
         const { message } = e.response.data;
@@ -97,6 +105,7 @@ const actions = {
       });
   },
   fetchAllProfiles(context, payload) {
+    context.commit("UPDATE_PROFILE_LIST_LOADING", true);
     axios
       .get(
         `${process.env.VUE_APP_API_URL}/api/profile`,
@@ -104,8 +113,8 @@ const actions = {
       )
       .then(res => {
         const { data } = res.data;
-        // TODO: data should return skills and specialties
         context.commit("SET_ALL_PROFILES", data);
+        context.commit("UPDATE_PROFILE_LIST_LOADING", false);
       })
       .catch(e => {
         const { message } = e.response.data;
@@ -131,6 +140,7 @@ const getters = {
     return state.profile;
   },
   getAllProfiles: state => {
+    // sort profile list by id so it is shown always in the same order
     return state.profileList.sort((a, b) =>
       a.id > b.id ? 1 : b.id > a.id ? -1 : 0
     );
