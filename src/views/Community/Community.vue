@@ -20,7 +20,7 @@
               <v-autocomplete
                 v-model="selectedSpecialties"
                 :items="specialties"
-                placeholder="Buscá tus especialidades"
+                label="Buscar por especialidades"
                 return-object
                 chips
                 deletable-chips
@@ -32,7 +32,7 @@
               <v-autocomplete
                 v-model="selectedSkills"
                 :items="skills"
-                label="Qué tecnologías manejas?"
+                label="Buscar por skills"
                 return-object
                 chips
                 deletable-chips
@@ -92,14 +92,7 @@ export default {
   }),
   mounted() {
     const params = this.$router.history.current.query;
-    // this.selectedSpecialties = params.specialties
-    //   ? params.specialties
-    //       .split(",")
-    //       .map(s => this.specialties.find(o => o.text === s))
-    //   : [];
-    // this.selectedSkills = params.skills
-    //   ? params.skills.split(",").map(s => this.skills.find(o => o.text === s))
-    //   : [];
+
     this.$store.dispatch("fetchAllProfiles", params);
   },
   computed: {
@@ -140,6 +133,30 @@ export default {
     $route(to) {
       const params = to.query;
       this.$store.dispatch("fetchAllProfiles", params);
+    },
+    skills() {
+      const params = this.$router.history.current.query;
+      if (params.skills) {
+        if (this.skills) {
+          this.selectedSkills = params.skills
+            ? params.skills
+                .split(",")
+                .map(s => this.skills.find(o => o.text === s))
+            : [];
+        }
+      }
+    },
+    specialties() {
+      const params = this.$router.history.current.query;
+      if (params.specialties) {
+        if (this.specialties.length) {
+          this.selectedSpecialties = params.specialties
+            ? params.specialties
+                .split(",")
+                .map(s => this.specialties.find(o => o.text === s))
+            : [];
+        }
+      }
     }
   }
 };

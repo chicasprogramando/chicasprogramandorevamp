@@ -131,7 +131,9 @@ const getters = {
     return state.profile;
   },
   getAllProfiles: state => {
-    return state.profileList;
+    return state.profileList.sort((a, b) =>
+      a.id > b.id ? 1 : b.id > a.id ? -1 : 0
+    );
   },
   // getField is use to get form fields values from state
   getField
