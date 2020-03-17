@@ -75,7 +75,7 @@ export default {
     if (user_id) {
       this.$store.dispatch("fetchUser", { id: user_id });
     }
-    this.$store.dispatch("getSharedData");
+    this.$store.dispatch("fetchSharedData");
   }
 };
 </script>
