@@ -88,7 +88,11 @@
       >
         <Loader />
       </v-container>
-      <v-container v-if="!profiles.length && !this.$store.state.profile.isLoadingProfileList">
+      <v-container
+        v-if="
+          !profiles.length && !this.$store.state.profile.isLoadingProfileList
+        "
+      >
         <h3>Lo sentimos, no encontramos los perfiles que estás buscando</h3>
       </v-container>
     </div>
