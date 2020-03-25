@@ -31,6 +31,7 @@
               color="purple"
               :rules="autocompleteRequired"
               required
+              :loading="!specialties.length ? true : false"
             ></v-autocomplete>
           </v-flex>
           <v-flex xs12>
@@ -46,6 +47,7 @@
               color="purple"
               :rules="autocompleteRequired"
               required
+              :loading="!skills.length ? true : false"
             ></v-autocomplete>
           </v-flex>
           <v-flex xs12>

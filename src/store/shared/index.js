@@ -14,11 +14,11 @@ const mutations = {
   }
 };
 const actions = {
-  getSharedData(context) {
-    context.dispatch("getSkills");
-    context.dispatch("getSpecialties");
+  fetchSharedData(context) {
+    context.dispatch("fetchSkills");
+    context.dispatch("fetchSpecialties");
   },
-  getSkills(context) {
+  fetchSkills(context) {
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/skill`)
       .then(res => {
@@ -30,7 +30,7 @@ const actions = {
         console.log(e);
       });
   },
-  getSpecialties(context) {
+  fetchSpecialties(context) {
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/specialty`)
       .then(res => {

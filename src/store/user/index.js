@@ -23,7 +23,7 @@ const actions = {
         // accepted terms and profile completion flow
         context.dispatch("userAcceptanceFlow");
         if (data.profile) {
-          context.dispatch("getProfile");
+          context.dispatch("fetchProfile");
         }
       })
       .catch(e => {
@@ -45,7 +45,7 @@ const actions = {
         }
       });
   },
-  getUser(context, payload) {
+  fetchUser(context, payload) {
     const { id } = payload;
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/user/${id}`)
@@ -58,7 +58,7 @@ const actions = {
         }
         if (data.profile) {
           // if profile exists get it
-          context.dispatch("getProfile");
+          context.dispatch("fetchProfile");
         }
       })
       .catch(e => {
@@ -90,8 +90,21 @@ const actions = {
   },
   acceptedTerms(context, payload) {
     const user = context.getters.getUserData;
+    const auth_sub = localStorage.getItem("auth_sub");
+    const token = localStorage.getItem("id_token");
     axios
-      .put(`${process.env.VUE_APP_API_URL}/api/user/${user.id}`, payload)
+      .put(
+        `${process.env.VUE_APP_API_URL}/api/user/${user.id}`,
+        {
+          ...payload,
+          auth_sub
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
       .then(res => {
         const { data } = res.data;
         context.commit("SET_USER_INFO", data);

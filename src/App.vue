@@ -16,6 +16,7 @@
           :key="item.title"
           :to="item.link"
           class="deep-purple--text lighten-1 menu-btn"
+          color="white"
         >
           {{ item.title }}
         </v-btn>
@@ -23,6 +24,7 @@
           to="/login"
           class="deep-purple--text lighten-1 menu-btn"
           v-if="!this.$store.state.auth.userIsAuthorized"
+          color="white"
         >
           Login / Sign Up
         </v-btn>
@@ -30,6 +32,7 @@
           class="deep-purple--text lighten-1 menu-btn"
           to="/profile"
           v-if="this.$store.state.auth.userIsAuthorized"
+          color="white"
         >
           Profile
         </v-btn>
@@ -37,6 +40,7 @@
           class="deep-purple--text lighten-1 menu-btn"
           @click="logout"
           v-if="this.$store.state.auth.userIsAuthorized"
+          color="white"
         >
           Logout
         </v-btn>
@@ -69,9 +73,9 @@ export default {
     // every time someone enters the app we check for the sub to get the user info
     const user_id = localStorage.getItem("user_id");
     if (user_id) {
-      this.$store.dispatch("getUser", { id: user_id });
+      this.$store.dispatch("fetchUser", { id: user_id });
     }
-    this.$store.dispatch("getSharedData");
+    this.$store.dispatch("fetchSharedData");
   }
 };
 </script>

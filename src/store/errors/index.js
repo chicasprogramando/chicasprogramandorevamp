@@ -21,11 +21,11 @@ const actions = {
 };
 const getters = {};
 
-const auth = {
+const errors = {
   state,
   mutations,
   actions,
   getters
 };
 
-export default auth;
+export default errors;
