@@ -6,7 +6,7 @@ const state = {
   auth0: new auth0.WebAuth({
     domain: process.env.VUE_APP_AUTH0_CONFIG_DOMAIN,
     clientID: process.env.VUE_APP_AUTH0_CONFIG_CLIENTID,
-    redirectUri: process.env.VUE_APP_DOMAINURL + "/callback",
+    redirectUri: window.location.origin + "/callback",
     responseType: process.env.VUE_APP_AUTH0_CONFIG_RESPONSETYPE,
     scope: process.env.VUE_APP_AUTH0_CONFIG_SCOPE
   })
