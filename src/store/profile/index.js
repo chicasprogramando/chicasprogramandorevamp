@@ -14,7 +14,7 @@ const state = {
     specialty: []
   },
   profileList: [],
-  isLoadingProfile: true,
+  isLoadingProfile: false,
   isLoadingProfileList: true
 };
 
@@ -41,6 +41,7 @@ const actions = {
       ...payload,
       UserId: user.id
     };
+    context.commit("UPDATE_PROFILE_LOADING", true);
     // first time the user posts a profile it needs the user id
     axios
       .post(`${process.env.VUE_APP_API_URL}/api/profile`, profileInfo)
@@ -48,8 +49,7 @@ const actions = {
         const { data } = res.data;
         context.dispatch("fetchProfile", data.id);
         context.dispatch("fetchUser", { id: user.id });
-        // profile should appear in /community updated
-        router.replace("/community");
+        context.commit("UPDATE_PROFILE_LOADING", false);
       })
       .catch(e => {
         const { message } = e.response.data;
@@ -61,7 +61,7 @@ const actions = {
     const profile = context.getters.getProfileData;
     const auth_sub = localStorage.getItem("auth_sub");
     const token = localStorage.getItem("id_token");
-
+    context.commit("UPDATE_PROFILE_LOADING", true);
     axios
       .put(
         `${process.env.VUE_APP_API_URL}/api/profile/${profile.id}`,
@@ -78,8 +78,7 @@ const actions = {
       .then(res => {
         const { data } = res.data;
         context.commit("SET_PROFILE_INFO", data);
-        // profile should appear in /community
-        router.replace("/community");
+        context.commit("UPDATE_PROFILE_LOADING", false);
       })
       .catch(e => {
         const { message } = e.response.data;
