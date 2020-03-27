@@ -123,7 +123,11 @@ export default {
   },
   computed: {
     profiles() {
-      return this.$store.getters["getAllProfiles"];
+      const dataSearchQuery = this.searchQuery || "";
+      const profiles = this.$store.getters["getAllProfiles"].filter(p =>
+        p.name.toLowerCase().includes(dataSearchQuery.toLowerCase())
+      );
+      return profiles;
     },
     skills() {
       const skills = this.$store.getters["getSkillsList"];
