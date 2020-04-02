@@ -19,6 +19,7 @@ const actions = {
     context.dispatch("fetchSpecialties");
   },
   fetchSkills(context) {
+    console.log("VUE_APP_API_URL", process.env.VUE_APP_API_URL)
     axios
       .get(`${process.env.VUE_APP_API_URL}/api/skill`)
       .then(res => {
