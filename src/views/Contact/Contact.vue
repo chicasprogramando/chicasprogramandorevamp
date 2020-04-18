@@ -8,32 +8,35 @@
             >¿Tenés algo que contarnos? ¡Escribinos!</v-card-text
           >
           <v-form v-model="valid" ref="form">
-            <v-text-field
-              v-model="name"
+            <v-select
+              v-model="subject"
+              :items="subjectList"
+              label="Motivo del contacto"
               color="deep-purple"
-              :rules="nombreRules"
-              :counter="10"
-              label="Me llamo"
+              required
+            ></v-select>
+            <v-text-field
+              v-if="subject === 'Otro'"
+              v-model="specialSubject"
+              color="deep-purple"
+              :rules="textRules"
+              :counter="100"
+              label="Nuevo motivo"
               required
             ></v-text-field>
             <v-text-field
               v-model="email"
               color="deep-purple"
               :rules="emailRules"
-              label="Mi email es"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="descripcion"
-              color="deep-purple"
-              label="Descripcion"
+              label="Email"
               required
             ></v-text-field>
             <v-text-field
               default
               color="deep-purple"
-              v-model="message"
-              label="Y mi consulta es:"
+              v-model="text"
+              label="Consulta"
+              :rules="textRules"
               counter="500"
               rows="3"
               textarea
@@ -42,10 +45,11 @@
             <v-flex class="form__btns--container">
               <v-btn
                 rounded
-                class="form_btns"
                 color="deep-purple lighten-1"
-                dark
+                class="white--text"
+                :disabled="!valid"
                 @click="submit"
+                :loading="submitLoading"
                 >Enviar</v-btn
               >
               <v-btn
@@ -58,7 +62,13 @@
               >
             </v-flex>
           </v-form>
-          <div class="tarjeta__redes"></div>
+          <div class="email_success" v-if="emailSuccess">
+            Su email ha sido enviado con éxito!
+          </div>
+          <div class="email_error" v-if="emailError">
+            Se ha comeido un error a la hora de enviarnos el email! Por favor,
+            vuelva a intentarlo.
+          </div>
         </div>
       </div>
     </v-flex>
@@ -67,11 +77,7 @@
 
 <script>
 // import axios from "axios";
-import {
-  nombreRules,
-  emailRules,
-  campoRequeridoRules
-} from "../../utils/validaciones";
+import { emailRules, descripcionRules } from "../../utils/validaciones";
 
 export default {
   name: "Contact",
@@ -79,31 +85,57 @@ export default {
   data() {
     return {
       valid: false,
-      campoRequeridoRules: campoRequeridoRules,
-      descripcion: "",
       emailRules: emailRules,
-      nombreRules: nombreRules,
+      textRules: descripcionRules,
       email: "",
-      name: "",
-      message: ""
+      text: "",
+      subject: "",
+      specialSubject: "",
+      subjectList: [
+        "Quiero reportar un bug",
+        "Reportar una situación incomoda",
+        "Quiero hacer un evento",
+        "Quiero dar una charla/taller",
+        "Quiero ser sponsor",
+        "Otro",
+      ],
+      submitLoading: false,
     };
   },
   methods: {
     submit() {
-      if (this.$refs.form.validate()) {
-        // Native form submission is not yet supported
-        // axios.post("http://localhost:3000/api/contact", {
-        //   name: this.name,
-        //   email: this.mail,
-        //   descripcion: this.descriction,
-        //   message: this.message
-        // });
-      }
+      let trueSubject;
+      this.subject === "Otro"
+        ? (trueSubject = this.specialSubject)
+        : (trueSubject = this.subject);
+
+      const body = {
+        subject: trueSubject,
+        email: this.email,
+        text: this.text,
+      };
+      this.$store.dispatch("sendContactEmail", body);
+      this.submitLoading = true;
+
+      this.$refs.form.reset();
     },
     clear() {
       this.$refs.form.reset();
-    }
-  }
+    },
+  },
+  computed: {
+    emailSuccess() {
+      const success = this.$store.getters["getEmailSuccess"];
+      if (success) {
+        this.submitLoading = false;
+      }
+      return success;
+    },
+    emailError() {
+      const error = this.$store.getters["getEmailError"];
+      return error;
+    },
+  },
 };
 </script>
 
@@ -191,7 +223,7 @@ form {
 .form__btns--container {
   display: flex;
   justify-content: center;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 
 .form_btns {
@@ -199,9 +231,12 @@ form {
   border-radius: 500px;
   margin: 0px 5px;
 }
-
-.tarjeta__redes a {
-  display: inline-block;
-  margin: 0 5px;
+.email_success {
+  color: #02a702;
+  font-weight: bold;
+}
+.email_error {
+  color: #ff0000;
+  font-weight: bold;
 }
 </style>
