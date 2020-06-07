@@ -92,6 +92,6 @@ Hay grandes diferencias entre lo que es un perfil y lo que es un usuario. El usu
 **Flujo de usuario y perfil:**
 - Se crea un usuario sin perfil
 - Para crear el perfil la persona tiene que aceptar nuestro código de conducta
-- La primera vez que ingresemos a nuestro perfil, él mismo se creará dentro de nuestro usuario en la base de datos
+- La primera vez que ingresemos a nuestro perfil, el mismo se creará dentro de nuestro usuario en la base de datos
 - Las próximas modificaciones de nuestro perfil se harán directo sobre el mismo
 - Si queremos eliminar nuestro perfil de chicas programando debemos eliminar el usuario
