@@ -1,6 +1,6 @@
 # Chicas Programando
 
-> Esta plataforma fue creada para pormover los perfiles de mujeres en tecnología. Nuestro stack se conforma de Vue.js para el front-end y Node.js para el back-end.
+> Esta plataforma fue creada para promover los perfiles de mujeres en tecnología. Nuestro stack se conforma de Vue.js para el front-end y Node.js para el back-end.
 
 # Documentación
 Acá dejamos algunos datos útiles para el área de desarrollo de la plataforma.
@@ -75,7 +75,7 @@ export default new Vuex.Store({
 });
 ```
 
-Lo que quisimos hacer en la plataforma fue tener las diferentes llamadas ordenadas por categoría. En general estamos intentando que cada sector del store represente cada sector del backend para que ambos dos laburen en conjunto y se puedan entender. Por ende, cada módulo tiene sus propios `getters`, `mutations` y `actions`. Entonces si en el back se crea una nueva ruta llamada `/projects`, nuestro store debería tener un modulo nuevo llamado `projects` también.
+Lo que quisimos hacer en la plataforma fue tener las diferentes llamadas ordenadas por categoría. En general estamos intentando que cada sector del store represente cada uno del backend para que ambos laburen en conjunto y se puedan entender. Por ende, cada módulo tiene sus propios `getters`, `mutations` y `actions`. Entonces si en el back se crea una nueva ruta llamada `/projects`, nuestro store debería tener un modulo nuevo llamado `projects` también.
 
 ### Auth0 Explanation
 
@@ -87,11 +87,11 @@ En la plataforma usamos `Auth0` para nuestra autenticación de usuarios. Y nuest
 - Usamos ese mail para pegarle a nuestro back para ver si el usuario existe y sino lo creamos
 
 ### Profile vs User
-Hay grandes diferencias entre lo que es un perfil y lo que es un usuario. El usuario se va a usar para cosas de alto nivel mientras que el perfil será lo que se muestre al publico. 
+Hay grandes diferencias entre lo que es un perfil y lo que es un usuario. El usuario se va a usar para cosas de alto nivel mientras que el perfil será lo que se muestre al público. 
 
 **Flujo de usuario y perfil:**
 - Se crea un usuario sin perfil
-- Para crear el perfil uno tiene que aceptar nuestro codigo de conducta
-- La primera vez que ingresemos nuestro perfil se creara un perfil dentro de nuestro usuario en la base de datos
-- Las proximas modificaciones de nuestro perfil seran directo sobre el mismo
+- Para crear el perfil la persona tiene que aceptar nuestro código de conducta
+- La primera vez que ingresemos a nuestro perfil, él mismo se creará dentro de nuestro usuario en la base de datos
+- Las próximas modificaciones de nuestro perfil se harán directo sobre el mismo
 - Si queremos eliminar nuestro perfil de chicas programando debemos eliminar el usuario
