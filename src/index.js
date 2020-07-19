@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './config/router';
+
+// Load firebase
+import './config/firebase'
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
