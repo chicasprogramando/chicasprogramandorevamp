@@ -22,8 +22,13 @@ const SignIn = () => {
             <button
                 onClick={() => socialLogin(new firebase.auth.GoogleAuthProvider)}
             >
-                Google
+                Signup with Google
             </button>
+           
+           <label>Email</label>
+           <input type="email" placeholder="you@email.com"/>
+           <label>Password</label>
+           <input type="password" />
         </div>
     )
 }
