@@ -20,6 +20,7 @@ const BannerCarousel = () => {
       {imageList.map((slide) => (
         <Carousel.Item>
           <div
+            role="img"
             style={{
               ...styles.imageContainer,
               backgroundImage: `url(${slide.imgUrl})`,
