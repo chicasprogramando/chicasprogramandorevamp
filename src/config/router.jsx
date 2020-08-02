@@ -10,6 +10,7 @@ import {
 import { Header } from "../components/_common";
 import SignIn from "../components/Auth/SignIn";
 import Home from "../components/Home";
+import Comunidad from "../components/Comunidad";
 import { theme, GlobalStyle, PageContainer } from "./styles";
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
                 <Route
                   exact
                   path="/comunidad"
-                  component={() => <div>Comunidad</div>}
+                  component={() => <Comunidad />}
                 />
                 <Route
                   exact
