@@ -1,1 +1,2 @@
-export { default as Header } from "../_common/Header/index"
+export { default as Header } from "../_common/Header/index";
+export { default as BannerCarousel } from "../_common/BannerCarousel/index";
