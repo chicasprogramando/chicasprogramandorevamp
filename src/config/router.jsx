@@ -9,6 +9,7 @@ import {
 
 import { Header } from "../components/_common";
 import SignIn from "../components/Auth/SignIn";
+import Home from "../components/Home";
 import { theme, GlobalStyle, PageContainer } from "./styles";
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
             <Switch>
               <PageContainer>
                 <Header />
-                <Route path="/home" component={() => <div>Home</div>} />
+                <Route path="/home" component={() => <Home />} />
                 <Route
                   exact
                   path="/codigo"
