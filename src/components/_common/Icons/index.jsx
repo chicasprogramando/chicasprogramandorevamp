@@ -39,3 +39,23 @@ export const GoolgeLogo = ({ width, height }) => {
     </svg>
   );
 };
+
+export const StarIcon = (props) => {
+  const { fill, width, height } = props;
+  return (
+    <svg
+      width={width || 32}
+      height={height || 30}
+      viewBox="0 0 32 30"
+      fill="none"
+      {...props}
+    >
+      <path
+        d="M16 1l3.368 10.365h10.898l-8.817 6.405 3.368 10.365L16 21.73l-8.817 6.405 3.368-10.365-8.817-6.405h10.898L16 1z"
+        stroke={fill || "#fff"}
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
