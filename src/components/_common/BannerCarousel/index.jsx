@@ -16,21 +16,30 @@ const BannerCarousel = () => {
   ];
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel
+      activeIndex={index}
+      onSelect={handleSelect}
+      className="styled-carousel"
+      controls={false}
+    >
       {imageList.map((slide) => (
-        <Carousel.Item>
+        <Carousel.Item key={slide.imgUrl}>
           <div
             role="img"
             style={{
               ...styles.imageContainer,
               backgroundImage: `url(${slide.imgUrl})`,
             }}
-            className="d-block w-100"
+            className="d-block"
             aria-label={slide.label}
-          ></div>
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          >
+            <div style={styles.imageOverlay}></div>
+          </div>
+          <Carousel.Caption className="styled-carousel-caption">
+            <p>Bienvenides a nuestra plataforma</p>
+            <h3>
+              Título de banner <br /> en dos líneas
+            </h3>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
@@ -42,9 +51,23 @@ export default BannerCarousel;
 
 const styles = {
   imageContainer: {
-    height: "400px",
+    width: "98%",
+    margin: "0 auto",
+    height: "310px",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "50% 30%",
+    marginTop: "20px",
+    marginBottom: "10px",
+    postion: "relative",
+    borderRadius: "8px",
+  },
+  imageOverlay: {
+    position: "absolute",
+    width: "98%",
+    height: "310px",
+    background: "linear-gradient(180deg, #7E5BBF 0%, #CBACE2 87.8%)",
+    mixBlendMode: "multiply",
+    borderRadius: "8px",
   },
 };

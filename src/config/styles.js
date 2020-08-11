@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const theme = {
   colors: {
@@ -14,8 +14,18 @@ export const theme = {
   },
 };
 
+// GLOBALS AND OVERRIDES
+
 export const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }  
+
   body {
+    width: 100vw;
+    height: 100vh;
     background: ${(props) => props.theme.colors.white};
     margin: 0;
   }
@@ -23,10 +33,40 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .styled-carousel.carousel li{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.colors.midPurple};
+  }
+
+  .styled-carousel.carousel .carousel-indicators{
+    bottom: -55px;
+  }
+
+  .styled-carousel-caption.carousel-caption {
+    right: 10%;
+    left: 10%;
+    text-align: left;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
 export const PageContainer = styled.div`
   width: 100%;
+  height: 100%;
 `;
 
 export const InnerWrapper = styled.div`

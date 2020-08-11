@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Header } from "../components/_common";
+import { Header, Footer } from "../components/_common";
 import SignIn from "../components/Auth/SignIn";
 import Home from "../components/Home";
 import Comunidad from "../components/Comunidad";
@@ -40,6 +40,7 @@ const App = () => {
                   component={() => <div>Contacto</div>}
                 />
                 <Route exact path="/signin" component={() => <SignIn />} />
+                <Footer />
               </PageContainer>
             </Switch>
           </ThemeProvider>
