@@ -3,6 +3,8 @@
 /.pnp
 .pnp.js
 
+.next
+
 # local env files
 .env
 .env.local

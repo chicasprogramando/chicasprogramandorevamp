@@ -1,0 +1,27 @@
+/* p{
+    font-family: 'Roboto', sans-serif;
+} */
+.wrapper {
+  margin: 4rem 20% 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.list {
+    margin: 1rem 0;
+}
+
+.listItem{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0 4rem;
+    /* margin-bottom: 1rem; */
+}
+
+.position {
+    font-size: 2rem;
+    color: #805dc0;
+    position: relative;
+    right: 3rem;
+}
+

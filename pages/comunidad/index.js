@@ -5,7 +5,7 @@ const Comunidad = () => {
             Nuestra Comunidad
         </h1>
         <div className="flex flex-row">
-        <input class=" mr-4 focus:outline-none focus:shadow-outline border-b border-gray-300 py-2 px-4 block w-full appearance-none leading-normal" type="text" placeholder="Buscar por nombre"/>
+        <input class=" mr-4 focus:outline-none border-b border-gray-300 py-2 px-4 block w-full appearance-none leading-normal" type="text" placeholder="Buscar por nombre"/>
         <input class="mr-4 focus:outline-none  border-b border-gray-300 py-2 px-4 block w-full appearance-none leading-normal" type="text" placeholder="Buscar por especialidad"/>
         <input class="mr-4 focus:outline-none  border-b border-gray-300 py-2 px-4 block w-full appearance-none leading-normal" type="text" placeholder="Buscar por skills"/>
 
