@@ -9,7 +9,16 @@ module.exports = {
         purple: '#805dc0',
         white: '#f5f2fc',
         gray: '#e5e5e5',
-        gray2: '#a6a6a6'
+        gray2: '#a6a6a6',
+        gray3: '#999999'
+      },
+      extend: {
+        spacing: {
+          30: '30%'
+        }
       }
-    }
+    
+    },
+  
+
   }

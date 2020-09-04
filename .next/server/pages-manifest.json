@@ -2,6 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/codigo_de_conducta": "pages/codigo_de_conducta.js"
+  "/comunidad": "pages/comunidad.js"
 }
