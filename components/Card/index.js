@@ -18,7 +18,7 @@ const Card = ({ profile }) => {
               ))}
             </p>
             <span className="mt-2 text-sm text-gray3 font-semibold text-sm">Skills</span>
-            <p className="flex flex-wrap h-12 overflow-hidden">
+            <p className="flex flex-wrap overflow-hidden">
               {profile.skill.map((skill, i) => (
                 i === 0 ? <span className="text-sm font-semibold">
                 {skill.description}
