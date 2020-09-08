@@ -2,5 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/comunidad": "pages/comunidad.js"
+  "/comunidad": "pages/comunidad.js",
+  "/contact-form": "pages/contact-form.js"
 }

@@ -28,6 +28,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/comunidad.js"
+    ],
+    "/contact-form": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/contact-form.js"
     ]
   },
   "ampFirstPages": []
