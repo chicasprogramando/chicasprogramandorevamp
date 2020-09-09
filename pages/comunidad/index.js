@@ -111,7 +111,7 @@ const Comunidad = () => {
   return (
     <div className="m-12 h-full">
       {modalOpen && <ProfileModal />}
-      {filteredProfiles ? (
+      { !loading ? filteredProfiles && (
         <div>
           <h1 className="text-purple text-xl mb-8">Nuestra Comunidad</h1>
           <div className="flex flex-row h-12 items-end ">

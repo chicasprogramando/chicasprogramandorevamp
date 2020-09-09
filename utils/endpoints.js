@@ -6,4 +6,5 @@ export default {
 profiles: () => `${API_DOMAIN}/profile`,
 specialties: () => `${API_DOMAIN}/specialty`,
 skills: () => `${API_DOMAIN}/skill`,
+contact: () => `${API_DOMAIN}/mailer`,
 }

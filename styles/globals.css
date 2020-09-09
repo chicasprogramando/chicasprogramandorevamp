@@ -31,3 +31,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.ui.selection.active.dropdown .menu {
+  border-color: #c3a4de !important
+}
+
+#grid-subject-select.ui.fluid.dropdown {
+  border: solid 1px #333333 !important;
+}
+
+#grid-subject-select.ui.fluid.dropdown .menu{
+  border: solid 1px #333333 !important;
+}
+
+
