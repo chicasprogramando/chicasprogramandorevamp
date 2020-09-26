@@ -16,24 +16,24 @@ export const AuthContext = ({ children }) => {
     });
   }, []);
 
-  useEffect(() => {
-    const apiLogin = async () => {
-      const r = await axios.post(
-        endpoints.login(),
-        {
-          firebase_id: result.user.uid,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${result.user.idToken}`,
-          },
-        }
-      );
-      console.log(r, "la respuesta llega??");
-    //   setUser()
-    };
-    apiLogin();
-  }, [firebaseAuth]);
+  // useEffect(() => {
+  //   const apiLogin = async () => {
+  //     const r = await axios.post(
+  //       endpoints.login(),
+  //       {
+  //         firebase_id: result.user.uid,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${result.user.idToken}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(r, "la respuesta llega??");
+  //   //   setUser()
+  //   };
+  //   apiLogin();
+  // }, [firebaseAuth]);
 
   if (!showChild) {
     return <LoadingComponent />;

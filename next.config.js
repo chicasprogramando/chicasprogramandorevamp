@@ -5,5 +5,5 @@ module.exports = withImages({
   ignoreTypes: ["svg"],
   webpack(config, options) {
     return config
-  }
+  },
 })
