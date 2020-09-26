@@ -3,9 +3,9 @@ import { Dropdown } from "semantic-ui-react";
 import axios from "axios";
 import endpoints from "../../utils/endpoints";
 
-const ContactForm = () => {
+const ContacthtmlForm = () => {
   const [emailError, setEmailError] = useState(false);
-  const [formData, setFormData] = useState();
+  const [htmlFormData, sethtmlFormData] = useState();
   const [selectedSubject, setSelectedSubject] = useState(null);
   const data = useRef();
 
@@ -39,30 +39,31 @@ const ContactForm = () => {
   const saveData = (e) => {
     e.preventDefault();
     const data = {
-      [e.target.name]: e.target.value
-    }
-    setFormData((f) => ({ ...f, ...data}));
+      [e.target.name]: e.target.value,
+    };
+    sethtmlFormData((f) => ({ ...f, ...data }));
   };
 
   const handleSelect = (e, select) => {
-    console.log('esta seleccinando entra bien')
+    console.log("esta seleccinando entra bien");
     const { value } = select || event.target;
-    console.log(value)
+    console.log(value);
     setSelectedSubject(value);
-  }
+  };
 
   return (
     <div className="w-full mt-32 h-full flex items-center justify-center">
       <div className="flex flex-col items-center w-1/2">
-        <form className="w-full max-w-lg">
+        <htmlForm className="w-full max-w-lg">
           <div className="w-full mb-4">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-first-name"
+              htmlFor="grid-first-name"
             >
               Nombre y Apellido
             </label>
             <input
+              required={true}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="grid-first-name"
               type="text"
@@ -75,11 +76,12 @@ const ContactForm = () => {
           <div className="w-full mb-4">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-first-name"
+              htmlFor="grid-first-name"
             >
               Email
             </label>
             <input
+              required={true}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="grid-first-name"
               type="email"
@@ -93,7 +95,7 @@ const ContactForm = () => {
           <div className="flex flex-wrap w-full mb-4">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-subject-select"
+              htmlFor="grid-subject-select"
             >
               Subject
             </label>
@@ -109,9 +111,9 @@ const ContactForm = () => {
               onChange={handleSelect}
             />
           </div>
-          {selectedSubject === 'Otro' &&  
-          
+          {selectedSubject === "Otro" && (
             <input
+              required={true}
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="grid-first-name"
               type="text"
@@ -119,11 +121,12 @@ const ContactForm = () => {
               ref={data}
               name="name"
               onChange={saveData}
-            />}
+            />
+          )}
           <div>
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-email-content"
+              htmlFor="grid-email-content"
             >
               Escribinos tu consulta
             </label>
@@ -135,23 +138,23 @@ const ContactForm = () => {
             />
           </div>
 
-          <div className="w-full flex justify-center m-8">
+          <div className="w-full flex justify-between mt-8">
+            <button className="text-purple text-lg hover:underline font-semibold py-2 px-4 mx-4">
+              Cancel
+            </button>
             <button
               type="button"
               onClick={handleSubmit}
               type="submit"
-              className="border border-purple rounded p-4 text-center w-1/6 mx-4"
+              className="bg-transparent hover:bg-lilac text-blue-700 text-lg font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
             >
               Submit
             </button>
-            <button className="border border-purple rounded p-4 text-center mx-4">
-              clear
-            </button>
           </div>
-        </form>
+        </htmlForm>
       </div>
     </div>
   );
 };
 
-export default ContactForm;
+export default ContacthtmlForm;

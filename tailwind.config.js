@@ -13,6 +13,7 @@ module.exports = {
         gray2: '#a6a6a6',
         gray3: '#999999',
         greyDarkest: "#333333",
+        greyLightest: "#e6e3e8"
       },
       extend: {
         spacing: {

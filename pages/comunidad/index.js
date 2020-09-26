@@ -4,8 +4,8 @@ import endpoints from "../../utils/endpoints";
 import Card from "../../components/Card";
 import { Dropdown } from "semantic-ui-react";
 import ProfileModal from "../../components/ProfileModal";
-import LoadingComponent from '../../components/LoadingComponent';
-import useComunityData from '../../hooks/useComunityData'
+import LoadingComponent from "../../components/LoadingComponent";
+import useComunityData from "../../hooks/useComunityData";
 
 const Comunidad = () => {
   const [queryByName, setQueryByName] = useState("");
@@ -20,8 +20,7 @@ const Comunidad = () => {
   const specialtiesDropdown = useRef();
   const inputQuery = useRef();
 
-  const {skillsData, specialtiesData, profileData} = useComunityData();
-  
+  const { skillsData, specialtiesData, profileData } = useComunityData();
 
   useEffect(() => {
     if (profileData?.data) {
@@ -30,17 +29,20 @@ const Comunidad = () => {
     }
     if (specialtiesData?.data) setSpecialties(specialtiesData.data);
     if (skillsData?.data) setSkills(skillsData.data);
-    setLoading(false);
   }, [profileData, specialtiesData, skillsData]);
 
   useEffect(() => {
-    
+    specialties?.length && skills?.length && filteredProfiles?.length
+      ? setLoading(false)
+      : setLoading(true);
+  }, [specialties, skills, filteredProfiles]);
+
+  useEffect(() => {
     let filtro = profileList;
     if (queryByName !== "") {
       filtro = profileList.filter((p) =>
         p.name.toLowerCase().includes(queryByName.toLowerCase())
       );
-      
     }
     if (selectedSkills.length) {
       const profileSkills = filtro.map((p) => {
@@ -92,7 +94,7 @@ const Comunidad = () => {
     setSelectedSpecialties([]);
     setSelectedSkills([]);
     setQueryByName("");
-    inputQuery.current.value = ""
+    inputQuery.current.value = "";
   };
 
   const specialtiesOptions = specialties?.map((specialty) => ({
@@ -107,11 +109,10 @@ const Comunidad = () => {
     value: skill.id,
   }));
 
-
   return (
     <div className="m-12 h-full">
       {modalOpen && <ProfileModal />}
-      { !loading ? filteredProfiles && (
+      {!loading ? (
         <div>
           <h1 className="text-purple text-xl mb-8">Nuestra Comunidad</h1>
           <div className="flex flex-row h-12 items-end ">
@@ -135,8 +136,8 @@ const Comunidad = () => {
               value={selectedSpecialties}
               style={{
                 border: "none",
-                "borderBottom": "black solid 1px",
-                "borderRadius": 0,
+                borderBottom: "black solid 1px",
+                borderRadius: 0,
               }}
               className=" mx-4 "
             />
@@ -152,8 +153,8 @@ const Comunidad = () => {
               value={selectedSkills}
               style={{
                 border: "none",
-                "borderBottom": "black solid 1px",
-                "borderRadius": 0,
+                borderBottom: "black solid 1px",
+                borderRadius: 0,
               }}
               className=" mx-4 "
             />
@@ -166,11 +167,17 @@ const Comunidad = () => {
           </div>
           <div className="mt-20 flex flex flex-wrap" key={filteredProfiles}>
             {filteredProfiles?.map((profile) => (
-              <Card key={profile.id} profile={profile} onClick={() => console.log('click funciona la card')} />
+              <Card
+                key={profile.id}
+                profile={profile}
+                onClick={() => console.log("click funciona la card")}
+              />
             ))}
           </div>
         </div>
-      ) : <LoadingComponent/> }
+      ) : (
+        <LoadingComponent />
+      )}
     </div>
   );
 };
